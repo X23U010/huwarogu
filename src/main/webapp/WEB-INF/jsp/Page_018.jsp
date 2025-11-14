@@ -17,9 +17,11 @@
                 欠席届は担任の教師に通知されました。
             </p>
 
-            <a href="page05.html" class="top-back-button">
-                TOPへ戻る
-            </a>
+            <form action="HuwaLog_Servlet" method="post">
+                <button id="back-to-top-button" class="back-to-top-button" name="action" value="back_top">
+                    TOPへ戻る
+                </button>
+            </form>
         </div>
     </div>
 </body>

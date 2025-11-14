@@ -1,6 +1,6 @@
 /* Base styles (背景、フォントなど、全ての画面に共通する基本設定) */
 body {
-    background-image: url('back.png');
+    background-image: url('cssimages/背景（猫）.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

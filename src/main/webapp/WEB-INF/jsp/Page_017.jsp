@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>欠席届確認 (FC017)</title>
-    <link rel="stylesheet" href="page17.css"> 
+    <link rel="stylesheet" href="css/page17.css"> 
 </head>
 <body>
     <div class="main-content-wrapper center-content"> 
@@ -33,8 +33,10 @@
                 </div>
                 
                 <div class="button-group">
-                    <button id="cancel-send-button" class="action-button cancel">キャンセル</button> 
-                    <button id="send-absence-button" class="action-button confirm">送信</button>
+                    <button id="cancel-send-button" class="action-button cancel" onclick="history.back()">キャンセル</button> 
+                     <form action="HuwaLog_Servlet" method="post">
+                    <button id="send-absence-button" class="action-button confirm" name="action" value="adsence_register_comit">送信</button>
+                    </form>
                 </div>
             </div>
         </div>

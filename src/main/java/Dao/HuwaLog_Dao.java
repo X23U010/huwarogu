@@ -119,7 +119,7 @@ public class HuwaLog_Dao extends Base_Dao {
 			this.connect();
 
 			String sql = "SELECT id, name, hash "
-					+ "FROM manber_table "
+					+ "FROM mamber_table "
 					+ "WHERE id = ? "
 					+ "AND password = ?";
 

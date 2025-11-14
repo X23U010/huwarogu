@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
         reasonInput.classList.remove('input-error');
 
         // 必須チェック
-        let hasError = false;
 
         // 日付と理由のチェック (両方必須)
         if (!dateInput.value || !reasonInput.value.trim()) {
@@ -31,16 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // 遷移制御
-        if (hasError) {
-            // エラー画面 (FC016_Error) を表示し、遷移させない (画面説明通り)
-            console.log('入力エラー: 次の画面に遷移しません');
-        } else {
-            // 必須項目が正しかった場合、確認画面に遷移 (画面説明通り)
-            console.log('入力内容が正しいです。確認画面(次の画面)に遷移します。');
-            
-            // 💡 実際の確認画面のURLに置き換えてください
-            // window.location.href = 'absence_confirm.html'; 
-        }
+      
     });
 });

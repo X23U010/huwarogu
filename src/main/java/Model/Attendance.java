@@ -1,5 +1,5 @@
 package Model;
-
+//ぽ
 public class Attendance {
 private String attendance_id;
 private String attendance_menber_id;
@@ -9,6 +9,7 @@ private String attendance_day;
 
 public String getAttendance_id() {
 	return attendance_id;
+	//えぽ
 }
 public void setAttendance_id(String attendance_id) {
 	this.attendance_id = attendance_id;

@@ -8,6 +8,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 @WebServlet("/Execute_Servlet")
 public class Execute_Servlet extends HttpServlet {
@@ -15,12 +16,21 @@ public class Execute_Servlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/Page_005.jsp");
+		String forward = "";
+
+		HttpSession session = request.getSession(false);
+
+		if (session != null && session.getAttribute("member") != null) {
+		    forward = "005";
+		} else {
+		    forward = "001";
+		}
+		//forward = "005";
+		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/Page_" + forward + ".jsp");
 		dispatcher.forward(request, response);
-		
+
 		System.out.println("起動成功");
-		 
+
 	}
 
 }
