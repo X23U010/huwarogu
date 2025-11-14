@@ -1,0 +1,203 @@
+/* ========================================================================= */
+/* --- 1. ベーススタイルと共通設定 (全画面共通) --- */
+/* ========================================================================= */
+
+body {
+    /* 背景画像設定 (夜空の画像を使用) */
+    background-image: url('back.png'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-attachment: fixed; 
+    margin: 0;
+    min-height: 100vh;
+    
+    /* 📌 中央配置の核となる設定 */
+    display: flex; 
+    justify-content: center; /* 水平中央寄せ */
+    align-items: center; /* 垂直中央寄せ */
+    
+    font-family: 'Zen Maru Gothic', 'Handwritten Font', cursive, sans-serif;
+    color: #fff; 
+    overflow: hidden;
+}
+
+/* コンテンツ全体を包むラッパー */
+.main-content-wrapper {
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* フォーム系画面など、コンテンツを上下左右の完全に中央に配置するためのオーバーライド */
+.main-content-wrapper.center-content {
+    /* フォームが中央に表示されるように設定 */
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+    padding: 20px;
+}
+
+/* ========================================================================= */
+/* --- 5. FC018 完了画面 / FC019 設定画面 (白いフォームの基礎) --- */
+/* ========================================================================= */
+
+.completion-container {
+    width: 90%;
+    max-width: 350px; /* 完了画面のデフォルト幅 */
+    padding: 40px 30px;
+    
+    /* 白いフォームとぼかし効果 */
+    background: rgba(255, 255, 255, 0.95); 
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px); 
+    
+    text-align: center; 
+    color: #333; 
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* ========================================================================= */
+/* --- 5.5 FC019 出席パスワード設定画面のスタイル (修正済み) --- */
+/* ========================================================================= */
+
+.password-setting-container {
+    max-width: 450px; /* 入力要素と厳重度メーターに合わせて幅を調整 */
+}
+
+.setting-title {
+    font-size: 1.8em;
+    font-weight: bold;
+    margin-bottom: 25px;
+    color: #4b0082; /* 紫系 */
+    text-shadow: none;
+}
+
+.input-group label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+    font-size: 0.9em;
+}
+
+/* ランダムボタンと入力欄のラッパー */
+.password-control-wrapper {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 5px; /* 厳重度メーターのためにマージンを減らす */
+    position: relative; 
+}
+.password-control-wrapper.no-button {
+    gap: 0; /* 再入力欄 */
+}
+
+/* パスワード入力欄 (共通スタイル) */
+.password-control-wrapper input[type="text"],
+.password-control-wrapper input[type="password"] {
+    flex-grow: 1; 
+    padding: 12px 40px 12px 15px; /* 👁️ アイコン分の右パディング */
+    background: rgba(255, 255, 255, 0.98); 
+    border: none;
+    border-radius: 10px;
+    font-size: 1.05em;
+    color: #333;
+    box-sizing: border-box;
+    transition: box-shadow 0.3s ease;
+}
+
+/* 👁️ 表示/非表示アイコンのスタイル */
+.toggle-password {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #4b0082; 
+    font-size: 1.1em;
+    z-index: 10;
+}
+.password-control-wrapper.no-button .toggle-password {
+    right: 15px;
+}
+
+/* ランダムボタンのスタイル */
+.random-button {
+    flex-shrink: 0; 
+    padding: 12px 18px;
+    background: #ccc; 
+    color: #333;
+    border: none;
+    border-radius: 10px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+/* 💡 厳重度メーターのスタイル */
+.strength-meter-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding-left: 5px;
+}
+.strength-label {
+    font-size: 0.9em;
+    color: #666;
+    margin: 0;
+    flex-shrink: 0;
+}
+.strength-meter-bar {
+    flex-grow: 1;
+    height: 10px;
+    background: #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.strength-bar {
+    height: 100%;
+    width: 0%;
+    transition: width 0.3s ease-in-out;
+}
+.strength-bar.low { background-color: #ff4747; }
+.strength-bar.medium { background-color: #ffcc00; }
+.strength-bar.high { background-color: #4CAF50; }
+.strength-text {
+    font-weight: bold;
+    font-size: 0.9em;
+    width: 30px; 
+    text-align: right;
+    flex-shrink: 0;
+}
+.strength-text.low { color: #ff4747; }
+.strength-text.medium { color: #ffcc00; }
+.strength-text.high { color: #4CAF50; }
+
+/* 決定ボタン */
+.setting-form .confirm-button {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(90deg, #8a2be2, #4b0082); 
+    color: #fff;
+    border-radius: 12px;
+    font-size: 1.3em;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    transition: opacity 0.2s;
+}
+
+/* 決定ボタンが無効なとき */
+.setting-form .confirm-button:disabled {
+    cursor: not-allowed;
+    background: #ccc;
+    box-shadow: none;
+    opacity: 0.6; 
+}
+/* ... (その他の共通CSSスタイル) ... */

@@ -1,0 +1,295 @@
+body {
+    color: white;
+    margin: 0;
+    padding: 0;
+    background-image: url("cssimages/背景（猫）.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100hw;
+    height: 100hw;
+    position: relative;
+}
+
+#top {
+    position: absolute;
+}
+
+#top h1 {
+    font-family: "MS 明朝",serif;
+    font-size: 7vw; /* 画面幅に応じて調整 */
+    margin-top: 5vw;
+    margin-left: 8vw;
+    margin-bottom: 4vw;
+}
+
+/* ▼ ボタン配置エリア */
+#buttons form{
+    display: flex;         /* ← flexbox化 */
+    justify-content: center;
+    gap: 4vw;
+    margin-left: 14vw;
+}
+
+/* ▼ ボタンの見た目調整（任意） */
+#buttons button {
+    font-size: 4vw;
+    padding: 0px 2px;
+    margin-left: 0px;
+   
+    border: none;
+    background-color: rgba(0, 183, 255, 0.992);
+    font-family: "MS 明朝",serif;
+    color: #000453;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+#buttons button:hover {
+    background-color: rgba(161, 143, 255, 0.632);
+}
+
+footer {
+    background-color: rgb(8, 0, 42);
+    text-align: center;
+    width: 100vw;
+}
+
+footer small {
+    display: block;
+    padding: 2px 0;
+    color: #fff;
+}
+
+/* FC0013 コンテンツ全体を包むラッパー (中央配置用) */
+.main-content-wrapper {
+    width: 100%;
+    max-width: 1200px; /* ある程度の最大幅を設定 (デスクトップ向け) */
+    display: flex;
+    justify-content: flex-start; /* コンテンツエリアを左に寄せる */
+    align-items: center;
+    height: 100vh; /* 画面の高さに合わせる */
+    padding: 20px; /* 全体的な余白 */
+    box-sizing: border-box;
+    margin-top: 1vw;
+    margin-left: 6vw;
+    
+}
+
+.attendance-container {
+    width: 100%; /* ラッパー内の利用可能な幅 */
+    max-width: 600px; /* コンテンツエリアの最大幅 */
+    max-height:1500px;
+    padding: 30px 25px;
+    /* 背景画像を活かすため、コンテンツエリアの背景は半透明の暗い色に */
+    background: rgba(0, 0, 0, 0.5); /* 濃いめの半透明で文字を見やすく */
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px); /* 背景のぼかしを少し強めに */
+    text-align: center;
+    position: relative;
+    z-index: 1; /* コンテンツが背景画像より手前に来るように */
+    margin-left: 5%; /* 左端から少し余白を持たせる */
+    /* 背景画像に合わせて、コンテンツの高さも調整 (例: padding-bottomを増やすなど) */
+}
+
+/* タイトルと情報 */
+.header-info h1 {
+    font-size: 3em;
+    margin-bottom: 25px;
+    text-shadow: 0 0 8px #ffeb3b, 0 0 15px rgba(255, 235, 59, 0.5); /* 星のような輝き */
+    font-family: 'Zen Maru Gothic', cursive; /* 日本語フォントを優先 */
+}
+.header-info p {
+    font-size: 1.7em;
+    line-height: 1.8;
+    margin: 8px 0;
+    font-family: 'Zen Maru Gothic', sans-serif;
+}
+
+/* フォームと入力欄 */
+.login-form {
+    margin-top: 35px;
+}
+
+.input-group {
+    text-align: left;
+    margin-bottom: 22px;
+    position: relative;
+}
+
+.input-group label {
+    display: block;
+    font-size: 1.4em;
+    margin-bottom: 7px;
+    font-family: 'Zen Maru Gothic', sans-serif;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 14px 18px;
+    background: rgba(255, 255, 255, 0.98); /* 明るい入力欄 */
+    border: none;
+    border-radius: 12px;
+    font-size: 1.3em;
+    color: #333;
+    box-sizing: border-box;
+    /* フォーカス時のスタイル */
+    transition: box-shadow 0.3s ease;
+}
+.input-group input:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(138, 43, 226, 0.6); /* 紫系のフォーカス色 */
+}
+
+.input-group .password-toggle { 
+    position: absolute;
+    top: 65%; /* ラベルからの相対位置を調整 */
+    right: 18px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #555;
+    font-size: 1.2em;
+}
+
+/* 登録ボタン */
+.register-button {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(90deg, #8a2be2, #4b0082); /* 幻想的なグラデーション */
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.3em;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+    font-family: 'Zen Maru Gothic', sans-serif;
+}
+
+.register-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* メッセージエリア */
+.message-area {
+    margin-top: 30px;
+    font-size: 1em;
+    min-height: 25px;
+    color: #ffeb3b; /* 成功メッセージは明るい色を想定 */
+    font-family: 'Zen Maru Gothic', sans-serif;
+}
+
+
+
+
+
+
+/* --- FC014 確認モーダル用のスタイル --- */
+body {
+    background-image: url('cssimages/背景（心）.png');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-attachment: fixed; /* 💡 この行を追加 */
+    margin: 0;
+    min-height: 100vh;
+    display: flex; 
+}
+/* モーダル全体の背景（画面全体を覆い、背景を暗くする） */
+.modal-overlay {
+    /* 初期状態は非表示 */
+    display: none; 
+    position: fixed; /* 画面に固定 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* 背景を半透明で暗くする */
+    backdrop-filter: blur(3px);
+    z-index: 1000; /* 他の要素より手前に表示 */
+    
+    /* モーダルを中央に配置 */
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
+
+/* 確認ボックス（モーダル本体） */
+.confirmation-box {
+    background: #fff; /* 背景を白くして目立たせる */
+    color: #333;
+    padding: 30px 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    width: 90%;
+    max-width: 350px; /* サイズを調整 */
+    text-align: center;
+}
+
+.modal-title {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: #8a2be2; /* テーマカラーに合わせる */
+}
+
+.modal-content p {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #cc0000; /* 出席の問いかけを強調 */
+    line-height: 1.5;
+    margin-bottom: 30px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+/* ボタンのグループ */
+.button-group {
+    display: flex;
+    justify-content: space-around;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* アクションボタンの共通スタイル */
+.action-button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+    flex-grow: 1; /* 幅を均等にする */
+}
+
+/* キャンセルボタン */
+.action-button.cancel {
+    background-color: #ccc;
+    color: #333;
+}
+.action-button.cancel:hover {
+    background-color: #bbb;
+}
+
+/* 出席ボタン */
+.action-button.confirm {
+    /* 既存の登録ボタンのテーマカラーを流用 */
+    background: linear-gradient(90deg, #8a2be2, #4b0082); 
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(138, 43, 226, 0.4);
+}
+.action-button.confirm:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(138, 43, 226, 0.5);
+}
+
+/* モーダルを表示するためのユーティリティクラス（JavaScriptで切り替え） */
+.modal-overlay.is-active {
+    display: flex;
+}

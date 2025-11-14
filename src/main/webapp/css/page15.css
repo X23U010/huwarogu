@@ -1,0 +1,90 @@
+/* --- FC015 完了・占い画面用のスタイル --- */
+body {
+    /* 全体を覆う背景画像 */
+    background-image: url('cssimages/背景（猫）.png'); /* ここにあなたの背景画像ファイル名を指定 */
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    /* ... (その他の設定) ... */
+}
+/* 完了画面全体を中央配置するためのコンテナ */
+.complete-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 結果ボックス（背景と占いの表示エリア） */
+.result-box {
+    width: 90%;
+    max-width: 450px; 
+    padding: 40px 30px;
+    background: rgba(255, 255, 255, 0.9); /* 明るい半透明の背景で、占いを読みやすく */
+    color: #333;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    /* 幻想的な背景テーマに合わせる */
+    border: 3px solid #8a2be2; 
+}
+
+.complete-title {
+    font-size: 2.2em;
+    color: #4b0082; /* 濃い紫 */
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+/* 占いとアイテムのセクション共通スタイル */
+.fortune-section, .item-section {
+    margin-bottom: 25px;
+    padding: 15px;
+    border-radius: 10px;
+    background: #f0f0ff; /* 非常に薄い紫の背景 */
+}
+
+.section-label {
+    font-size: 1.1em;
+    color: #8a2be2; /* 紫 */
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* 占いメッセージのスタイル */
+.fortune-message {
+    font-size: 1.5em;
+    font-weight: bolder;
+    color: #cc0000; /* 赤で強調 */
+    line-height: 1.4;
+}
+
+/* ラッキーアイテムのスタイル */
+.lucky-item {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #008000; /* 緑で強調 */
+    padding: 5px 0;
+}
+
+/* TOPへ戻るボタン (既存の登録ボタンのスタイルを流用) */
+.back-to-top-button {
+    width: 80%;
+    padding: 14px;
+    background: linear-gradient(90deg, #8a2be2, #4b0082); /* 幻想的なグラデーション */
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.back-to-top-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+}

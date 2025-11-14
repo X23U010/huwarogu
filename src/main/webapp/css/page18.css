@@ -1,0 +1,226 @@
+/* ========================================================================= */
+/* --- 1. ベーススタイルと共通設定 (全画面共通) --- */
+/* ========================================================================= */
+
+body {
+    /* back.png ファイルを設定 */
+    background-image: url('back.png'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-attachment: fixed; 
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    font-family: 'Zen Maru Gothic', 'Handwritten Font', cursive, sans-serif;
+    color: #fff; 
+    overflow: hidden;
+}
+
+/* コンテンツ全体を包むラッパー */
+.main-content-wrapper {
+    width: 100%;
+    max-width: none;
+    display: flex;
+    justify-content: flex-start; 
+    align-items: center; 
+    height: auto;
+    min-height: 100vh;
+    padding: 100px 80px 50px 80px; 
+    box-sizing: border-box;
+    gap: 60px;
+}
+
+/* 欠席届/完了画面など、コンテンツを上下左右の完全に中央に配置するためのオーバーライド */
+.main-content-wrapper.center-content {
+    justify-content: center; /* 水平中央寄せ */
+    align-items: center; /* 垂直中央寄せ */
+    height: 100vh; 
+    padding: 20px;
+}
+
+
+/* ========================================================================= */
+/* --- 2. FC005 ユーザーTOP画面用のスタイル --- */
+/* ========================================================================= */
+
+.top-header { /* FC005 ヘッダー */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px 80px;
+    background: rgba(0, 0, 0, 0.4);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+.system-name {
+    font-size: 2.5em;
+    color: #fff;
+    text-shadow: 0 0 10px #ffeb3b;
+    margin: 0;
+}
+/* ... メニューボタン、アイコンなどのスタイルは割愛 ... */
+
+.user-menu-area {
+    margin-top: 0; 
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1); 
+    border-radius: 25px;
+    backdrop-filter: blur(8px); 
+    box-shadow: 0 0 40px rgba(138, 43, 226, 0.3);
+    width: 45%;
+    min-width: 400px;
+    max-width: 550px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+
+/* ========================================================================= */
+/* --- 3. FC016 欠席届提出画面用のスタイル --- */
+/* ========================================================================= */
+
+.absence-container {
+    width: 90%;
+    max-width: 400px; 
+    padding: 30px 25px;
+    /* 欠席届フォームの背景は暗い色 */
+    background: rgba(0, 0, 0, 0.6); 
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+    text-align: center;
+    color: #fff; 
+    margin: auto; 
+}
+
+/* ... フォーム、入力欄、ボタンのスタイルは割愛 ... */
+
+
+/* ========================================================================= */
+/* --- 4. FC017 欠席届確認モーダルのスタイル (簡略化) --- */
+/* ========================================================================= */
+
+/* ... モーダル、確認ボックスのスタイルは割愛 ... */
+
+
+/* ========================================================================= */
+/* --- 5. FC018 欠席届送信完了画面用のスタイル (白い枠の最終版) --- */
+/* ========================================================================= */
+
+.completion-container {
+    width: 90%;
+    max-width: 350px; 
+    padding: 40px 30px;
+    
+    /* 白い枠をはっきり表示 */
+    background: rgba(255, 255, 255, 0.95); 
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    
+    /* フォームの背後にぼかし効果 */
+    backdrop-filter: blur(8px); 
+    
+    text-align: center; 
+    color: #333; 
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.completion-title {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 25px;
+    /* 💡 修正点: タイトルを赤文字に変更 */
+    color: #ff4747; /* 目を引く赤色 */
+    text-shadow: 0 0 5px rgba(255, 71, 71, 0.5); /* わずかな光彩を追加 */
+}
+
+.completion-message {
+    font-size: 1.1em;
+    margin-bottom: 40px;
+    color: #555; 
+    line-height: 1.5;
+}
+
+.top-back-button {
+    /* 修正点: ボタンの幅を80%に制限し、中央に配置 */
+    display: block; /* margin: auto を効かせるためにブロック要素に変更 */
+    width: 80%; /* 幅を制限 */
+    margin: 0 auto; /* 水平方向の中央寄せ */
+    
+    padding: 14px;
+    background: linear-gradient(90deg, #8a2be2, #4b0082); 
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.top-back-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+    background: linear-gradient(90deg, #9932cc, #6a5acd);
+}
+
+
+/* ========================================================================= */
+/* --- 6. 既存の授業出席登録画面 (class.html) のスタイル --- */
+/* ========================================================================= */
+
+.attendance-container {
+    width: 100%;
+    max-width: 450px; 
+    padding: 30px 25px;
+    background: rgba(0, 0, 0, 0.5); 
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px); 
+    text-align: center;
+    position: relative;
+    z-index: 1; 
+    margin: 0 auto; 
+}
+
+/* ... 既存のフォーム、入力欄、ボタンのスタイルは割愛 ... */
+
+
+/* ========================================================================= */
+/* --- 7. レスポンシブ対応 (モバイル・タブレット向け) --- */
+/* ========================================================================= */
+
+@media (max-width: 1200px) {
+    .main-content-wrapper {
+        padding: 20px;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px; 
+        min-height: 100vh;
+    }
+    .user-menu-area {
+        width: 90%;
+        max-width: 550px; 
+    }
+    .top-header {
+        padding: 15px 20px;
+    }
+}
+@media (max-width: 768px) {
+    /* フォーム系のコンテナを画面いっぱいに広げる */
+    .absence-container,
+    .completion-container,
+    .attendance-container {
+        max-width: 95%; 
+        padding: 25px 15px;
+        margin: 0 auto;
+    }
+}

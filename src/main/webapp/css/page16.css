@@ -1,0 +1,131 @@
+/* Base styles (背景、フォントなど、全ての画面に共通する基本設定) */
+body {
+    background-image: url('back.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* 背景固定 */
+    margin: 0;
+    min-height: 100vh;
+    display: flex; /* コンテンツラッパーを中央配置するため */
+    justify-content: center; /* 水平方向中央 */
+    align-items: center; /* 垂直方向中央 */
+    font-family: 'Zen Maru Gothic', 'Handwritten Font', cursive, sans-serif;
+    color: #fff;
+    overflow: hidden;
+}
+
+/* コンテンツ全体を包むラッパー (中央配置用) */
+.main-content-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: flex-start; /* 👈 元の画面の左寄せ設定 */
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* --- FC016 欠席届提出画面用のスタイル --- */
+/* 💡 中央配置のため、マージン設定をリセット */
+.absence-container {
+    width: 90%;
+    max-width: 400px;
+    padding: 30px 25px;
+    background: rgba(0, 0, 0, 0.6); 
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+    text-align: center;
+    position: relative;
+    z-index: 1; 
+    color: #fff;
+    /* 中央配置のためのマージンリセットと確保 */
+    margin-left: 0; 
+    margin-right: 0; 
+    margin: auto; /* 水平中央配置を確実にする */
+}
+
+.absence-title {
+    font-size: 2.2em;
+    margin-bottom: 25px;
+    text-shadow: 0 0 8px #ffeb3b;
+}
+
+/* 必須マーク */
+.required-star {
+    color: #ff6347;
+    margin-left: 5px;
+}
+
+/* 入力グループ */
+.absence-form .input-group {
+    text-align: left;
+    margin-bottom: 25px;
+}
+
+.absence-form label {
+    display: block;
+    font-size: 1.1em;
+    margin-bottom: 8px;
+}
+
+/* 日付入力欄とテキストエリア */
+.absence-form input[type="date"],
+.absence-form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    background: rgba(255, 255, 255, 0.98); 
+    border: none;
+    border-radius: 10px;
+    font-size: 1.05em;
+    color: #333;
+    box-sizing: border-box;
+    transition: box-shadow 0.3s ease;
+}
+
+.absence-form textarea {
+    resize: vertical;
+}
+
+/* 確認ボタン */
+.confirm-button {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(90deg, #8a2be2, #4b0082); 
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.3em;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.confirm-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* エラーメッセージエリア (FC016_Error) */
+.message-area.error-area {
+    min-height: 40px;
+    color: #ff6347;
+    font-weight: bold;
+    font-size: 1em;
+    margin-top: -10px;
+}
+
+/* 入力エラー時のスタイル */
+.input-error {
+    border: 2px solid #ff6347 !important;
+}
+
+/* --- 画面中央配置のための最終的なオーバーライド --- */
+/* main-content-wrapper の左寄せ設定を上書きし、中央に配置する */
+.main-content-wrapper.center-content {
+    justify-content: center; 
+}
