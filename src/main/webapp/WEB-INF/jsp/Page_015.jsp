@@ -27,7 +27,7 @@
                         </p>
                 </div>
                 
-				<form action="HuwaLog_Servlet" method="post">
+				<form action="Lesson_Attendance_Servlet" method="post">
                 <button id="back-to-top-button" class="back-to-top-button" name="action" value="back_top">
                     TOPへ戻る
                 </button>

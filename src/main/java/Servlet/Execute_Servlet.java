@@ -20,10 +20,10 @@ public class Execute_Servlet extends HttpServlet {
 
 		HttpSession session = request.getSession(false);
 
-		if (session != null && session.getAttribute("member") != null) {
-		    forward = "005";
+		if (session != null && session.getAttribute("loginMenber") != null) {
+			forward = "005";
 		} else {
-		    forward = "001";
+			forward = "001";
 		}
 		//forward = "005";
 		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/Page_" + forward + ".jsp");

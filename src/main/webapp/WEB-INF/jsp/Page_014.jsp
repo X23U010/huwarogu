@@ -22,7 +22,7 @@
                 
                     <button id="cancel-button" class="action-button cancel" onclick="history.back()">キャンセル</button> 
                     
-                    <form action="HuwaLog_Servlet" method="post">
+                    <form action="Lesson_Attendance_Servlet" method="post">
     					<button id="comit-button" type="submit" class="action-button confirm" name="action" value="register_comit">
                     		出席
                        </button>

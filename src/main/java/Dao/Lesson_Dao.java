@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 import Model.Lesson;
 
-public class Lesson_Dao extends Base_Dao{
+public class Lesson_Dao extends Base_Dao {
 	public boolean findByIdAndPassword(Lesson lesson) {
 		//検索結果あり（true）or なし（false）
 		boolean isLogin = false;
@@ -21,11 +21,11 @@ public class Lesson_Dao extends Base_Dao{
 					+ "AND password = ?";
 
 			PreparedStatement ps = con.prepareStatement(sql);
-			
+
 			//バインド変数に検索条件を取得する
 			ps.setString(1, lesson.getLesson_id());
-			ps.setString(2,lesson.getLesson_password());
-			
+			ps.setString(2, lesson.getLesson_password());
+
 			//検索処理を実行し検索結果を取得する
 			ResultSet rs = ps.executeQuery();
 

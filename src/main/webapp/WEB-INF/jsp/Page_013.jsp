@@ -22,7 +22,7 @@
             </div>
 
             <!-- autocomplete="off" でもChromeは無視することがあるため hidden ダミーを先頭に配置 -->
-            <form class="login-form" action="HuwaLog_Servlet" method="post" autocomplete="off">
+            <form class="login-form" action="Lesson_Attendance_Servlet" method="post" autocomplete="off">
                 <!-- ダミーの非表示フィールド（Chromeのオートフィル対策） -->
                 <input type="text" name="fakeusernameremembered" style="display:none">
                 <input type="password" name="fakepasswordremembered" style="display:none">

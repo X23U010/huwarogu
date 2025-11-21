@@ -3,12 +3,12 @@ package Dao;
 import Model.Menber;
 
 public class Login_Logic {
-		public boolean execute(Menber menber) {
-			
-			HuwaLog_Dao login_Dao = new HuwaLog_Dao();
+	public boolean execute(Menber menber) {
 
-			boolean isLogin = login_Dao.Login_findByIdAndPassword(menber);
+		Login_Dao login_Dao = new Login_Dao();
 
-			return isLogin;
-		}
+		boolean isLogin = login_Dao.findByIdAndPassword(menber);
+
+		return isLogin;
+	}
 }

@@ -1,33 +1,25 @@
-// top.js の内容
-
 document.addEventListener('DOMContentLoaded', () => {
     const teacherMenu = document.getElementById('teacher-menu');
     const studentMenu = document.getElementById('student-menu');
-    const userNameElement = document.getElementById('user-name');
-    
-    // ★★★ 権限（ロール）判定の模擬実装 ★★★
-    
-    const urlParams = new URLSearchParams(window.location.search);
-    let userRole = urlParams.get('role') || 'student'; // デフォルトは生徒
-    let userName = urlParams.get('name') || (userRole === 'teacher' ? '田中太郎 先生' : '佐藤花子');
-    
-    userNameElement.textContent = userName;
 
-    // ロールに基づいて表示するメニューを振り分ける
-    if (userRole === 'teacher') {
-        teacherMenu.classList.remove('hidden');
-        studentMenu.classList.add('hidden');
-        console.log(`ログインユーザー: ${userName} (教師)`);
-    } else if (userRole === 'student') {
-        studentMenu.classList.remove('hidden');
-        teacherMenu.classList.add('hidden');
-        console.log(`ログインユーザー: ${userName} (生徒)`);
-    } else {
-        alert('ログインが必要です。');
+    // JSPから渡される元の値を出力
+    console.log("USER_ROLE (Raw) =", USER_ROLE);
+
+    // ★★★ 修正箇所: .trim() を使って、前後の空白や改行を確実に除去する
+    const role = (USER_ROLE || "").trim(); 
+
+    // トリミング後の値と長さを出力（デバッグ用）
+    console.log("USER_ROLE (Trimmed) =", role, " (Length:", role.length, ")");
+
+    if (role === "teacher") {
+        teacherMenu.classList.remove("hidden");
+        studentMenu.classList.add("hidden");
+    } 
+    else if (role === "student") {
+        studentMenu.classList.remove("hidden");
+        teacherMenu.classList.add("hidden");
+    } 
+    else {
+        console.log("ロール不明：比較失敗。");
     }
-
-    // 設定ボタンのアクション (例)
-    document.querySelector('.settings-button').addEventListener('click', () => {
-        alert('設定画面に遷移します。');
-    });
 });

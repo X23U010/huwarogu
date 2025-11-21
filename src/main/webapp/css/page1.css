@@ -1,0 +1,91 @@
+/*
+ * 元のCSSをベースに、新しいJSPファイルの内容を考慮して調整
+ * 特に、中央配置のコンテナやボタンのデザインを流用しています。
+ */
+body {
+    /* ユーザー提供の元のCSSから流用 */
+    background: url('cssimages/背景（猫）.png') 
+	no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Zen Maru Gothic', sans-serif;
+    display: flex;
+    flex-direction: column; /* 垂直方向に並べる */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    color: #fff;
+}
+
+main {
+    flex-grow: 1; /* mainを可能な限り伸ばし、footerを下に配置 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* 中央のコンテンツコンテナ (元の .report-check-container の役割) */
+#top {
+    /* ユーザー提供の元の .report-check-container のデザインを流用 */
+    background: rgba(0, 0, 0, 0.55);
+    border-radius: 20px;
+    padding: 40px 50px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(6px);
+    width: 380px; /* 元の幅を維持 */
+    text-align: center; /* タイトルとボタンを中央に */
+}
+
+/* タイトル */
+h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    text-shadow: 0 0 10px #7fffdf;
+    font-size: 2.2em; /* 少し大きく */
+}
+
+/* ボタン配置 */
+#buttons {
+    display: flex;
+    flex-direction: column; /* ボタンを縦に並べる */
+    gap: 15px; /* ボタン間の間隔 */
+    margin-top: 30px;
+}
+
+#buttons form {
+    display: flex;
+    flex-direction: column; /* フォーム内のボタンも縦に */
+    gap: 15px;
+}
+
+/* ボタン共通 */
+button {
+    /* ユーザー提供の元のCSSから流用 */
+    width: 100%; /* 親要素 (#buttons) の幅に合わせる */
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    padding: 12px 25px; /* 少し大きく */
+    color: #fff;
+    font-size: 1.1em; /* 少し大きく */
+    cursor: pointer;
+    transition: all 0.3s;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* 視認性向上のため追加 */
+}
+
+/* ホバー効果 */
+button:hover {
+    /* ユーザー提供の元のCSSから流用 */
+    background: rgba(0, 255, 200, 0.3);
+    box-shadow: 0 0 10px #00ffc8;
+    transform: translateY(-2px);
+}
+
+/* フッター */
+footer {
+    padding: 15px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.8em;
+}

@@ -1,0 +1,55 @@
+body {
+    background: url('back.png') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Zen Maru Gothic', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    color: #fff;
+  }
+  
+  /* コンテナ */
+  .complete-container {
+    background: rgba(0, 0, 0, 0.55);
+    border-radius: 20px;
+    padding: 60px 80px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(6px);
+    text-align: center;
+    width: 360px;
+  }
+  
+  /* タイトル */
+  h1 {
+    font-size: 2em;
+    margin-bottom: 40px;
+    text-shadow: 0 0 10px #7fffdf;
+  }
+  
+  /* メッセージ */
+  .message {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+  }
+  
+  /* ボタン */
+  .back-button {
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    padding: 10px 40px;
+    color: #fff;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  .back-button:hover {
+    background: rgba(0, 255, 200, 0.3);
+    box-shadow: 0 0 10px #00ffc8;
+    transform: translateY(-2px);
+  }
+  

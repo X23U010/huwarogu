@@ -1,0 +1,111 @@
+body {
+    background: url('back.png') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Zen Maru Gothic', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    color: #fff;
+  }
+  
+  /* コンテナ全体 */
+  .absence-container {
+    background: rgba(0, 0, 0, 0.55);
+    border-radius: 20px;
+    padding: 40px 50px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(6px);
+    width: 320px;
+    text-align: left;
+  }
+  
+  /* タイトル */
+  .title {
+    text-align: center;
+    font-size: 1.8em;
+    margin-bottom: 25px;
+    text-shadow: 0 0 10px #7fffdf;
+  }
+  
+  /* 各フィールド */
+  .field {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .field label {
+    margin-bottom: 6px;
+    font-size: 1em;
+  }
+  
+  /* 入力欄 */
+  .field input[type="date"],
+  .field textarea {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    color: #fff;
+    padding: 8px 10px;
+    font-size: 1em;
+    outline: none;
+    transition: border 0.3s, box-shadow 0.3s;
+  }
+  
+  /* カレンダー選択矢印（カスタム） */
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+  }
+  
+  .field input[type="date"]:focus,
+  .field textarea:focus {
+    border-color: #00ffc8;
+    box-shadow: 0 0 8px #00ffc8;
+  }
+  
+  /* テキストエリア */
+  .field textarea {
+    height: 120px;
+    resize: none;
+  }
+  
+  /* ボタンエリア */
+  .button-area {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+  }
+  
+  /* ボタン共通 */
+  button {
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    padding: 8px 18px;
+    color: #fff;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  /* トップへ戻るボタン */
+  .back-button:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+  }
+  
+  /* 提出ボタン */
+  .submit-button {
+    border-color: #00ffc8;
+    background: rgba(0, 255, 200, 0.25);
+  }
+  
+  .submit-button:hover {
+    background: rgba(0, 255, 200, 0.45);
+    box-shadow: 0 0 8px #00ffc8;
+    transform: translateY(-2px);
+  }
+  

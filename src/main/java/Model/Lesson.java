@@ -6,7 +6,6 @@ public class Lesson {
 	private String lesson_password;
 	private String lesson_day;
 
-
 	public String getLesson_id() {
 		return lesson_id;
 	}
