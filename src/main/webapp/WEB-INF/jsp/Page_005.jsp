@@ -21,12 +21,13 @@ String role = (String) session.getAttribute("userRole");
 		<header class="top-header">
 			<h1 class="system-name">ふわろぐ</h1>
 			<div class="user-info">
-				<span id="user-name"><%=men.getMenber_name()%></span> <a
-					href="settings.html" class="settings-link">
+				<span id="user-name"><%=men.getMenber_name()%></span>
 					<button class="settings-button">
 						<img src="images/gear.svg" alt="設定">
 					</button>
-				</a>
+					  <ul class="dropdown-menu hidden">
+            <li><a href="HuwaLog_Servlet?action=logout">ログアウト</a></li>
+        </ul>
 			</div>
 			<a href="#" class="notification-link">お知らせ</a>
 		</header>

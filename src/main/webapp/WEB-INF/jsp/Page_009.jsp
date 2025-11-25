@@ -4,14 +4,17 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>申請完了</title>
-  <link rel="stylesheet" href="009.css">
+  <title>No.009_申請完了</title>
+  <link rel="stylesheet" href="css/page9.css">
 </head>
 <body>
   <div class="complete-container">
     <h1>ふわろぐ</h1>
     <p class="message">申請が完了しました</p>
-    <button type="button" class="back-button">トップへ戻る</button>
+     <form action=Official_Leave_Request_Servlet method="post" autocomplete="off">
+    <button type="submit" class="back-button" name="action" value="back_top">トップへ戻る</button>
+          </form>
+    
   </div>
 </body>
 </html>

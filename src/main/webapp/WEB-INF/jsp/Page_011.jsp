@@ -4,14 +4,14 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>報告書提出（確認）</title>
-  <link rel="stylesheet" href="011.css">
+  <title>No.011_報告書提出（確認）</title>
+  <link rel="stylesheet" href="css/page11.css">
 </head>
 <body>
   <div class="report-check-container">
-    <h1>報告書提出（確認）</h1>
+    <h1>No.011_報告書提出（確認）</h1>
 
-    <form>
+    <form action=Report_Servlet method="post" autocomplete="off">
       <label for="activity-date">活動日</label>
       <input type="date" id="activity-date" name="activity-date" value="2025-11-07" readonly>
 
@@ -22,8 +22,8 @@
       <textarea id="activity-report" name="activity-report" rows="6" readonly></textarea>
 
       <div class="buttons">
-        <button type="button" class="back-btn">戻る</button>
-        <button type="submit" class="confirm-btn">確認</button>
+        <button type="button" class="back-btn" onclick="history.back()">戻る</button>
+        <button type="submit" class="confirm-btn" name="action" value="report_register_comit">確認</button>
       </div>
     </form>
   </div>

@@ -14,7 +14,7 @@
         <div class="absence-container">
             <h1 class="absence-title">欠席届</h1>
         
-            <form id="absence-form" action="HuwaLog_Servlet" method="post" class="absence-form">
+            <form id="absence-form" action="Absence_Notification_Servlet" method="post" class="absence-form">
             
                 <div class="input-group">
                     <label for="absence-date">日付<span class="required-star">*</span></label>

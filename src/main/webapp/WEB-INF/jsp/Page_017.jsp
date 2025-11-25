@@ -34,7 +34,7 @@
                 
                 <div class="button-group">
                     <button id="cancel-send-button" class="action-button cancel" onclick="history.back()">キャンセル</button> 
-                     <form action="HuwaLog_Servlet" method="post">
+                     <form action="Absence_Notification_Servlet" method="post">
                     <button id="send-absence-button" class="action-button confirm" name="action" value="adsence_register_comit">送信</button>
                     </form>
                 </div>

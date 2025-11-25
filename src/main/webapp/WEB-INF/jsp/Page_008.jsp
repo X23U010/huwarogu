@@ -5,7 +5,7 @@
 <head>
   <meta charset="UTF-8">
   <title>公欠申請（確認）</title>
-  <link rel="stylesheet" href="008.css">
+  <link rel="stylesheet" href="css/page8.css">
 </head>
 <body>
   <div class="confirm-container">
@@ -22,8 +22,10 @@
     </div>
 
     <div class="button-area">
-      <button type="button" class="back-button">戻る</button>
-      <button type="button" class="confirm-button">確認</button>
+      <button type="button" class="back-button" onclick="history.back()">戻る</button>
+      <form action=Official_Leave_Request_Servlet method="post" autocomplete="off">
+      <button type="submit" class="confirm-button" name="action" value="official_leave_request_register_comit">確認</button>
+      </form>
     </div>
   </div>
 </body>

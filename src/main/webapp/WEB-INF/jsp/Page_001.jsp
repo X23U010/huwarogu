@@ -12,7 +12,7 @@
         <div id="top">
             <h1>ふわろぐ</h1>
             <div id="buttons">
-                <form action=Top_Servlet" method="post">
+                <form action="Top_Servlet" method="post">
                     <button type="submit" name="action" value="new">新規会員登録</button>
                     <button type="submit" name="action" value="login">ログイン</button>
                 </form>
