@@ -37,6 +37,7 @@ public class Absence_Notification_Servlet extends HttpServlet {
 
 		} else if ("adsence_register_comit".equals(action)) {
 
+
 			//logicに飛ぶ処理
 			Request absencerequest = new Request();
 
@@ -50,6 +51,8 @@ public class Absence_Notification_Servlet extends HttpServlet {
 			//jspから入力内容をもらってabに代入していく
 			//jsoに入力した内容はここでしか処理できない
 
+
+	
 			forward = "018";
 
 		} else if ("back_top".equals(action) || "005".equals(action)) {
