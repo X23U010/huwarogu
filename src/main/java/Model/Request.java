@@ -7,7 +7,7 @@ public class Request {
 	private String request_day;
 	private String request_implement;
 	private String request_txt;
-	private String request_flag;
+	private boolean request_flag;
 
 	public String getRequest_id() {
 		return request_id;
@@ -57,11 +57,11 @@ public class Request {
 		this.request_txt = request_txt;
 	}
 
-	public String getRequest_flag() {
+	public boolean getRequest_flag() {
 		return request_flag;
 	}
 
-	public void setRequest_flag(String request_flag) {
+	public void setRequest_flag(boolean request_flag) {
 		this.request_flag = request_flag;
 	}
 

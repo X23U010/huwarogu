@@ -1,0 +1,88 @@
+@charset "UTF-8";
+
+/* style.css */
+
+/* 全体のフォントと背景を設定 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f4f4f4;
+}
+
+/* フォーム全体を囲むコンテナのスタイル */
+.container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 少し影を強めにして見やすく */
+    max-width: 600px;
+    margin: 40px auto; /* 上下にスペースを追加 */
+}
+
+/* タイトルのスタイル */
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #007bff; /* 下線を追加 */
+    padding-bottom: 10px;
+}
+
+/* 各入力グループのスタイル */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* ラベルのスタイル */
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+/* 入力フィールドの共通スタイル */
+.form-group input[type="date"],
+.form-group input[type="time"],
+.form-group input[type="text"],
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* paddingを含めて幅100%にする */
+    transition: border-color 0.3s; /* ホバー時のアニメーション */
+}
+
+/* 入力フィールドがフォーカスされた時のスタイル */
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #007bff; /* 青色に変化 */
+    outline: none; /* デフォルトのアウトラインを削除 */
+}
+
+/* テキストエリアのスタイル */
+.form-group textarea {
+    resize: vertical;
+    height: 120px;
+}
+
+/* 送信ボタンのスタイル */
+.submit-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 30px;
+    transition: background-color 0.3s;
+}
+
+/* 送信ボタンのホバー時のスタイル */
+.submit-btn:hover {
+    background-color: #0056b3;
+}
