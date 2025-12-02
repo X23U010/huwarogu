@@ -11,7 +11,7 @@
   <div class="container">
     <h1>新規会員登録</h1>
 
-    <form>
+    <form class="new-registration-form" action="New_Registration_Servlet" method="post" autocomplete="off">
       <div class="form-grid">
         <div class="field">
           <label for="student_id">学籍番号</label>
@@ -20,7 +20,7 @@
 
         <div class="field">
           <label for="birth_month">誕生月</label>
-          <input type="month" id="birth_month" name="birth_month" value="" autocomplete="new-password">
+          <input type="number" id="birth_month" name="birth_month" value="" autocomplete="new-password">
         </div>
 
         <div class="field">
@@ -33,8 +33,7 @@
           <input type="password" id="password" name="password" value="" autocomplete="new-password">
         </div>
       </div>
-
-      <button type="submit" id="submit_btn">登録</button>
+      <button type="submit" id="submit_btn" name="action" value="new_registretion_register">登録</button>
     </form>
   </div>
 </body>

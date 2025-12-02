@@ -92,10 +92,11 @@ public class HuwaLog_Dao extends Base_Dao {
 
 			//検索処理を実行し検索結果を取得する
 			ResultSet rs = ps.executeQuery();
-
+			
 			if (rs.next()) {
 				//検索結果あり
 				isAttendance = true;
+				lesson.setLesson_name(rs.getString("lesson_name"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

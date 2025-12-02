@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>欠席届送信完了 (FC018)</title>
-    <link rel="stylesheet" href="page18.css"> 
+    <link rel="stylesheet" href="css/page18.css"> 
 </head>
 <body>
     <div class="main-content-wrapper center-content"> 

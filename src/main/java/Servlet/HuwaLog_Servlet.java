@@ -31,6 +31,10 @@ public class HuwaLog_Servlet extends HttpServlet {
 			//公欠申請
 			forward = "007";
 
+		} else if ("006".equals(action)) {
+			//お知らせ
+			forward = "006";
+
 		} else if ("010".equals(action)) {
 			//報告書提出
 			forward = "010";

@@ -1,25 +1,39 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+    // 役割によるメニュー表示制御
     const teacherMenu = document.getElementById('teacher-menu');
     const studentMenu = document.getElementById('student-menu');
 
-    // JSPから渡される元の値を出力
-    console.log("USER_ROLE (Raw) =", USER_ROLE);
-
-    // ★★★ 修正箇所: .trim() を使って、前後の空白や改行を確実に除去する
-    const role = (USER_ROLE || "").trim(); 
-
-    // トリミング後の値と長さを出力（デバッグ用）
-    console.log("USER_ROLE (Trimmed) =", role, " (Length:", role.length, ")");
+    const role = (USER_ROLE || "").trim();
 
     if (role === "teacher") {
         teacherMenu.classList.remove("hidden");
         studentMenu.classList.add("hidden");
-    } 
-    else if (role === "student") {
+    } else if (role === "student") {
         studentMenu.classList.remove("hidden");
         teacherMenu.classList.add("hidden");
-    } 
-    else {
-        console.log("ロール不明：比較失敗。");
     }
+
+    /* -----------------------------
+       ▼ 設定ボタンのプルダウン制御
+    ----------------------------- */
+
+    const settingsBtn = document.getElementById("settings-btn");
+    const dropdownMenu = document.getElementById("settings-menu");
+
+    // 設定ボタンをクリックしたらプルダウン表示切替
+    settingsBtn.addEventListener("click", (e) => {
+        e.stopPropagation(); // 他イベントへ連鎖防止
+        dropdownMenu.classList.toggle("hidden");
+    });
+
+    // メニュー内クリックを閉じないように
+    dropdownMenu.addEventListener("click", (e) => {
+        e.stopPropagation();
+    });
+
+    // 画面のどこかクリックでメニュー閉じる
+    document.addEventListener("click", () => {
+        dropdownMenu.classList.add("hidden");
+    });
 });

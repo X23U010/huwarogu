@@ -4,7 +4,7 @@
 
 body {
     /* 背景画像設定 (夜空の画像を使用) */
-    background-image: url('back.png'); 
+    background-image: url('cssimages/背景（猫）.png'); 
     background-size: cover; 
     background-position: center; 
     background-repeat: no-repeat; 

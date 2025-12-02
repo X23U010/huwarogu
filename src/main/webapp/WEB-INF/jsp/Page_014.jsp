@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%@ page import="Model.Lesson"%>
+<%
+Lesson lesson = (Lesson) session.getAttribute("lesson_name");
+%>
+
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -14,7 +21,7 @@
             <div class="confirmation-box">
                 <h2 class="modal-title">確認</h2>
                 <div class="modal-content">
-                    <p id="class-name-display">OOOOO<br>授業に出席しますか？</p> 
+                    <p id="class-name-display"><%=lesson.getLesson_name()%><br>授業に出席しますか？</p> 
                     
                 </div>
                 
@@ -32,6 +39,5 @@
         </div>
     </div>
     
-    <script src="js/page14.js"></script> 
 </body>
 </html>

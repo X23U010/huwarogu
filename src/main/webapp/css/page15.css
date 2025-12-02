@@ -54,7 +54,7 @@ body {
 
 /* 占いメッセージのスタイル */
 .fortune-message {
-    font-size: 1.5em;
+    font-size: 1.3em;
     font-weight: bolder;
     color: #cc0000; /* 赤で強調 */
     line-height: 1.4;
@@ -62,7 +62,7 @@ body {
 
 /* ラッキーアイテムのスタイル */
 .lucky-item {
-    font-size: 1.3em;
+    font-size: 1.5em;
     font-weight: bold;
     color: #008000; /* 緑で強調 */
     padding: 5px 0;

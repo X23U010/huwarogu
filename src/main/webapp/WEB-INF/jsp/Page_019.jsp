@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>No.019_出席パスワード設定</title>
-    <link rel="stylesheet" href="page19.css"> 
+    <link rel="stylesheet" href="css/page19.css"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -14,7 +14,7 @@
         <div class="password-setting-container completion-container">
             <h1 class="setting-title">出席パスワード設定画面</h1>
             
-            <form id="password-form" class="setting-form">
+            <form id="password-form" class="setting-form" action="Lesson_Pass_Servlet" method="post" autocomplete="off">
                 
                 <div class="input-group password-input-group">
                     <label for="password">パスワード</label>
@@ -44,7 +44,7 @@
                 <div class="input-group password-input-group">
                     <label for="confirm-password">パスワード再入力</label>
                     <div class="password-control-wrapper no-button">
-                        <input type="password" id="confirm-password" 
+                        <input type="password" id="confirm-password" name="lesson-pass" 
                                placeholder="確認のため再入力" 
                                maxlength="10" 
                                autocomplete="off" 
@@ -58,13 +58,13 @@
                 <div id="error-message-area" class="message-area error-area">
                 </div>
             
-                <button type="submit" id="submit-button" class="confirm-button" disabled>
+                <button type="submit" id="submit-button" class="confirm-button" name="action" value="lesson_pass_register_comit" disabled>
                     決定する
                 </button>
             </form>
         </div>
     </div>
     
-    <script src="page19.js"></script> 
+    <script src="js/page19.js"></script> 
 </body>
 </html>

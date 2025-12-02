@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ page import="Model.Divination"%>
+<%@ page import="Dao.Divination_Logic"%>
+<%
+Divination_Logic dlogic = new Divination_Logic();
+Divination d = dlogic.divination_execute();
+%>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -17,13 +25,13 @@
                 
                 <div class="fortune-section">
                     <p class="section-label">授業の運勢は…</p>
-                    <p id="fortune-message" class="fortune-message">
+                    <p id="fortune-message" class="fortune-message"><%=d.getDivination_txt()%>
                         </p>
                 </div>
 
                 <div class="item-section">
                     <p class="section-label">ラッキーアイテムは</p>
-                    <p id="lucky-item" class="lucky-item">
+                    <p id="lucky-item" class="lucky-item"><%=d.getDivination_item()%>
                         </p>
                 </div>
                 
@@ -37,7 +45,5 @@
         </div>
 
     </div>
-    
-    <script src="js/page15.js"> </script> 
-</body>
+    </body>
 </html>

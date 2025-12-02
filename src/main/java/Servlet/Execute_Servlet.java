@@ -25,7 +25,6 @@ public class Execute_Servlet extends HttpServlet {
 		} else {
 			forward = "001";
 		}
-		//forward = "005";
 		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/Page_" + forward + ".jsp");
 		dispatcher.forward(request, response);
 

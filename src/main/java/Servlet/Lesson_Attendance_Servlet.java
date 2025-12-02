@@ -8,6 +8,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import Dao.Lesson_Logic;
 import Model.Lesson;
@@ -20,8 +21,9 @@ public class Lesson_Attendance_Servlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		String forward = "";
 		Menber men = (Menber) request.getAttribute("loginMenber");
+		
+		String forward = "";
 		// 文字化け対策
 		request.setCharacterEncoding("UTF-8");
 
@@ -46,6 +48,11 @@ public class Lesson_Attendance_Servlet extends HttpServlet {
 
 			if (lesson_lgc.execute(lesson)) {
 				forward = "014";
+				
+				System.out.println(lesson.getLesson_name());
+				
+				HttpSession session = request.getSession();
+				session.setAttribute("lesson_name", lesson); 
 			} else {
 
 				forward = "013";

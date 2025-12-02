@@ -6,9 +6,12 @@ public class Menber {
 	private String menber_month;
 	private String menber_password;
 
+	public Menber() {
+	}
+
 	public Menber(String menber_id, String menber_password) {
 		this.menber_id = menber_id;
-		this.menber_password = menber_password;
+	    this.menber_password = menber_password;
 	}
 
 	public String getMenber_id() {

@@ -157,12 +157,4 @@ document.addEventListener('DOMContentLoaded', () => {
     checkInputs();
     checkPasswordStrength(passwordInput.value);
 
-    // フォーム送信時の処理 
-    document.getElementById('password-form').addEventListener('submit', function(event) {
-        event.preventDefault();
-        if (!submitButton.disabled) {
-            alert('新しいパスワードが設定されました。');
-            // 💡 決定後の遷移処理をここに追加 (例: window.location.href = 'top.html';)
-        }
-    });
 });

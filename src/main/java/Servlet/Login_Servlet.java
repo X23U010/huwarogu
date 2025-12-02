@@ -17,21 +17,6 @@ import Model.Menber;
 public class Login_Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		String forward = null;
-
-		HttpSession session = request.getSession();
-
-		if (session.getAttribute("loginMenber") == null) {
-			forward = "index.jsp";
-		} else {
-			forward = "loginResult.jsp";
-		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/" + forward);
-		dispatcher.forward(request, response);
-	}
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
@@ -48,7 +33,7 @@ public class Login_Servlet extends HttpServlet {
 		System.out.println(pass);
 
 		//JavaBeansを生成する
-		Menber menber = new Menber(id, pass);
+		Menber menber = new Menber(id,pass);
 
 		Login_Logic login_logic = new Login_Logic();
 

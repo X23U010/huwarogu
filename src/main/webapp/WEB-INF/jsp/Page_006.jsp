@@ -5,7 +5,7 @@
 <head>
   <meta charset="UTF-8">
   <title>お知らせ</title>
-  <link rel="stylesheet" href="006.css">
+  <link rel="stylesheet" href="css/page6.css">
 </head>
 <body>
   <div class="notice-container">
@@ -44,8 +44,11 @@
         </label>
       </li>
     </ul>
-
-    <button class="back-button" onclick="location.href='index.html'">トップへ戻る</button>
+<form action="Lesson_Attendance_Servlet" method="post">
+                <button id="back-to-top-button" class="back-to-top-button" name="action" value="back_top">
+                    TOPへ戻る
+                </button>
+                </form>
   </div>
 
   <script>
