@@ -1,6 +1,7 @@
 package Servlet;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -37,13 +38,17 @@ public class Absence_Notification_Servlet extends HttpServlet {
 
 		} else if ("adsence_register_comit".equals(action)) {
 
-
 			//logicに飛ぶ処理
 			Request absencerequest = new Request();
 
-			absencerequest.setRequest_day();
+			LocalDateTime nowDate = LocalDateTime.now();
+			absencerequest.setRequest_day(nowDate);
 			absencerequest.setRequest_flag(false);
 			absencerequest.setRequest_implement(request.getParameter("display-date"));
+			absencerequest.setRequest_menber_id(men.getMenber_id());
+			absencerequest.setRequest_request_type_id("RT01");
+			absencerequest.setRequest_txt(request.getParameter("display-reason"));
+			
 
 			Absence_Logic absence_logic = new Absence_Logic();
 			absence_logic.execute(absencerequest);
@@ -51,8 +56,6 @@ public class Absence_Notification_Servlet extends HttpServlet {
 			//jspから入力内容をもらってabに代入していく
 			//jsoに入力した内容はここでしか処理できない
 
-
-	
 			forward = "018";
 
 		} else if ("back_top".equals(action) || "005".equals(action)) {
