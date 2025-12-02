@@ -63,6 +63,9 @@ public class HuwaLog_Servlet extends HttpServlet {
 			//各種授業出席率
 			forward = "026";
 
+		}else if ("Setting".equals(action)){
+			//設定
+			forward = "Setting";
 		}
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/Page_" + forward + ".jsp");

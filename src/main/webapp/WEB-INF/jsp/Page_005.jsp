@@ -30,7 +30,7 @@ String role = (String) session.getAttribute("userRole");
                 
  				<ul class="dropdown-menu">
         			<li><a href="Logout_Servlet?action=logout">ログアウト</a></li>
-        			<li><a href="#">プロフィール</a></li>
+        			<li><a href="HuwaLog_Servlet?action=Setting">基本情報設定</a></li>
   				</ul>
                
             </div>
