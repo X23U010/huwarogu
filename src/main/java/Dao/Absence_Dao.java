@@ -28,7 +28,7 @@ public class Absence_Dao extends Base_Dao{
 			ps.setString(4, request.getRequest_day());
 			ps.setString(5, request.getRequest_implement());
 			ps.setString(6, request.getRequest_txt());
-			ps.setString(7, request.getRequest_flag());
+			ps.setBoolean(7, request.getRequest_flag());
 
 			int record = ps.executeUpdate();
 
