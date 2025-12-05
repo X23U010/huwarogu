@@ -1,7 +1,8 @@
 package Servlet;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -41,11 +42,12 @@ public class Official_Leave_Request_Servlet extends HttpServlet {
 			
 			Request officalRequest = new Request();
 			Absence_Logic absence_logic = new Absence_Logic();
-			LocalDateTime nowDate = LocalDateTime.now();
-
+			Date nowDate = new Date();
+			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+			String strDate = dateFormat.format(nowDate);
 
 			
-			officalRequest.setRequest_day(nowDate);
+			officalRequest.setRequest_day(strDate);
 			officalRequest.setRequest_flag(false);
 			officalRequest.setRequest_implement(request.getParameter("date"));
 			officalRequest.setRequest_menber_id(men.getMenber_id());
@@ -53,6 +55,8 @@ public class Official_Leave_Request_Servlet extends HttpServlet {
 			officalRequest.setRequest_txt(request.getParameter("reason"));
 			
 			absence_logic.execute(officalRequest);
+			
+			
 			
 
 			forward = "009";
