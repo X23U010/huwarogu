@@ -15,8 +15,7 @@ public class Add_Member_Dao extends Base_Dao {
 
 			this.connect();
 
-			String sql = "INSERT INTO( member_table{member_id, member_name, member_month, member_password,)VALUES"
-					+ "(?,?,?,?)";
+			String sql = "INSERT INTO member_table (member_id, member_name, member_month, member_password) VALUES (?, ?, ?, ?)";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
@@ -31,7 +30,8 @@ public class Add_Member_Dao extends Base_Dao {
 				isUpdate = true;
 			}
 
-		} catch (Exception e) {
+		}catch (Exception e) {
+		
 			e.printStackTrace();
 		} finally {
 			try {
@@ -41,6 +41,9 @@ public class Add_Member_Dao extends Base_Dao {
 			}
 
 		}
+		
+		System.out.println(isUpdate);
+		
 		return isUpdate;
 
 	}

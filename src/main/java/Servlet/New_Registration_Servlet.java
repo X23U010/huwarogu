@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
+import Dao.Add_Member_Dao;
 import Model.Menber;
 
 @WebServlet("/New_Registration_Servlet")
@@ -19,7 +20,7 @@ public class New_Registration_Servlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String forward = "";
-		
+		String msg = "入力してください。";
 		// 文字化け対策
 		request.setCharacterEncoding("UTF-8");
 
@@ -35,20 +36,28 @@ public class New_Registration_Servlet extends HttpServlet {
 			menber.setMenber_month(request.getParameter("birth_month"));
 			menber.setMenber_password(request.getParameter("password"));
 			
-			System.out.println(menber.getMenber_id());
-			System.out.println(menber.getMenber_name());
-			System.out.println(menber.getMenber_month());
-			System.out.println(menber.getMenber_password());
-			
 			HttpSession session = request.getSession();
 			session.setAttribute("member_info", menber); 
 			
 			forward = "003";
 
-		} else if ("new_registretion_register_comit".equals(action)) {
+		} else if ("new_registretion_register_comit".equals(action)) {	
+			
 	        HttpSession session = request.getSession(false);
-	        session.invalidate();
-			forward = "004";
+	        Menber member = (Menber) session.getAttribute("member_info");
+	        		Add_Member_Dao AMD = new Add_Member_Dao();
+	       
+	        if(AMD.AddMember(member)) {
+	        	forward = "004";
+	        	session.invalidate();
+	        }else {
+	        	msg = "学籍番号が重複しています。";
+				session.setAttribute("message",msg); 
+	        	forward = "003";
+	        	
+	        }
+	        
+		
 
 		}
 

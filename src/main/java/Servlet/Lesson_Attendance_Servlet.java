@@ -47,6 +47,8 @@ public class Lesson_Attendance_Servlet extends HttpServlet {
 		if ("register".equals(action)) {
 
 			if (lesson_lgc.execute(lesson)) {
+				
+				
 				forward = "014";
 				
 				System.out.println(lesson.getLesson_name());

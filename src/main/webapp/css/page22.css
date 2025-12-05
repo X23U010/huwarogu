@@ -1,0 +1,211 @@
+/* ========================================================================= */
+/* --- 1. ベーススタイルと共通設定 (全画面共通) --- */
+/* ========================================================================= */
+
+body {
+    /* 📌 背景画像設定を維持 */
+    background-image: url('cssimages/背景（猫）.png'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-attachment: fixed; 
+    margin: 0;
+    min-height: 100vh;
+    
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    
+    font-family: 'Zen Maru Gothic', 'Handwritten Font', cursive, sans-serif;
+    color: #fff; 
+    overflow: hidden;
+}
+
+/* コンテンツ全体を包むラッパー */
+.main-content-wrapper {
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* フォーム系画面など、コンテンツを上下左右の完全に中央に配置するためのオーバーライド */
+.main-content-wrapper.center-content {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+    padding: 20px;
+}
+
+/* 共通の白いフォームの基礎設定 */
+.completion-container {
+    width: 90%;
+    max-width: 400px;
+    padding: 40px 30px;
+    background: rgba(255, 255, 255, 0.95); 
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px); 
+    text-align: center; 
+    color: #333; 
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    margin: auto;
+}
+
+/* 共通のボタン設定 */
+.confirm-button {
+    padding: 16px;
+    background: linear-gradient(90deg, #8a2be2, #4b0082); 
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.3em;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    transition: opacity 0.2s;
+}
+
+.confirm-button:disabled {
+    cursor: not-allowed;
+    background: #ccc;
+    box-shadow: none;
+    opacity: 0.6; 
+}
+
+
+/* ========================================================================= */
+/* --- 7. FC022 申請の処理拒否画面のスタイル (最終UI調整版) --- */
+/* ========================================================================= */
+
+.application-list-container {
+    max-width: 650px; /* フォームの幅を調整 */
+    padding: 35px 40px; 
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6); 
+}
+
+.application-list-container .list-title {
+    font-size: 2.0em; 
+    font-weight: bold;
+    color: #4b0082; 
+    margin-bottom: 30px; 
+    text-align: center;
+}
+
+/* 選択ボタンの配置 */
+.list-controls {
+    display: flex;
+    justify-content: flex-end; 
+    margin-bottom: 20px; 
+}
+
+.action-button {
+    padding: 10px 25px; 
+    background-color: #eee; 
+    color: #333;
+    border: none; 
+    border-radius: 20px; 
+    font-size: 1.0em;
+    font-weight: bold; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 申請項目のリスト全体を囲むコンテナ */
+.application-items {
+    border: 1px solid #e0e0e0; 
+    border-radius: 12px; 
+    overflow: hidden; 
+    margin-bottom: 30px; 
+    background: #fdfdfd; 
+}
+
+/* 各申請項目 */
+.app-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px; 
+    background: #fff;
+    border-bottom: 1px solid #f0f0f0; 
+    transition: background-color 0.15s ease-in-out;
+}
+
+.app-item:last-child {
+    border-bottom: none;
+}
+
+.app-item:hover {
+    background: #f8f8ff; 
+}
+
+/* チェックボックスのスタイル */
+.app-item input[type="checkbox"] {
+    margin-right: 18px; 
+    width: 22px; 
+    height: 22px;
+    flex-shrink: 0; 
+    border: 2px solid #ccc; 
+    border-radius: 5px; 
+    accent-color: #8a2be2; 
+}
+
+/* label のスタイル */
+.app-item label {
+    display: flex; 
+    align-items: baseline; 
+    justify-content: space-between; 
+    flex-grow: 1;
+    cursor: pointer; 
+}
+
+/* ユーザーIDと氏名のグループ (左寄せの情報) */
+.app-item .user-info {
+    display: flex;
+    align-items: baseline; 
+    gap: 12px; 
+    flex-grow: 1;
+}
+
+.app-item .app-user-id {
+    font-weight: bold;
+    color: #4b0082; 
+    font-size: 1.1em; 
+    flex-shrink: 0;
+}
+
+.app-item .app-name {
+    font-size: 1.0em;
+    color: #555;
+    flex-shrink: 0;
+}
+
+/* 申請タイプ (右寄せの情報) */
+.app-item .app-type {
+    font-size: 1.0em; 
+    color: #777;
+    margin-left: 20px; 
+    font-weight: normal;
+    flex-shrink: 0;
+}
+
+/* 処理ボタンのグループ */
+.process-buttons-group {
+    display: flex;
+    gap: 25px; 
+    justify-content: center;
+    margin-top: 20px; 
+}
+
+.process-buttons-group .confirm-button {
+    flex-basis: 48%; 
+    padding: 15px; 
+    font-size: 1.2em;
+    border-radius: 15px; 
+}
+
+.reject-button {
+    background: linear-gradient(90deg, #ff6347, #cc3300); 
+    box-shadow: 0 6px 20px rgba(255, 99, 71, 0.4); 
+}
+
+.accept-button {
+    box-shadow: 0 6px 20px rgba(138, 43, 226, 0.4); 
+}
