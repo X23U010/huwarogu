@@ -1,7 +1,10 @@
 package Servlet;
 
 import java.io.IOException;
-import java.util.Date;
+// import java.util.Date;  // <= 削除またはコメントアウト (モダンな日付APIを使うため)
+// ★追加：モダンな日付APIのためのインポート
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -24,93 +27,102 @@ public class Report_Servlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		request.setCharacterEncoding("UTF-8");
 		String forward = "";
 
 		HttpSession session = request.getSession();
-	    Member mem = (Member) session.getAttribute("loginMember");
+		Member mem = (Member) session.getAttribute("loginMember");
 
 		String action = request.getParameter("action");
 
-		
-		if("next_B".equals(action)) {
-			
+		if ("next_B".equals(action)) {
+
 			//Report.javaをインスタンス化↓
 			Report report = new Report();
-			
+
+			//IDのロジックを追加↓
+
 			//Page010_Aで受け取った内容をBeansにセット↓
-			
-			
+			report.setReport_id("");
+			report.setCompany_name(request.getParameter("company_name"));
+			report.setLocation(request.getParameter("activity_location"));
+
 			//セッションに保存↓
 			session.setAttribute("report_info", report);
-			
+
 			forward = "010_B";
-			
+
 		} else if ("next_C".equals(action)) {
-			
+
 			//セッションを取得
 			Report report = (Report) session.getAttribute("report_info");
-			
+
 			//Page010_Bで受け取った内容をBeansにセット↓
-			
-			
+			report.setActivity_date("activity_date");
+			report.setStart_time("start_time");
+			report.setEnd_time("finish_time");
+
 			//セッションに保存↓
 			session.setAttribute("report_info", report);
-			
+
 			forward = "010_C";
 
-		}if ("report_register".equals(action)) {
-			
+		}
+		if ("report_register".equals(action)) {
+
 			//セッションを取得↓
 			Report report = (Report) session.getAttribute("report_info");
-			
+
 			//Page010_Cで受け取った内容をBeansにセット↓
-			
-			
+			report.setReason("");
+			report.setReport_details("");
+
 			//セッションに保存↓
 			session.setAttribute("report_info", report);
-			
+
 			forward = "011";
 
 		} else if ("report_register_comit".equals(action)) {
+
+			// ★ここから日付取得処理の変更 ★
+
+			// 1. 現在の日付を取得
+			LocalDate today = LocalDate.now();
 			
-			//Report report = (Report) session.getAttribute("report_info");
+			// 2. フォーマットを定義 (例: "yyyy/MM/dd")
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+			
+			// 3. 文字列に変換
+			String applicationDateString = today.format(formatter); 
+			
+			// 変換した日付文字列をセット
+			Report report = (Report) session.getAttribute("report_info");
+			report.setApplication_date(applicationDateString);
+			report.setReview_status(false);
+			
+			// ★ 日付取得処理の変更ここまで ★
 
 			//DBに保存する↓
 			Report_Logic report_logic = new Report_Logic();
-			Report report = new Report();
-			
-			Date d = new Date();
-			
-			report.setReport_subject_type_id(request.getParameter("activity-content"));
-			report.setReport_menber_id(mem.getMember_id());
-			report.setReport_deadline(d.toString());
-			report.setReport_implement(request.getParameter("activity-report"));
-			report.setReport_location(request.getParameter("activity-location"));
-			report.setReport_starttime(request.getParameter("activity-starttime"));
-			report.setReport_finishtime(request.getParameter("activity-finishtime"));
-			report.setReport_txt(request.getParameter("activity-report"));
-			report.setReport_flag("0");
-			
 			boolean isSubmit = report_logic.execute(report);
-			
-			if(isSubmit) {
+
+			if (isSubmit) {
 				System.out.println("OK");
-			}else {
+			} else {
 				System.out.println("NG");
 			}
 			forward = "012";
 
 		} else if ("back_top".equals(action)) {
-			
+
 			//report_infoのセッションを削除↓
 			session.removeAttribute("report_info");
-			
+
 			forward = "005";
 
 		}
-		
+
 		session.setAttribute("loginMember", mem);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/Page_" + forward + ".jsp");
