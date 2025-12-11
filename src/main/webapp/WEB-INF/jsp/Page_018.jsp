@@ -1,28 +1,48 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%@ page import="Model.Divination"%>
+<%@ page import="Dao.Divination_Logic"%>
+<%
+Divination_Logic dlogic = new Divination_Logic();
+Divination d = dlogic.divination_execute();
+%>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>欠席届送信完了 (FC018)</title>
-    <link rel="stylesheet" href="css/page18.css"> 
+    <title>No.018_欠席届提出完了画面</title>
+    <link rel="stylesheet" href="css/page15.css"> 
 </head>
 <body>
-    <div class="main-content-wrapper center-content"> 
-        <div class="completion-container">
-            <h1 class="completion-title">送信が完了しました</h1>
-            
-            <p class="completion-message">
-                欠席届は担任の教師に通知されました。
-            </p>
+    <div class="main-content-wrapper">
+        <div class="complete-container">
+            <div class="result-box">
+                <h2 class="complete-title">欠席届提出完了</h2>
+                
+                <div class="fortune-section">
+                    <p class="section-label">今の運勢は…</p>
+                    <p id="fortune-message" class="fortune-message"><%=d.getDivination_txt()%>
+                        </p>
+                </div>
 
-            <form action="Absence_Notification_Servlet" method="post">
+                <div class="item-section">
+                    <p class="section-label">ラッキーアイテムは</p>
+                    <p id="lucky-item" class="lucky-item"><%=d.getDivination_item()%>
+                        </p>
+                </div>
+                
+				<form action="Absence_Notification_Servlet" method="post">
                 <button id="back-to-top-button" class="back-to-top-button" name="action" value="back_top">
                     TOPへ戻る
                 </button>
-            </form>
+                </form>
+                
+            </div>
         </div>
+
     </div>
-</body>
+    </body>
 </html>

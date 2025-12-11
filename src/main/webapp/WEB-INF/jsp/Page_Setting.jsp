@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="Model.Menber"%>
+<%@ page import="Model.Member"%>
 <%
-Menber member = (Menber) session.getAttribute("loginMenber");
+Member member = (Member) session.getAttribute("loginMember");
 %>
 <!DOCTYPE html>
 <html lang="ja">
@@ -26,20 +26,20 @@ Menber member = (Menber) session.getAttribute("loginMenber");
             </div>
             <div class="field" id="student_id_field">
         <label for="student_id">学籍番号</label>
-        <input type="text" id="student_id" name="student_id" value="<%=member.getMenber_id()%>">
+        <input type="text" id="student_id" name="student_id" value="<%=member.getMember_id()%>">
       </div>
 
       <div class="field" id="birth_field">
         <label for="birth_month">誕生月</label>
-        <input type="number" id="birth_month" name="birth_month" value="<%=member.getMenber_month()%>">
+        <input type="number" id="birth_month" name="birth_month" value="<%=member.getMember_month()%>">
       </div>
       <div class="field" id="name_field">
         <label for="name">名前</label>
-        <input type="text" id="name" name="name" value="<%=member.getMenber_name()%>">
+        <input type="text" id="name" name="name" value="<%=member.getMember_name()%>">
       </div>
       <div class="field" id="password_field">
         <label for="password">パスワード</label>
-        <input type="password" id="password" name="password" value="<%=member.getMenber_password()%>">
+        <input type="password" id="password" name="password" value="<%=member.getMember_password()%>">
       </div>
    </div>
    </div>

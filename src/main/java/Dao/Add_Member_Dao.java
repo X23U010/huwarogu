@@ -3,11 +3,11 @@ package Dao;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import Model.Menber;
+import Model.Member;
 
 public class Add_Member_Dao extends Base_Dao {
 
-	public boolean AddMember(Menber menber) {
+	public boolean AddMember(Member menber) {
 
 		boolean isUpdate = false;
 
@@ -19,10 +19,10 @@ public class Add_Member_Dao extends Base_Dao {
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
-			ps.setString(1, menber.getMenber_id());
-			ps.setString(2, menber.getMenber_name());
-			ps.setString(3, menber.getMenber_month());
-			ps.setString(4, menber.getMenber_password());
+			ps.setString(1, menber.getMember_id());
+			ps.setString(2, menber.getMember_name());
+			ps.setString(3, menber.getMember_month());
+			ps.setString(4, menber.getMember_password());
 
 			int record = ps.executeUpdate();
 

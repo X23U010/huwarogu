@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import Dao.Login_Logic;
-import Model.Menber;
+import Model.Member;
 
 @WebServlet("/Login_Servlet")
 public class Login_Servlet extends HttpServlet {
@@ -33,26 +33,26 @@ public class Login_Servlet extends HttpServlet {
 		System.out.println(pass);
 
 		//JavaBeansを生成する
-		Menber menber = new Menber(id,pass);
+		Member mem = new Member(id,pass);
 
 		Login_Logic login_logic = new Login_Logic();
 
 		//ログイン認証をする
-		boolean isLogin = login_logic.execute(menber);
+		boolean isLogin = login_logic.execute(mem);
 
 		//フォワード先
 		String forward = "";
 		System.out.println(isLogin);
 
-		System.out.println(menber.getMenber_id());
-		System.out.println(menber.getMenber_name());
-		System.out.println(menber.getMenber_password());
-		System.out.println(menber.getMenber_month());
+		System.out.println(mem.getMember_id());
+		System.out.println(mem.getMember_name());
+		System.out.println(mem.getMember_password());
+		System.out.println(mem.getMember_month());
 
 		if (isLogin) {
 			//認証OKの場合
 
-			String idStr = menber.getMenber_id();
+			String idStr = mem.getMember_id();
 			if (idStr.startsWith("x")) {
 				role = "student";
 			} else if (idStr.startsWith("t")) {
@@ -64,7 +64,7 @@ public class Login_Servlet extends HttpServlet {
 			//セッションを開始する
 			HttpSession session = request.getSession();
 			//セッションスコープにユーザ情報を保存する
-			session.setAttribute("loginMenber", menber);
+			session.setAttribute("loginMember", mem);
 			
 			session.setAttribute("userRole", role); 
 
@@ -74,6 +74,7 @@ public class Login_Servlet extends HttpServlet {
 
 			forward = "004";
 		}
+		
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Page_" + forward + ".jsp");
 		dispatcher.forward(request, response);

@@ -10,7 +10,7 @@ public class Report {
 	private String report_starttime;
 	private String report_finishtime;
 	private String report_txt;
-	private boolean report_flag;
+	private String report_flag;
 
 	public String getReport_id() {
 		return report_id;
@@ -83,11 +83,11 @@ public class Report {
 	public void setReport_txt(String report_txt) {
 		this.report_txt = report_txt;
 	}
-	public boolean getReport_flag() {
+	public String getReport_flag() {
 		return report_flag;
 	}
 
-	public void setReport_flag(boolean report_flag) {
+	public void setReport_flag(String report_flag) {
 		this.report_flag = report_flag;
 	}
 

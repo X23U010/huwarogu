@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<%@ page import="Model.Menber"%>
+<%@ page import="Model.Member"%>
 <%
-Menber men = (Menber) session.getAttribute("loginMenber");
+Member men = (Member) session.getAttribute("loginMember");
 String role = (String) session.getAttribute("userRole");
 %>
 
@@ -21,7 +21,7 @@ String role = (String) session.getAttribute("userRole");
 		 <header class="top-header">
             <h1 class="system-name">ふわろぐ</h1>
             <div class="user-info settings-dropdown">
-                <span id="user-name"><%=men.getMenber_name()%></span>
+                <span id="user-name"><%=men.getMember_name()%></span>
 
                 <!-- 設定ボタン -->
                 <button class="settings-button" id="settings-btn">
@@ -41,27 +41,23 @@ String role = (String) session.getAttribute("userRole");
 		<div id="teacher-menu" class="user-menu-area teacher-area hidden">
 			<h2 class="area-title">教師用メニュー</h2>
 			<div class="menu-grid">
-				<a href="HuwaLog_Servlet?action=019" class="menu-item menu-purple"> <span
-					class="menu-icon">📅</span> <span class="menu-label">授業パスワード設定</span>
-				</a> <a href="HuwaLog_Servlet?action=022" class="menu-item menu-purple"> <span
+				 <a href="HuwaLog_Servlet?action=022" class="menu-item menu-purple"> <span
 					class="menu-icon">📃</span> <span class="menu-label">公欠・欠席一覧</span>
 				</a> <a href="HuwaLog_Servlet?action=025" class="menu-item menu-blue"> <span class="menu-icon">📝</span>
 					<span class="menu-label">公欠申請一覧</span>
-				</a> <a href="HuwaLog_Servlet?action=026" class="menu-item menu-blue"> <span class="menu-icon">📊</span>
-					<span class="menu-label">各授業出席率</span>
-				</a>
+				</a> 
 			</div>
 		</div>
 
 		<div id="student-menu" class="user-menu-area student-area hidden">
 			<h2 class="area-title">生徒用メニュー</h2>
 			<div class="menu-grid">
-				<a href="HuwaLog_Servlet?action=007" class="menu-item menu-blue"> <span class="menu-icon">📄</span>
+				<a href="HuwaLog_Servlet?action=007_A" class="menu-item menu-blue"> <span class="menu-icon">📄</span>
 					<span class="menu-label">公欠申請</span>
-				</a> <a href="HuwaLog_Servlet?action=010" class="menu-item menu-blue"> <span class="menu-icon">📁</span>
+					
+				</a> <a href="HuwaLog_Servlet?action=010_A" class="menu-item menu-blue"> <span class="menu-icon">📁</span>
 					<span class="menu-label">報告書提出</span>
-				</a> <a href="HuwaLog_Servlet?action=013" class="menu-item menu-purple">
-					<span class="menu-icon">🔔</span> <span class="menu-label">授業出席</span>
+					
 				</a> <a href="HuwaLog_Servlet?action=016" class="menu-item menu-purple">
 					<span class="menu-icon">🤒</span> <span class="menu-label">欠席届提出</span>
 				</a>

@@ -1,20 +1,46 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page import="Model.Divination"%>
+<%@ page import="Dao.Divination_Logic"%>
+<%
+Divination_Logic dlogic = new Divination_Logic();
+Divination d = dlogic.divination_execute();
+%>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>No.009_申請完了</title>
-  <link rel="stylesheet" href="css/page9.css">
+  <title>No.009_公欠届提出完了</title>
+  <link rel="stylesheet" href="css/page15.css">
 </head>
 <body>
-  <div class="complete-container">
-    <h1>ふわろぐ</h1>
-    <p class="message">申請が完了しました</p>
-     <form action=Official_Leave_Request_Servlet method="post" autocomplete="off">
-    <button type="submit" class="back-button" name="action" value="back_top">トップへ戻る</button>
-          </form>
-    
-  </div>
-</body>
+    <div class="main-content-wrapper">
+        <div class="complete-container">
+            <div class="result-box">
+                <h2 class="complete-title">公欠届提出完了</h2>
+                
+                <div class="fortune-section">
+                    <p class="section-label">今の運勢は…</p>
+                    <p id="fortune-message" class="fortune-message"><%=d.getDivination_txt()%>
+                        </p>
+                </div>
+
+                <div class="item-section">
+                    <p class="section-label">ラッキーアイテムは</p>
+                    <p id="lucky-item" class="lucky-item"><%=d.getDivination_item()%>
+                        </p>
+                </div>
+                
+				<form action="Official_Leave_Request_Servlet" method="post">
+                <button id="back-to-top-button" class="back-to-top-button" name="action" value="back_top">
+                    TOPへ戻る
+                </button>
+                </form>
+                
+            </div>
+        </div>
+
+    </div>
+    </body>
 </html>

@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import Model.Menber;
+import Model.Member;
 
 @WebServlet("/Top_Servlet")
 public class Top_Servlet extends HttpServlet {
@@ -18,7 +18,7 @@ public class Top_Servlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String forward = "";
-		Menber men = (Menber) request.getAttribute("loginMenber");
+		Member men = (Member) request.getAttribute("loginMember");
 		// 文字化け対策
 		request.setCharacterEncoding("UTF-8");
 

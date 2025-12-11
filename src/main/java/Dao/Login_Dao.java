@@ -4,10 +4,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import Model.Menber;
+import Model.Member;
 
 public class Login_Dao extends Base_Dao {
-	public boolean findByIdAndPassword(Menber menber) {
+	public boolean findByIdAndPassword(Member menber) {
 		//検索結果あり（true）or なし（false）
 		boolean isLogin = false;
 
@@ -23,8 +23,8 @@ public class Login_Dao extends Base_Dao {
 			PreparedStatement ps = con.prepareStatement(sql);
 
 			//バインド変数に検索条件を取得する
-			ps.setString(1, menber.getMenber_id());
-			ps.setString(2, menber.getMenber_password());
+			ps.setString(1, menber.getMember_id());
+			ps.setString(2, menber.getMember_password());
 
 			//検索処理を実行し検索結果を取得する
 			ResultSet rs = ps.executeQuery();
@@ -33,8 +33,8 @@ public class Login_Dao extends Base_Dao {
 				//検索結果あり
 				isLogin = true;
 				
-				menber.setMenber_name(rs.getString("member_name"));
-				menber.setMenber_month(rs.getString("member_month"));
+				menber.setMember_name(rs.getString("member_name"));
+				menber.setMember_month(rs.getString("member_month"));
 				
 			}
 		} catch (Exception e) {
