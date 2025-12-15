@@ -13,9 +13,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import Dao.Absence_Logic;
-import Dao.Lesson_Logic;
 import Model.Member;
-import Model.Request;
+import Model.Public_Absence;
 
 /**
  * Servlet implementation class Official_Leave_Request_Servlet
@@ -33,13 +32,10 @@ public class Official_Leave_Request_Servlet extends HttpServlet {
 	    Member mem = (Member) session.getAttribute("loginMember");
 
 		String action = request.getParameter("action");
-
-		
-		Lesson_Logic lesson_lgc = new Lesson_Logic();
 		
 		if("next_B".equals(action)) {
-			//Official_Leave_Request.javaをインスタンス化↓
-			//Official_Leave_Request official_leave_request = new Official_Leave_Request();
+			//Public_Absence.javaをインスタンス化↓
+			Public_Absence public_absence = new Public_Absence();
 			
 			//Page_007_Aで受けっとった内容をBeansにセット↓
 			

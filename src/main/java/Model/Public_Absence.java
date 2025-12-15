@@ -12,7 +12,7 @@ public class Public_Absence {
 	public String location;
 	public String reason;
 	public String selection_details;
-	public String review_status;
+	public boolean review_status;
 	public String submission_status;
 
 	public String getPublic_absence_id() {
@@ -103,11 +103,11 @@ public class Public_Absence {
 		this.selection_details = selection_details;
 	}
 
-	public String getReview_status() {
+	public boolean getReview_status() {
 		return review_status;
 	}
 
-	public void setReview_status(String review_status) {
+	public void setReview_status(boolean review_status) {
 		this.review_status = review_status;
 	}
 
