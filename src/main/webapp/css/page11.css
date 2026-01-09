@@ -1,85 +1,168 @@
+/* -----------------------------------------------------------------
+ * Page 11 確認画面専用CSS (ボタン切れ解消のための最終調整 V3 - 完全版)
+ * ----------------------------------------------------------------- */
+
+@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&display=swap');
+
+/* ---------------------------------- */
+/* 全体設定 */
+/* ---------------------------------- */
 body {
     background: url('cssimages/背景（猫）.png') no-repeat center center fixed;
     background-size: cover;
     font-family: 'Zen Maru Gothic', sans-serif;
     display: flex;
-    justify-content: center;
-    align-items: center;
     min-height: 100vh;
     margin: 0;
     color: #fff;
-  }
-  
-  /* コンテナ */
-  .report-check-container {
-    background: rgba(0, 0, 0, 0.55);
+    justify-content: center;
+    align-items: flex-start;
+    
+    /* bodyの上下パディングを極限まで減らす */
+    padding: 5px 0; 
+}
+
+/* ---------------------------------- */
+/* コンテナ (縦幅削減) */
+/* ---------------------------------- */
+.report-check-container { 
+    background: rgba(0, 0, 0, 0.65);
     border-radius: 20px;
-    padding: 40px 50px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(6px);
-    width: 380px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    
+    width: 90%;
+    max-width: 500px;
+    /* コンテナ上下のパディングを削減 */
+    padding: 15px 40px; 
+    margin: 0 auto;
+    
     text-align: left;
-  }
-  
-  /* タイトル */
-  h1 {
+    border: 1px solid rgba(127, 255, 223, 0.4); 
+}
+
+.report-check-container h1 { 
     text-align: center;
-    margin-bottom: 25px;
-    text-shadow: 0 0 10px #7fffdf;
-    font-size: 1.8em;
-  }
-  
-  /* ラベル */
-  label {
+    /* タイトル下のマージンを最小限に */
+    margin-bottom: 15px; 
+    text-shadow: 0 0 12px #7fffdf, 0 0 5px #7fffdf;
+    font-size: 2.0em;
+    font-weight: 700;
+    color: #fff;
+}
+
+label {
     display: block;
-    margin-top: 15px;
+    /* ラベル上のマージンを最小限に */
+    margin-top: 8px; 
+    margin-bottom: 3px; 
     font-size: 0.95em;
-  }
-  
-  /* 入力エリア */
-  input[type="date"],
-  textarea {
-    width: 100%;
-    margin-top: 6px;
-    padding: 8px;
+    font-weight: bold;
+    color: #e0fafa;
+}
+
+/* ---------------------------------- */
+/* 横並びレイアウト (Flexbox) */
+/* ---------------------------------- */
+
+.row-group {
+    display: flex;
+    gap: 15px; 
+    /* row-group上のマージンも最小限に */
+    margin-top: 8px; 
+    flex-wrap: wrap; 
+}
+
+.field-item {
+    flex: 1;
+    min-width: 150px;
+}
+
+.row-group .field-item label {
+    margin-top: 0;
+}
+
+/* ---------------------------------- */
+/* データ表示要素のネオン・フロストスタイル (縦幅削減) */
+/* ---------------------------------- */
+
+.card-value-box {
+    width: 100%; 
+    /* input/divの上下パディングも削減 */
+    padding: 8px 10px; 
     border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(127, 255, 223, 0.7);
     background: rgba(255, 255, 255, 0.1);
     color: #fff;
-    font-size: 0.95em;
+    font-size: 1.0em;
     box-sizing: border-box;
-  }
-  
-  /* 編集不可スタイル */
-  input[readonly],
-  textarea[readonly] {
-    opacity: 0.7;
-    pointer-events: none;
-  }
-  
-  /* ボタン配置 */
-  .buttons {
+    word-break: break-all;
+    min-height: 35px; 
+}
+
+.report-text-area {
+    width: 100%;
+    /* textareaの上下パディングも削減 */
+    padding: 8px 10px; 
+    border-radius: 8px;
+    border: 1px solid rgba(127, 255, 223, 0.7);
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 1.0em;
+    box-sizing: border-box;
+    white-space: pre-wrap;
+    min-height: 100px; 
+}
+
+/* ---------------------------------- */
+/* ボタンエリア (マージン削減) */
+/* ---------------------------------- */
+.buttons { 
+    clear: both; 
     display: flex;
     justify-content: space-between;
-    margin-top: 30px;
-  }
-  
-  /* ボタン共通 */
-  button {
-    border: 1px solid rgba(255, 255, 255, 0.7);
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 10px;
-    padding: 10px 25px;
+    /* ボタンエリア上のマージンを最小限に */
+    margin-top: 20px; 
+    gap: 15px;
+}
+
+.back-btn, 
+.confirm-btn { 
+    flex-grow: 1; 
+    margin: 0; 
+    border: 1px solid rgba(127, 255, 223, 0.7);
+    background: rgba(127, 255, 223, 0.15);
+    border-radius: 12px;
+    padding: 12px 0;
     color: #fff;
-    font-size: 0.95em;
+    font-size: 1.0em;
+    font-weight: bold;
     cursor: pointer;
-    transition: all 0.3s;
-  }
-  
-  /* ホバー効果 */
-  button:hover {
-    background: rgba(0, 255, 200, 0.3);
-    box-shadow: 0 0 10px #00ffc8;
-    transform: translateY(-2px);
-  }
-  
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.back-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 10px #ffffff;
+    transform: translateY(-3px);
+}
+
+.confirm-btn:hover {
+    background: rgba(0, 255, 200, 0.4);
+    box-shadow: 0 0 15px #00ffc8;
+    transform: translateY(-3px);
+}
+
+/* ---------------------------------- */
+/* レスポンシブ対応 (モバイル時) */
+/* ---------------------------------- */
+@media (max-width: 480px) {
+    .field-item {
+        flex: 1 1 100%;
+    }
+    .report-check-container {
+        /* モバイル時のパディングを最小化 */
+        padding: 10px 10px; 
+    }
+}

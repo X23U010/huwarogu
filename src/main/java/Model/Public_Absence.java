@@ -1,6 +1,7 @@
 package Model;
 
 public class Public_Absence {
+	
 	public String public_absence_id;
 	public String student_id;
 	public String application_date;

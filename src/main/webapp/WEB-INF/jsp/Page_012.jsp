@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-    <%@ page import="Model.Divination"%>
+<%@ page import="Model.Divination"%>
 <%@ page import="Dao.Divination_Logic"%>
 <%
 Divination_Logic dlogic = new Divination_Logic();
@@ -38,10 +38,8 @@ Divination d = dlogic.divination_execute();
                     TOPへ戻る
                 </button>
                 </form>
-                
             </div>
         </div>
-
     </div>
     </body>
 </html>

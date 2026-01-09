@@ -1,90 +1,138 @@
-/* --- FC015 完了・占い画面用のスタイル --- */
+/* -----------------------------------------------------------------
+ * Page 12 報告書提出完了画面用CSS (最終調整：上下に隙間を設けて中央に配置)
+ * ----------------------------------------------------------------- */
+
+@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&display=swap');
+
+/* ---------------------------------- */
+/* 全体設定 */
+/* ---------------------------------- */
 body {
-    /* 全体を覆う背景画像 */
-    background-image: url('cssimages/背景（猫）.png'); /* ここにあなたの背景画像ファイル名を指定 */
-    background-size: cover; 
-    background-position: center; 
-    background-repeat: no-repeat; 
-    /* ... (その他の設定) ... */
+    background: url('cssimages/背景（猫）.png') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Zen Maru Gothic', sans-serif;
+    margin: 0;
+    color: #fff;
+    /* bodyのパディングは維持（上下に少し余白を作る） */
+    padding: 20px 0; 
+
+    /* flexboxによる中央配置は、ラッパー要素に移すため、bodyからは削除 */
+    display: flex;
+    justify-content: center;
+    /* align-items: center; を削除 */
+    min-height: 100vh;
 }
-/* 完了画面全体を中央配置するためのコンテナ */
-.complete-container {
-    width: 100%;
-    height: 100vh;
+
+/* ---------------------------------- */
+/* ラッパー要素 (上下中央配置とコンテンツの上下余白を確保する要素) */
+/* ---------------------------------- */
+.main-content-wrapper {
+    /* ラッパー要素をbodyの高さ全体に広げ、flexで中央配置する */
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    
+    /* 画面の高さを埋め、コンテナを上下中央に配置する */
+    min-height: calc(100vh - 40px); /* bodyの上下パディング40pxを引く */
 }
 
-/* 結果ボックス（背景と占いの表示エリア） */
-.result-box {
-    width: 90%;
-    max-width: 450px; 
-    padding: 40px 30px;
-    background: rgba(255, 255, 255, 0.9); /* 明るい半透明の背景で、占いを読みやすく */
-    color: #333;
+
+/* ---------------------------------- */
+/* コンテナ (上下に隙間を確保し、コンパクトに) */
+/* ---------------------------------- */
+.complete-container {
+    background: rgba(0, 0, 0, 0.55);
     border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    
+    /* コンテナ自体の上下パディングは適度に確保 */
+    padding: 20px 30px; 
+    
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(6px);
     text-align: center;
-    /* 幻想的な背景テーマに合わせる */
-    border: 3px solid #8a2be2; 
+
+    /* 横幅は維持 */
+    width: 90%; 
+    max-width: 400px;
+    
+    border: 1px solid rgba(127, 255, 223, 0.3); 
+    
+    /* コンテナ自体のmarginはゼロに戻す (ラッパーで中央配置するため) */
+    margin: 0; 
 }
 
-.complete-title {
-    font-size: 2.2em;
-    color: #4b0082; /* 濃い紫 */
-    margin-bottom: 30px;
-    font-weight: bold;
+
+/* ---------------------------------- */
+/* 以下、各要素の設定は前の回答を維持し、適切な縦幅で表示します */
+/* ---------------------------------- */
+
+.complete-title { 
+    font-size: 1.8em; 
+    margin-bottom: 20px; 
+    text-shadow: 0 0 10px #7fffdf, 0 0 5px #7fffdf; 
+    color: #fff; 
+    font-weight: 700;
 }
 
-/* 占いとアイテムのセクション共通スタイル */
-.fortune-section, .item-section {
-    margin-bottom: 25px;
-    padding: 15px;
-    border-radius: 10px;
-    background: #f0f0ff; /* 非常に薄い紫の背景 */
+.fortune-section,
+.item-section {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 10px 15px; 
+    margin-bottom: 15px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .section-label {
-    font-size: 1.1em;
-    color: #8a2be2; /* 紫 */
+    font-size: 0.9em;
     font-weight: bold;
-    margin-bottom: 10px;
+    color: #e0fafa;
+    margin: 0 0 5px 0; 
 }
 
-/* 占いメッセージのスタイル */
-.fortune-message {
-    font-size: 1.3em;
-    font-weight: bolder;
-    color: #cc0000; /* 赤で強調 */
-    line-height: 1.4;
+.fortune-message { 
+    font-size: 1.1em; 
+    margin: 0;
+    color: #ffcccc; 
+    text-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
+    font-weight: 700;
 }
 
-/* ラッキーアイテムのスタイル */
-.lucky-item {
-    font-size: 1.5em;
-    font-weight: bold;
-    color: #008000; /* 緑で強調 */
-    padding: 5px 0;
+.lucky-item { 
+    font-size: 1.2em; 
+    margin: 0;
+    font-weight: 700;
+    text-shadow: 0 0 5px #fff;
 }
 
-/* TOPへ戻るボタン (既存の登録ボタンのスタイルを流用) */
-.back-to-top-button {
-    width: 80%;
-    padding: 14px;
-    background: linear-gradient(90deg, #8a2be2, #4b0082); /* 幻想的なグラデーション */
-    color: #fff;
-    border: none;
+.back-to-top-button { 
+    border: 1px solid rgba(127, 255, 223, 0.7); 
+    background: rgba(127, 255, 223, 0.15); 
     border-radius: 12px;
-    font-size: 1.2em;
+    padding: 12px 45px; 
+    color: #fff;
+    font-size: 1em;
     font-weight: bold;
     cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    width: 100%; 
     margin-top: 20px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .back-to-top-button:hover {
+    background: rgba(0, 255, 200, 0.4);
+    box-shadow: 0 0 15px #00ffc8;
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* ---------------------------------- */
+/* モバイル対応 */
+/* ---------------------------------- */
+@media (max-width: 480px) {
+    .complete-container {
+        padding: 15px 15px; 
+    }
 }

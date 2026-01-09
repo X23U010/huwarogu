@@ -1,0 +1,294 @@
+/* Google Fonts: Zen Maru Gothic の読み込みを推奨 */
+/* @import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&display=swap'); */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css'); /* パスワードの目玉アイコン用 */
+
+/* ---------------------------------- */
+/* 全体設定 */
+/* ---------------------------------- */
+body {
+    /* 背景画像、中央固定、カバー */
+    background: url('cssimages/背景（猫）.png') no-repeat center center fixed;
+    background-size: cover;
+    /* フォント */
+    font-family: 'Zen Maru Gothic', sans-serif;
+    /* 中央配置のためのFlexbox */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    /* 文字色を白に統一 */
+    color: #fff;
+    padding: 20px; /* 小さな画面のためのパディング */
+}
+
+/* ---------------------------------- */
+/* コンテナ（フォーム全体を囲む部分） */
+/* ---------------------------------- */
+.setting-container { 
+    /* 半透明の黒背景（フロストガラス効果） */
+    background: rgba(0, 0, 0, 0.65);
+    border-radius: 20px;
+    padding: 30px 40px;
+    /* 影 */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+    /* ぼかし効果 */
+    backdrop-filter: blur(8px);
+    /* コンテナの最大幅を設定 */
+    width: 100%; 
+    max-width: 420px; /* レポート画面より少し広く */
+    text-align: left;
+    /* ネオン風のボーダーを追加 */
+    border: 1px solid rgba(127, 255, 223, 0.4); /* 薄いミントグリーン */
+}
+
+/* ---------------------------------- */
+/* ヘッダー情報 */
+/* ---------------------------------- */
+.header-info {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.header-info h1 {
+    /* ネオン風の文字影 */
+    text-shadow: 0 0 12px #7fffdf, 0 0 5px #7fffdf;
+    font-size: 2.0em;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.header-info p {
+    font-size: 0.9em;
+    color: #e0fafa;
+    margin-top: 0;
+}
+
+/* ---------------------------------- */
+/* フォーム要素 */
+/* ---------------------------------- */
+
+.field {
+    margin-bottom: 20px;
+}
+
+/* ラベル */
+label {
+    display: block;
+    margin-bottom: 5px; /* 入力フィールドとの間隔 */
+    font-size: 0.95em;
+    font-weight: bold;
+    color: #e0fafa; /* やや明るい色で目立たせる */
+}
+
+/* 入力フィールド */
+input[type="text"],
+input[type="number"],
+input[type="password"] {
+    width: 100%; 
+    margin-top: 0;
+    padding: 12px; /* パディングを増やして視認性アップ */
+    border-radius: 8px;
+    /* ボーダーと背景 */
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 1.0em;
+    box-sizing: border-box; /* paddingをwidthに含める */
+}
+
+/* readonlyな入力フィールドの見た目 */
+input[readonly] {
+    background: rgba(255, 255, 255, 0.05); /* より暗くして変更不可を強調 */
+    color: #aaa; /* 文字色をグレーアウト */
+    cursor: default;
+}
+
+/* フォーカス時のネオン効果 */
+input[type="text"]:focus,
+input[type="password"]:focus {
+    outline: none;
+    border-color: #00ffc8;
+    box-shadow: 0 0 8px #00ffc8;
+    background: rgba(0, 0, 0, 0.3); /* フォーカス時に少し暗くする */
+}
+
+/* ---------------------------------- */
+/* パスワード入力グループ */
+/* ---------------------------------- */
+
+.password-control-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+}
+
+.password-control-wrapper input[type="password"],
+.password-control-wrapper input[type="text"] {
+    flex-grow: 1;
+    padding-right: 40px; /* トグルボタンのためのスペース */
+}
+
+/* ランダム生成ボタン */
+.random-button {
+    background: #00ffc8;
+    color: #000;
+    font-weight: bold;
+    border: none;
+    padding: 0 15px;
+    height: 48px; /* 入力フィールドの高さと合わせる */
+    border-radius: 8px 0 0 8px; /* 左側を角丸にする */
+    cursor: pointer;
+    transition: background-color 0.2s;
+    flex-shrink: 0;
+    margin-right: -1px; /* ボーダーを重ねるための微調整 */
+    box-shadow: 0 0 10px rgba(0, 255, 200, 0.5); /* ネオン効果 */
+}
+
+.random-button:hover {
+    background: #47ffda;
+}
+
+.password-control-wrapper input[type="password"] {
+    border-radius: 0 8px 8px 0; /* 右側を角丸にする */
+}
+
+/* ボタンがない場合の調整 */
+.password-control-wrapper.no-button input[type="password"] {
+    border-radius: 8px;
+}
+
+/* パスワード表示切替アイコン */
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #e0fafa;
+    font-size: 1.1em;
+}
+
+/* ---------------------------------- */
+/* パスワード強度メーター */
+/* ---------------------------------- */
+
+.strength-meter-container {
+    display: flex;
+    align-items: center;
+    margin-top: -10px; /* 上のフィールドとの距離を詰める */
+    margin-bottom: 20px;
+}
+
+.strength-label {
+    font-size: 0.85em;
+    color: #e0fafa;
+    margin: 0 10px 0 0;
+    flex-shrink: 0;
+}
+
+.strength-meter-bar {
+    flex-grow: 1;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    height: 8px;
+    overflow: hidden;
+    margin-right: 10px;
+}
+
+.strength-bar {
+    height: 100%;
+    width: 0%;
+    transition: width 0.3s ease-in-out, background-color 0.3s;
+    border-radius: 5px;
+}
+
+.strength-bar.low { background-color: #ff5252; } /* 赤 */
+.strength-bar.medium { background-color: #ffeb3b; } /* 黄 */
+.strength-bar.high { background-color: #4caf50; } /* 緑 */
+.strength-bar.perfect { background-color: #00ffc8; } /* ミントグリーン */
+
+.strength-text {
+    font-size: 0.85em;
+    font-weight: bold;
+    color: #ff5252;
+    width: 30px; /* 幅を固定してブレを防ぐ */
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.strength-text.low { color: #ff5252; }
+.strength-text.medium { color: #ffeb3b; }
+.strength-text.high { color: #4caf50; }
+.strength-text.perfect { color: #00ffc8; }
+
+
+/* ---------------------------------- */
+/* メッセージエリア */
+/* ---------------------------------- */
+.message-area {
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    text-align: center;
+    font-weight: bold;
+}
+
+.error-area {
+    color: #ff5252; /* 赤系 */
+    border: 1px solid #ff5252;
+    background: rgba(255, 82, 82, 0.1);
+    /* 最初は非表示または空 */
+    display: none; 
+}
+
+
+/* ---------------------------------- */
+/* ボタンエリア */
+/* ---------------------------------- */
+.button-group { 
+    display: flex;
+    justify-content: space-between;
+    gap: 15px; /* ボタン同士の間隔 */
+    margin-top: 30px;
+}
+
+/* ボタン共通 */
+.button-group button { 
+    flex-grow: 1; 
+    border-radius: 12px;
+    padding: 12px 10px; 
+    color: #fff;
+    font-size: 1.0em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* 戻るボタン */
+#backButton {
+    border: 1px solid rgba(255, 255, 255, 0.7); 
+    background: rgba(255, 255, 255, 0.15); 
+}
+
+#backButton:hover {
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 10px #ffffff;
+    transform: translateY(-3px);
+}
+
+/* 更新ボタン */
+#updateButton {
+    border: 1px solid rgba(127, 255, 223, 0.7); /* 明るいミントグリーン */
+    background: rgba(0, 255, 200, 0.3); /* 薄いミントグリーン */
+}
+
+#updateButton:hover {
+    background: rgba(0, 255, 200, 0.5); 
+    box-shadow: 0 0 15px #00ffc8;
+    transform: translateY(-3px);
+}

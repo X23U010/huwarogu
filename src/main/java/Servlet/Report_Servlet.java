@@ -1,8 +1,6 @@
 package Servlet;
 
 import java.io.IOException;
-// import java.util.Date;  // <= 削除またはコメントアウト (モダンな日付APIを使うため)
-// ★追加：モダンな日付APIのためのインポート
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -18,9 +16,6 @@ import Dao.Report_Logic;
 import Model.Member;
 import Model.Report;
 
-/**
- * Servlet implementation class Report_Servlet
- */
 @WebServlet("/Report_Servlet")
 public class Report_Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -33,18 +28,21 @@ public class Report_Servlet extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		Member mem = (Member) session.getAttribute("loginMember");
+		Report_Logic report_logic = new Report_Logic(); // 処理の中で使用するため定義
 
 		String action = request.getParameter("action");
 
 		if ("next_B".equals(action)) {
 
-			//Report.javaをインスタンス化↓
-			Report report = new Report();
+			Report report = (Report) session.getAttribute("report_info");
 
-			//IDのロジックを追加↓
+			//Report.javaをインスタンス化↓
+			if (report == null) {
+				report = new Report();
+				report.setReport_id(report_logic.Report_Create_id()); // IDの初期化はここで行う
+			}
 
 			//Page010_Aで受け取った内容をBeansにセット↓
-			report.setReport_id("");
 			report.setCompany_name(request.getParameter("company_name"));
 			report.setLocation(request.getParameter("activity_location"));
 
@@ -53,58 +51,58 @@ public class Report_Servlet extends HttpServlet {
 
 			forward = "010_B";
 
-		} else if ("next_C".equals(action)) {
+		} else if ("next_C".equals(action) || "back_A".equals(action)) {
 
 			//セッションを取得
 			Report report = (Report) session.getAttribute("report_info");
 
 			//Page010_Bで受け取った内容をBeansにセット↓
-			report.setActivity_date("activity_date");
-			report.setStart_time("start_time");
-			report.setEnd_time("finish_time");
+			report.setActivity_date(request.getParameter("activity_date"));
+			report.setStart_time(request.getParameter("start_time"));
+			report.setEnd_time(request.getParameter("finish_time"));
 
 			//セッションに保存↓
 			session.setAttribute("report_info", report);
 
-			forward = "010_C";
+			if ("next_C".equals(action)) {
+				forward = "010_C";
+			} else if ("back_A".equals(action)) {
+				forward = "010_A";
+			}
 
-		}
-		if ("report_register".equals(action)) {
+		} else if ("report_register".equals(action) || "back_B".equals(action)) {
 
 			//セッションを取得↓
 			Report report = (Report) session.getAttribute("report_info");
 
 			//Page010_Cで受け取った内容をBeansにセット↓
-			report.setReason("");
-			report.setReport_details("");
+			report.setReason(request.getParameter("activity_content_code"));
+			report.setReport_details(request.getParameter("activity_report"));
 
 			//セッションに保存↓
 			session.setAttribute("report_info", report);
 
-			forward = "011";
+			if ("report_register".equals(action)) {
+				forward = "011";
+			} else if ("back_B".equals(action)) {
+				forward = "010_B";
+			}
 
 		} else if ("report_register_comit".equals(action)) {
 
-			// ★ここから日付取得処理の変更 ★
-
-			// 1. 現在の日付を取得
+			// (日付取得処理は省略なし)
 			LocalDate today = LocalDate.now();
-			
-			// 2. フォーマットを定義 (例: "yyyy/MM/dd")
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-			
-			// 3. 文字列に変換
-			String applicationDateString = today.format(formatter); 
-			
+			String applicationDateString = today.format(formatter);
+
 			// 変換した日付文字列をセット
 			Report report = (Report) session.getAttribute("report_info");
 			report.setApplication_date(applicationDateString);
 			report.setReview_status(false);
-			
-			// ★ 日付取得処理の変更ここまで ★
+			report.setStudent_id(mem.getMember_id());
+			report.setSubmission_status("S001");
 
 			//DBに保存する↓
-			Report_Logic report_logic = new Report_Logic();
 			boolean isSubmit = report_logic.execute(report);
 
 			if (isSubmit) {

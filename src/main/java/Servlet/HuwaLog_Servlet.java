@@ -48,9 +48,9 @@ public class HuwaLog_Servlet extends HttpServlet {
 			//公欠・欠席一覧
 			forward = "025";
 
-		} else if ("Setting".equals(action)){
+		} else if ("setting_A".equals(action)){
 			//設定
-			forward = "Setting";
+			forward = "Setting_A";
 		}
 
 		session.setAttribute("loginMember", mem);

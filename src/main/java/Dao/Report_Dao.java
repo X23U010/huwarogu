@@ -28,18 +28,18 @@ public class Report_Dao extends Base_Dao {
 			while (rs.next()) {
 
 				Report report = new Report();
-				report.setReport_id(rs.getString(""));
-				report.setStudent_id(rs.getString(""));
-				report.setApplication_date(rs.getString(""));
-				report.setCompany_name(rs.getString(""));
-				report.setLocation(rs.getString(""));
-				report.setActivity_date(rs.getString(""));
-				report.setStart_time(rs.getString(""));
-				report.setEnd_time(rs.getString(""));
-				report.setReason(rs.getString(""));
-				report.setReport_details(rs.getString(""));
-				report.setReview_status(rs.getBoolean(""));
-				report.setSubmission_status(rs.getString(""));
+				report.setReport_id(rs.getString("report_id"));
+				report.setStudent_id(rs.getString("report_member_id"));
+				report.setApplication_date(rs.getString("report_deadline"));
+				report.setCompany_name(rs.getString("report_company_name"));
+				report.setLocation(rs.getString("report_location"));
+				report.setActivity_date(rs.getString("report_implement"));
+				report.setStart_time(rs.getString("report_starttime"));
+				report.setEnd_time(rs.getString("report_finishtime"));
+				report.setReason(rs.getString("report_subject_type_id"));
+				report.setReport_details(rs.getString("report_txt"));
+				report.setReview_status(rs.getBoolean("report_flag"));
+				report.setSubmission_status(rs.getString("report_stateId"));
 
 				report_list.add(report);
 			}
@@ -78,7 +78,7 @@ public class Report_Dao extends Base_Dao {
 		}
 		return report_list;
 	}
-	
+
 	public boolean Report_Submit(Report report) {
 
 		boolean issubmit = false;
@@ -86,24 +86,50 @@ public class Report_Dao extends Base_Dao {
 		try {
 
 			this.connect();
-			//SQLを変更
-			String sql = "INSERT INTO( report_table{report_id, report_subject_type_id, report_member_id, report_deadline, report_implement, report_location, report_starttime, report_finishtime, report_txt,)VALUES"
-					+ "(?,?,?,?,?,?,?,?,?,?,?,?)";
 
+			String sql = "INSERT INTO report_table ("
+	                   + "report_id, report_subject_type_id, report_member_id, report_deadline, report_implement, " // report_implem は完全なカラム名が不明だが、ここではreport_implemとしておく
+	                   + "report_company_name, report_location, report_starttime, report_finishtime, report_txt, " // report_compa, report_finishti も同様
+	                   + "report_flag, report_stateId) "
+	                   + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			
 			PreparedStatement ps = con.prepareStatement(sql);
 
-			ps.setString(1, report.getReport_id());
-			ps.setString(2, report.getStudent_id());
-			ps.setString(3, report.getApplication_date());
-			ps.setString(4, report.getCompany_name());
-			ps.setString(5, report.getLocation());
-			ps.setString(6, report.getActivity_date());
-			ps.setString(7, report.getStart_time());
-			ps.setString(8, report.getEnd_time());
-			ps.setString(9, report.getReason());
-			ps.setString(10, report.getReport_details());
-			ps.setBoolean(11, report.getReview_status());
-			ps.setString(12, report.getSubmission_status());
+			// 1. report_id
+	        ps.setString(1, report.getReport_id());
+	        
+	        // 2. report_subject_type_id (活動内容コード)
+	        ps.setString(2, report.getReason()); 
+	        
+	        // 3. report_member_id (学生ID)
+	        ps.setString(3, report.getStudent_id());        
+	        
+	        // 4. report_deadline (申請日)
+	        ps.setString(4, report.getApplication_date());  
+	        
+	        // 5. report_implem (活動日)
+	        ps.setString(5, report.getActivity_date());    
+	        
+	        // 6. report_compa (企業名)
+	        ps.setString(6, report.getCompany_name());      
+	        
+	        // 7. report_location (活動場所)
+	        ps.setString(7, report.getLocation());         
+	        
+	        // 8. report_starttime (活動開始時間)
+	        ps.setString(8, report.getStart_time());       
+	        
+	        // 9. report_finishti (活動終了時間)
+	        ps.setString(9, report.getEnd_time());         
+	        
+	        // 10. report_txt (レポート詳細)
+	        ps.setString(10, report.getReport_details());   
+	        
+	        // 11. report_flag (審査ステータス: false)
+	        ps.setBoolean(11, report.getReview_status());  
+	        
+	        // 12. report_stateId (提出ステータス: S001)
+	        ps.setString(12, report.getSubmission_status());
 
 			int record = ps.executeUpdate();
 
