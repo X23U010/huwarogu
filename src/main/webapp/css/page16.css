@@ -1,131 +1,98 @@
-/* Base styles (背景、フォントなど、全ての画面に共通する基本設定) */
+@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&display=swap');
+
 body {
-    background-image: url('cssimages/背景（猫）.png');
+    background: url('cssimages/背景（猫）.png') no-repeat center center fixed;
     background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed; /* 背景固定 */
-    margin: 0;
-    min-height: 100vh;
-    display: flex; /* コンテンツラッパーを中央配置するため */
-    justify-content: center; /* 水平方向中央 */
-    align-items: center; /* 垂直方向中央 */
-    font-family: 'Zen Maru Gothic', 'Handwritten Font', cursive, sans-serif;
-    color: #fff;
-    overflow: hidden;
-}
-
-/* コンテンツ全体を包むラッパー (中央配置用) */
-.main-content-wrapper {
-    width: 100%;
-    max-width: 1200px;
+    font-family: 'Zen Maru Gothic', sans-serif;
     display: flex;
-    justify-content: flex-start; /* 👈 元の画面の左寄せ設定 */
+    min-height: 100vh;
+    margin: 0;
+    justify-content: center;
     align-items: center;
-    height: 100vh;
-    padding: 20px;
+    color: #fff;
+}
+
+/* メインコンテナ：画像の透過ブラックパネルを再現 */
+.absence-container { 
+    background: rgba(15, 20, 35, 0.85); /* 深い紺色混じりの黒 */
+    border-radius: 30px; /* 角丸を強めに */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    width: 500px;
+    max-width: 1000px;
+    padding: 40px; 
+    border: 1px solid rgba(255, 255, 255, 0.2);
     box-sizing: border-box;
 }
 
-/* --- FC016 欠席届提出画面用のスタイル --- */
-/* 💡 中央配置のため、マージン設定をリセット */
-.absence-container {
-    width: 90%;
-    max-width: 400px;
-    padding: 30px 25px;
-    background: rgba(0, 0, 0, 0.6); 
-    border-radius: 20px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(5px);
+/* タイトル：画像のような外光彩（ネオン）効果 */
+.absence-title { 
     text-align: center;
-    position: relative;
-    z-index: 1; 
-    color: #fff;
-    /* 中央配置のためのマージンリセットと確保 */
-    margin-left: 0; 
-    margin-right: 0; 
-    margin: auto; /* 水平中央配置を確実にする */
-}
-
-.absence-title {
+    margin-bottom: 30px;
     font-size: 2.2em;
-    margin-bottom: 25px;
-    text-shadow: 0 0 8px #ffeb3b;
-}
-
-/* 必須マーク */
-.required-star {
-    color: #ff6347;
-    margin-left: 5px;
-}
-
-/* 入力グループ */
-.absence-form .input-group {
-    text-align: left;
-    margin-bottom: 25px;
-}
-
-.absence-form label {
-    display: block;
-    font-size: 1.1em;
-    margin-bottom: 8px;
-}
-
-/* 日付入力欄とテキストエリア */
-.absence-form input[type="date"],
-.absence-form textarea {
-    width: 100%;
-    padding: 12px 15px;
-    background: rgba(255, 255, 255, 0.98); 
-    border: none;
-    border-radius: 10px;
-    font-size: 1.05em;
-    color: #333;
-    box-sizing: border-box;
-    transition: box-shadow 0.3s ease;
-}
-
-.absence-form textarea {
-    resize: vertical;
-}
-
-/* 確認ボタン */
-.confirm-button {
-    width: 100%;
-    padding: 16px;
-    background: linear-gradient(90deg, #8a2be2, #4b0082); 
     color: #fff;
-    border: none;
-    border-radius: 12px;
-    font-size: 1.3em;
+    text-shadow: 0 0 10px rgba(127, 255, 223, 0.8), 
+                 0 0 20px rgba(127, 255, 223, 0.5);
+    letter-spacing: 2px;
+}
+
+.input-group {
+    margin-bottom: 25px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 10px; 
     font-weight: bold;
+    font-size: 1.1em;
+}
+
+/* 入力エリア：画像の半透明な質感を再現 */
+.input-group input[type="date"],
+.input-group textarea {
+    width: 100%; 
+    padding: 15px; 
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    font-size: 1em;
+    box-sizing: border-box;
+    outline: none;
+    transition: 0.3s;
+}
+
+/* ボタンエリア：画像を参考に横並び配置 */
+.button-area {
+    display: flex;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.confirm-button {
+    flex: 1;
+    padding: 15px 0;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 1.1em;
     cursor: pointer;
-    margin-top: 20px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: 0.3s;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+}
+
+/* 破棄ボタン：画像の左側ボタンに近い色 */
+button[value="back_top"] {
+    background: linear-gradient(135deg, rgba(45, 60, 80, 0.8), rgba(25, 35, 50, 0.8));
+}
+
+/* 次へ/確認ボタン：画像の右側ボタンのようなグラデーション */
+button[value="adsence_register"] {
+    background: linear-gradient(135deg, rgba(50, 90, 90, 0.8), rgba(30, 60, 60, 0.8));
 }
 
 .confirm-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
-}
-
-/* エラーメッセージエリア (FC016_Error) */
-.message-area.error-area {
-    min-height: 40px;
-    color: #ff6347;
-    font-weight: bold;
-    font-size: 1em;
-    margin-top: -10px;
-}
-
-/* 入力エラー時のスタイル */
-.input-error {
-    border: 2px solid #ff6347 !important;
-}
-
-/* --- 画面中央配置のための最終的なオーバーライド --- */
-/* main-content-wrapper の左寄せ設定を上書きし、中央に配置する */
-.main-content-wrapper.center-content {
-    justify-content: center; 
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border-color: rgba(127, 255, 223, 0.6);
 }

@@ -87,7 +87,7 @@ public String getReasonDisplay(String reasonCode) {
         </div>
 
         <div class="buttons">
-            <button type="button" class="back-btn" onclick="history.back()">戻る</button>
+            <button type="submit" class="back-btn" name="action" value="back_C">戻る</button>
             <button type="submit" class="confirm-btn" name="action" value="report_register_comit">確認</button>
         </div>
     </form>

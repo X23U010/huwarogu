@@ -14,29 +14,29 @@
         <div class="absence-container">
             <h1 class="absence-title">欠席届</h1>
         
-            <form id="absence-form" action="Absence_Notification_Servlet" method="post" class="absence-form">
+            <form id="absence-form" action="Absence_Servlet" method="post" class="absence-form">
             
                 <div class="input-group">
-                    <label for="absence-date">日付<span class="required-star">*</span></label>
-                    <input type="date" id="absence-date" name="absence-date" required> 
+                    <label for="absence-date">日付</label>
+                    <input type="date" id="absence-date" name="absence-date" value=""> 
                 </div>
             
                 <div class="input-group">
-                    <label for="absence-reason">理由<span class="required-star">*</span></label>
-                    <textarea id="absence-reason" name="absence-reason" rows="5" placeholder="欠席理由を入力してください" required></textarea>
+                    <label for="absence-reason">理由</label>
+                    <textarea id="absence-reason" name="absence-reason" rows="5" value=""></textarea>
                 </div>
 
                 <div id="error-message-area" class="message-area error-area">
                 </div>
             
-                <button type="submit" class="confirm-button" name="action" value="adsence_register">
-                    確認
-                </button>
+                <div class="button-area">
+    <button type="submit" class="confirm-button" name="action" value="back_top">破棄</button>
+    <button type="submit" class="confirm-button" name="action" value="adsence_register">確認</button>
+</div>
             </form>
         </div>
         
     </div>
     
-    <script src="page16.js"></script> 
 </body>
 </html>

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-    <%@ page import="Model.Divination"%>
+<%@ page import="Model.Divination"%>
 <%@ page import="Dao.Divination_Logic"%>
 <%
 Divination_Logic dlogic = new Divination_Logic();
@@ -11,10 +11,9 @@ Divination d = dlogic.divination_execute();
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>No.018_欠席届提出完了画面</title>
-    <link rel="stylesheet" href="css/page15.css"> 
+  <meta charset="UTF-8">
+  <title>No.018_欠席届提出完了画面</title>
+  <link rel="stylesheet" href="css/page15.css">
 </head>
 <body>
     <div class="main-content-wrapper">
@@ -34,15 +33,13 @@ Divination d = dlogic.divination_execute();
                         </p>
                 </div>
                 
-				<form action="Absence_Notification_Servlet" method="post">
+				<form action="Absence_Servlet" method="post">
                 <button id="back-to-top-button" class="back-to-top-button" name="action" value="back_top">
                     TOPへ戻る
                 </button>
                 </form>
-                
             </div>
         </div>
-
     </div>
     </body>
 </html>

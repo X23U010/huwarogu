@@ -45,7 +45,7 @@ if (pa != null) {
       <input type="text" id="endTime" name="end_time" value="<%=endtime %>">
 
       <div class="button-area">
-        <button type="button" class="back-button" name="action" value="back_top">破棄</button>
+        <button type="submit" class="back-button" name="action" value="back_top">破棄</button>
         <button type="submit" class="submit-button" name="action" value="next_B">次へ</button>
       </div>
     </form>

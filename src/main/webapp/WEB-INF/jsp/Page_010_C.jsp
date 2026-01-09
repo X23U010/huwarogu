@@ -46,7 +46,7 @@ if (report != null) {
 	  </select>
       
       <label for="activityReport">活動レポート</label>
-      <textarea id="activityReport" name="activity_report" rows="6"><%=activity_report%></textarea> 
+      <textarea id="activityReport" name="activity_report" rows="6"><%=activity_report %></textarea> 
       
       <div class="button-area"> 
       <button type="submit" class="back-button" name="action" value="back_B">戻る</button> 

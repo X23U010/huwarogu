@@ -1,12 +1,12 @@
 package Model;
 
 public class Absence {
-	public String absence_id;
-	public String student_id;
-	public String application_date;
-	public String absence_date;
-	public String absence_reason;
-	public String review_status;
+	private String absence_id;
+	private String absence_member_id;
+	private String absence_date;
+	private String absence_application_date;
+	private String absence_txt;
+	private String absence_flag;
 
 	public String getAbsence_id() {
 		return absence_id;
@@ -16,20 +16,12 @@ public class Absence {
 		this.absence_id = absence_id;
 	}
 
-	public String getStudent_id() {
-		return student_id;
+	public String getAbsence_member_id() {
+		return absence_member_id;
 	}
 
-	public void setStudent_id(String student_id) {
-		this.student_id = student_id;
-	}
-
-	public String getApplication_date() {
-		return application_date;
-	}
-
-	public void setApplication_date(String application_date) {
-		this.application_date = application_date;
+	public void setAbsence_member_id(String absence_member_id) {
+		this.absence_member_id = absence_member_id;
 	}
 
 	public String getAbsence_date() {
@@ -40,20 +32,28 @@ public class Absence {
 		this.absence_date = absence_date;
 	}
 
-	public String getAbsence_reason() {
-		return absence_reason;
+	public String getAbsence_application_date() {
+		return absence_application_date;
 	}
 
-	public void setAbsence_reason(String absence_reason) {
-		this.absence_reason = absence_reason;
+	public void setAbsence_application_date(String absence_application_date) {
+		this.absence_application_date = absence_application_date;
 	}
 
-	public String getReview_status() {
-		return review_status;
+	public String getAbsence_txt() {
+		return absence_txt;
 	}
 
-	public void setReview_status(String review_status) {
-		this.review_status = review_status;
+	public void setAbsence_txt(String absence_txt) {
+		this.absence_txt = absence_txt;
+	}
+
+	public String getAbsence_flag() {
+		return absence_flag;
+	}
+
+	public void setAbsence_flag(String absence_flag) {
+		this.absence_flag = absence_flag;
 	}
 
 }

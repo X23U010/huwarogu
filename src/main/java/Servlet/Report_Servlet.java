@@ -70,22 +70,26 @@ public class Report_Servlet extends HttpServlet {
 				forward = "010_A";
 			}
 
-		} else if ("report_register".equals(action) || "back_B".equals(action)) {
+		} else if ("report_register".equals(action) || "back_C".equals(action)) {
 
 			//セッションを取得↓
 			Report report = (Report) session.getAttribute("report_info");
 
 			//Page010_Cで受け取った内容をBeansにセット↓
 			report.setReason(request.getParameter("activity_content_code"));
-			report.setReport_details(request.getParameter("activity_report"));
+		    report.setReport_details(request.getParameter("activity_report"));
 
+			
+			System.out.println(report.getReport_details());
+			
+			
 			//セッションに保存↓
 			session.setAttribute("report_info", report);
 
 			if ("report_register".equals(action)) {
 				forward = "011";
-			} else if ("back_B".equals(action)) {
-				forward = "010_B";
+			} else if ("back_C".equals(action)) {
+				forward = "010_C";
 			}
 
 		} else if ("report_register_comit".equals(action)) {
@@ -102,6 +106,8 @@ public class Report_Servlet extends HttpServlet {
 			report.setStudent_id(mem.getMember_id());
 			report.setSubmission_status("S001");
 
+			session.setAttribute("report_info", report);
+			
 			//DBに保存する↓
 			boolean isSubmit = report_logic.execute(report);
 
