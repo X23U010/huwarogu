@@ -86,6 +86,8 @@ public String getReasonDisplay(String reasonCode) {
             <%=activity_report%>
         </div>
 
+		<p style="color:red;">${errorMsg}</p>
+
         <div class="buttons">
             <button type="submit" class="back-btn" name="action" value="back_C">戻る</button>
             <button type="submit" class="confirm-btn" name="action" value="report_register_comit">確認</button>

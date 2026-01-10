@@ -33,7 +33,7 @@ public class Report_Servlet extends HttpServlet {
 		String action = request.getParameter("action");
 
 		if ("next_B".equals(action)) {
-
+			//010A内
 			Report report = (Report) session.getAttribute("report_info");
 
 			//Report.javaをインスタンス化↓
@@ -52,7 +52,7 @@ public class Report_Servlet extends HttpServlet {
 			forward = "010_B";
 
 		} else if ("next_C".equals(action) || "back_A".equals(action)) {
-
+			//010B内
 			//セッションを取得
 			Report report = (Report) session.getAttribute("report_info");
 
@@ -70,53 +70,78 @@ public class Report_Servlet extends HttpServlet {
 				forward = "010_A";
 			}
 
-		} else if ("report_register".equals(action) || "back_C".equals(action)) {
-
+		} else if ("report_register".equals(action) || "back_B".equals(action)) {
+			//010C内
 			//セッションを取得↓
 			Report report = (Report) session.getAttribute("report_info");
 
 			//Page010_Cで受け取った内容をBeansにセット↓
 			report.setReason(request.getParameter("activity_content_code"));
-		    report.setReport_details(request.getParameter("activity_report"));
+			report.setReport_details(request.getParameter("activity_report"));
 
-			
 			System.out.println(report.getReport_details());
-			
-			
+
 			//セッションに保存↓
 			session.setAttribute("report_info", report);
 
 			if ("report_register".equals(action)) {
 				forward = "011";
-			} else if ("back_C".equals(action)) {
-				forward = "010_C";
+			} else if ("back_B".equals(action)) {
+				forward = "010_B";
 			}
 
-		} else if ("report_register_comit".equals(action)) {
-
-			// (日付取得処理は省略なし)
-			LocalDate today = LocalDate.now();
-			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-			String applicationDateString = today.format(formatter);
-
-			// 変換した日付文字列をセット
-			Report report = (Report) session.getAttribute("report_info");
-			report.setApplication_date(applicationDateString);
-			report.setReview_status(false);
-			report.setStudent_id(mem.getMember_id());
-			report.setSubmission_status("S001");
-
-			session.setAttribute("report_info", report);
+		} else if ("report_register_comit".equals(action) || "back_C".equals(action)) {
 			
-			//DBに保存する↓
-			boolean isSubmit = report_logic.execute(report);
+			Report report = (Report) session.getAttribute("report_info");
 
-			if (isSubmit) {
-				System.out.println("OK");
-			} else {
-				System.out.println("NG");
+			if ("report_register_comit".equals(action)) {
+				// 変換した日付文字列をセット
+
+				boolean hasError = (report == null) || isEmpty(
+						report.getCompany_name(),
+						report.getLocation(),
+						report.getActivity_date(),
+						report.getStart_time(),
+						report.getEnd_time(),
+						report.getReason(),
+						report.getReport_details());
+				
+				if (hasError) {
+
+					// エラーがあった場合：メッセージをセットして入力画面(010_A)へ戻す
+					request.setAttribute("errorMsg", "未入力の項目があります。すべての項目を正しく入力してください。");
+					forward = "011";
+
+				} else {
+
+					LocalDate today = LocalDate.now();
+					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+					String applicationDateString = today.format(formatter);
+
+					report.setApplication_date(applicationDateString);
+					report.setReview_status(false);
+					report.setStudent_id(mem.getMember_id());
+					report.setSubmission_status("S001");
+
+					//DBに保存する↓
+					boolean isSubmit = report_logic.execute(report);
+
+					if (isSubmit) {
+						System.out.println("OK");
+						forward = "012";
+					} else {
+						System.out.println("NG");
+						forward = "011";
+					}
+					
+				}
+
+			} else if ("back_C".equals(action)) {
+				
+				session.setAttribute("report_info", report);
+				forward = "010_C";
+				
 			}
-			forward = "012";
 
 		} else if ("back_top".equals(action)) {
 
@@ -131,6 +156,15 @@ public class Report_Servlet extends HttpServlet {
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/Page_" + forward + ".jsp");
 		dispatcher.forward(request, response);
+	}
+
+	private boolean isEmpty(String... values) {
+		for (String val : values) {
+			if (val == null || val.trim().isEmpty()) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 }

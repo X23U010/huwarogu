@@ -47,9 +47,12 @@ if (pa != null) {
     <p class="warning-text">内容は担当の教師に送信されます</p>
 </div>
 
+<p style="color:red;">${errorMsg}</p>
+
 <div class="button-group">
-    <button type="button" class="action-button cancel" onclick="history.back()">戻る</button> 
+    
     <form action="Absence_Servlet" method="post" style="flex: 1;">
+    <button type="submit" class="action-button cancel" name="action" value="back_016">戻る</button> 
         <button type="submit" class="action-button confirm" name="action" value="adsence_register_comit" style="width: 100%;">送信</button>
     </form>
 </div>

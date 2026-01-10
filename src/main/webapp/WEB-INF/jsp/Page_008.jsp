@@ -26,6 +26,17 @@ public String getReasonDisplay(String code) {
     // ... 必要に応じて追加
     return "選考受験"; 
 }
+public String getSelection_details(String code) {
+    if (code == null) return "未設定";
+    // 必要な条件分岐（コードを名前に変換）を記述してください
+    // 例:
+    if ("S01".equals(code)) return "なし";
+    if ("S02".equals(code)) return "適性検査（性格、作文等も含む）";
+    if ("S03".equals(code)) return "面接";
+    if ("S04".equals(code)) return "グループディスカッション・ワーク";
+    
+    return code; // 該当がない場合はそのままコードを表示、または特定の文言
+}
 %>
 <!DOCTYPE html>
 <html lang="ja">
@@ -85,8 +96,13 @@ public String getReasonDisplay(String code) {
         <label>活動内容（事由）</label>
         <div class="card-value-box"><%=getReasonDisplay(reason)%></div>
 
+		<label>選考内容</label>
+        <div class="card-value-box"><%=getSelection_details(screening)%></div>
+        
+        <p style="color:red;">${errorMsg}</p>
+        
         <div class="buttons">
-            <button type="button" class="back-btn" onclick="history.back()">戻る</button>
+            <button type="submit" class="back-btn" name="action" value="back_B">戻る</button>
             <button type="submit" class="confirm-btn" name="action" value="official_leave_request_register_comit">提出</button>
         </div>
     </form>

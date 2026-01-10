@@ -33,14 +33,14 @@ public class Public_Absence_Servlet extends HttpServlet {
 		String action = request.getParameter("action");
 
 		if ("next_B".equals(action)) {
-			
+
 			// セッションから既存の情報を取得
-		    Public_Absence public_absence = (Public_Absence) session.getAttribute("public_Absence_info");
-		    
-		    // もしセッションになければ（初めての入力なら）新規作成
-		    if (public_absence == null) {
-		        public_absence = new Public_Absence();
-		    }
+			Public_Absence public_absence = (Public_Absence) session.getAttribute("public_Absence_info");
+
+			// もしセッションになければ（初めての入力なら）新規作成
+			if (public_absence == null) {
+				public_absence = new Public_Absence();
+			}
 
 			//Page_007_Aで受けっとった内容をBeansにセット↓
 			public_absence.setActivity_date(request.getParameter("start_date"));
@@ -64,7 +64,7 @@ public class Public_Absence_Servlet extends HttpServlet {
 
 			//セッションを保存↓
 			session.setAttribute("public_Absence_info", public_absence);
-			
+
 			if ("back_A".equals(action)) {
 				forward = "007_A";
 			} else {
@@ -72,51 +72,64 @@ public class Public_Absence_Servlet extends HttpServlet {
 
 			}
 
-		} else if ("official_leave_request_register_comit".equals(action)) {
+		} else if ("official_leave_request_register_comit".equals(action)|| "back_B".equals(action)) {
 			//セッションの取得↓
 			Public_Absence public_absence = (Public_Absence) session.getAttribute("public_Absence_info");
 
-			//DBに追加
-			Public_Absence_Dao public_absence_dao = new Public_Absence_Dao();
+			if("official_leave_request_register_comit".equals(action)) {
+				
+				boolean hasError = (public_absence == null) || isEmpty(
+				        public_absence.getActivity_date(),      // 開始日
+				        public_absence.getActivity_end_date(),  // 終了日
+				        public_absence.getStart_time(),         // 開始時間
+				        public_absence.getEnd_time(),           // 終了時間
+				        public_absence.getCompany_name(),       // 企業名
+				        public_absence.getLocation(),           // 活動場所
+				        public_absence.getReason(),             // 理由
+				        public_absence.getSelection_details()   // 選考詳細
+				    );
+				
+				if(hasError) {
+					request.setAttribute("errorMsg", "未入力の項目があります。すべての情報を入力してください。");
+			        forward = "008"; // 最初の入力画面へ戻す
+				}else {
+					
+					//DBに追加
+					Public_Absence_Dao public_absence_dao = new Public_Absence_Dao();
 
-			Date nowDate = new Date();
-			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-			String strDate = dateFormat.format(nowDate);
+					Date nowDate = new Date();
+					SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+					String strDate = dateFormat.format(nowDate);
 
-			public_absence.setPublic_absence_id(public_absence_logic.Public_Absence_Create_id());
-			public_absence.setApplication_date(strDate);
-			public_absence.setReview_status(false);
-			public_absence.setStudent_id(mem.getMember_id());
+					public_absence.setPublic_absence_id(public_absence_logic.Public_Absence_Create_id());
+					public_absence.setApplication_date(strDate);
+					public_absence.setReview_status(false);
+					public_absence.setStudent_id(mem.getMember_id());
 
-			System.out.println("追加内容");
-			System.out.println(public_absence.getPublic_absence_id());
-			System.out.println(public_absence.getStudent_id());
-			System.out.println(public_absence.getApplication_date());
-			System.out.println(public_absence.getActivity_date());
-			System.out.println(public_absence.getActivity_end_date());
-			System.out.println(public_absence.getStart_time());
-			System.out.println(public_absence.getEnd_time());
-			System.out.println(public_absence.getCompany_name());
-			System.out.println(public_absence.getLocation());
-			System.out.println(public_absence.getReason());
-			System.out.println(public_absence.getSelection_details());
-			System.out.println(public_absence.getReview_status());
-			System.out.println(public_absence.getSubmission_status());
+					if (public_absence_dao.Public_Absence_Submit(public_absence)) {
 
-			if (public_absence_dao.Public_Absence_Submit(public_absence)) {
+						System.out.println("成功");
+						session.removeAttribute("public_Absence_info");
+						forward = "009";
 
-				System.out.println("追加完了");
-				//セッションを保存↓
+					} else {
+						
+						System.out.println("失敗");
+						forward = "008";
+						
+					}
+
+				}
+			}else if("back_B".equals(action)) {
+				
 				session.setAttribute("public_Absence_info", public_absence);
-
-			} else {
-				System.out.println("失敗");
-
+				forward = "007_B";
+				
 			}
+			
+			
 
-			forward = "009";
-
-		} else if ("back_top".equals(action) || "005".equals(action)) {
+		} else if ("back_top".equals(action)) {
 
 			//report_infoのセッションを削除↓
 			session.removeAttribute("public_Absence_info");
@@ -133,4 +146,12 @@ public class Public_Absence_Servlet extends HttpServlet {
 
 	}
 
+	private boolean isEmpty(String... values) {
+		for (String val : values) {
+			if (val == null || val.trim().isEmpty()) {
+				return true;
+			}
+		}
+		return false;
+	}
 }
