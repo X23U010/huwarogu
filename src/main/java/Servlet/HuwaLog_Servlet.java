@@ -1,6 +1,7 @@
 package Servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -10,7 +11,11 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
+import Dao.Application_Dao;
+import Model.Absence;
 import Model.Member;
+import Model.Public_Absence;
+import Model.Report;
 
 @WebServlet("/HuwaLog_Servlet")
 public class HuwaLog_Servlet extends HttpServlet {
@@ -42,6 +47,14 @@ public class HuwaLog_Servlet extends HttpServlet {
 
 		} else if ("022".equals(action)) {
 			//公欠申請一覧
+			Application_Dao app = new Application_Dao();
+			ArrayList<Absence> abList = app.getAbsenceList();
+			ArrayList<Public_Absence> PuAbList = app.getPublicAbsenceList();
+			ArrayList<Report> reportList = app.getReportList();
+			session.setAttribute("abList",abList);
+			session.setAttribute("PuAbList",PuAbList);
+			session.setAttribute("reportList",reportList);
+			
 			forward = "022";
 
 		} else if ("025".equals(action)) {
