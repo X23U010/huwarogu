@@ -50,7 +50,7 @@ if (report != null) {
       
       <div class="button-area"> 
       <button type="submit" class="back-button" name="action" value="back_B">戻る</button> 
-      <button type="submit" class="submit-button" name="action" value="report_register">提出</button> 
+      <button type="submit" class="submit-button" name="action" value="report_register">確認</button> 
       </div>
     </form>
   </div>

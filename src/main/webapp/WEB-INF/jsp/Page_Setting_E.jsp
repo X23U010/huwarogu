@@ -27,7 +27,7 @@ boolean isDivinationValid = (d != null && d.getDivination_txt() != null);
     <div class="main-content-wrapper">
         <div class="complete-container">
             <div class="result-box">
-                <h2 class="complete-title"><%= (message != null) ? message : "更新完了" %></h2>
+                <h2 class="complete-title">更新完了</h2>
                 
                 <% if (isDivinationValid) { %>
                 <div class="fortune-section">

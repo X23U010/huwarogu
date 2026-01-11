@@ -19,7 +19,7 @@ Member member = (Member) session.getAttribute("loginMember");
             
             <div class="header-info">
                 <h1>基本情報設定</h1>
-                <p>学籍番号は変更できません。他の情報を修正し「保存」してください。</p>
+                <p>学籍番号は変更できません。<br>他の情報を修正し「保存」してください。</p>
             </div>
             
             <form action="Setting_Servlet" method="post" id="settingForm">
@@ -42,16 +42,13 @@ Member member = (Member) session.getAttribute("loginMember");
                            value="<%=member.getMember_name()%>" readonly>
                 </div>
                 
+                
                 <div class="button-group">
                     <button type="submit" id="backButton" name="action" value="setting_B">パスワード設定</button>
                 </div>
                 
                 <div class="button-group">
-                    <button type="submit" id="backButton" name="action" value="setting_C">担任設定</button>
-                </div>
-                
-                <div class="button-group">
-                    <button type="submit" id="backButton" name="action" value="setting_D">副担任設定</button>
+                    <button type="submit" id="backButton" name="action" value="setting_C">担任/副担任設定</button>
                 </div>
                 
                 <div class="button-group">

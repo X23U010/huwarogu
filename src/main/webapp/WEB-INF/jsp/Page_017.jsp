@@ -53,7 +53,7 @@ if (pa != null) {
     
     <form action="Absence_Servlet" method="post" style="flex: 1;">
     <button type="submit" class="action-button cancel" name="action" value="back_016">戻る</button> 
-        <button type="submit" class="action-button confirm" name="action" value="adsence_register_comit" style="width: 100%;">送信</button>
+        <button type="submit" class="action-button confirm" name="action" value="adsence_register_comit">送信</button>
     </form>
 </div>
             </div>

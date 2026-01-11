@@ -46,7 +46,7 @@ if (pa != null) {
                 </div>
             
                 <div class="button-area">
-    <button type="button" class="confirm-button" name="action" onclick="history.back()">破棄</button>
+    <button type="submit" class="confirm-button" name="action" value="back_top">破棄</button>
     <button type="submit" class="confirm-button" name="action" value="adsence_register">確認</button>
 </div>
             </form>

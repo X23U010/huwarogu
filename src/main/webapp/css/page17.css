@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&display=swap');
 
+/* --- 全体レイアウト --- */
 body {
     background: url('cssimages/背景（猫）.png') no-repeat center center fixed;
     background-size: cover;
@@ -12,76 +13,90 @@ body {
     color: #fff;
 }
 
-/* コンテナ： Page_016と統一 */
+/* --- メインコンテナ： Page_016の「.absence-container」と完全に一致させる --- */
 .confirmation-box { 
-    background: rgba(15, 20, 35, 0.85);
-    border-radius: 30px;
+    background: rgba(15, 20, 35, 0.85); 
+    border-radius: 30px; 
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(10px);
-    width: 500px;
-    max-width: 1000px;
+    
+    /* ここを Page_016 の指定に合わせる */
+    width: 500px;         /* 16と同じ固定幅 */
+    max-width: 1000px;    /* 16と同じ最大幅 */
+    
     padding: 40px; 
     border: 1px solid rgba(255, 255, 255, 0.2);
-    box-sizing: border-box;
+    box-sizing: border-box; /* パディングを含めて幅を計算 */
 }
 
+/* --- タイトル --- */
 .modal-title { 
     text-align: center;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
     font-size: 2.2em;
-    text-shadow: 0 0 10px rgba(127, 255, 223, 0.8);
+    color: #fff;
+    text-shadow: 0 0 10px rgba(127, 255, 223, 0.8), 
+                 0 0 20px rgba(127, 255, 223, 0.5);
+    letter-spacing: 2px;
 }
 
+/* --- 各表示グループ --- */
 .display-group {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    width: 100%; /* 横幅いっぱい */
 }
 
 .display-label {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 10px; 
     font-weight: bold;
-    color: #e0fafa;
+    font-size: 1.1em;
 }
 
-/* 表示エリア： 編集不可(readonly)に見えるよう調整 */
+/* 入力・テキストエリア（16のスタイルを継承） */
 .display-group input, 
 .display-group textarea {
     width: 100%; 
     padding: 15px; 
     border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    background: rgba(255, 255, 255, 0.05);
-    color: #ccc; /* 入力画面より少し暗くして「確認中」を演出 */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
     font-size: 1em;
     box-sizing: border-box;
-    pointer-events: none; /* クリック不可にする場合 */
+    outline: none;
+    pointer-events: none; /* 確認用なので操作不可 */
 }
 
-/* 警告テキストの装飾 */
+/* --- 送信確認メッセージ --- */
 .confirm-text {
     text-align: center;
     margin: 25px 0;
-    line-height: 1.6;
 }
 
 .warning-text {
     color: #ff6b6b;
     font-weight: bold;
-    font-size: 0.9em;
-    text-shadow: 0 0 5px rgba(255, 107, 107, 0.3);
+    display: block;
+    margin-top: 5px;
 }
 
-/* ボタンエリア */
+/* --- ボタンエリア：1枚目の「どっしり感」を再現 --- */
 .button-group {
     display: flex;
+    width: 100%; /* 親要素(box)の端まで広げる */
+    margin-top: 30px;
+}
+
+.button-group form {
+    display: flex;
     gap: 20px;
-    justify-content: center;
-    align-items: center;
+    width: 100%; /* ここが100%でないとボタンが縮みます */
 }
 
 .action-button {
-    flex: 1;
-    padding: 15px 0;
+    flex: 1;            /* 2つのボタンで幅を半分ずつ分け合う */
+    padding: 18px 0;    /* 高さを出して存在感を出す */
     border-radius: 15px;
     font-weight: bold;
     font-size: 1.1em;
@@ -89,20 +104,21 @@ body {
     transition: 0.3s;
     border: 1px solid rgba(255, 255, 255, 0.3);
     color: #fff;
+    text-align: center;
 }
 
-/* 戻るボタン */
+/* 戻る（破棄）ボタン：紺色グラデ */
 .action-button.cancel {
     background: linear-gradient(135deg, rgba(45, 60, 80, 0.8), rgba(25, 35, 50, 0.8));
 }
 
-/* 送信ボタン： より明るいグラデーションで強調 */
+/* 送信（確認）ボタン：緑色グラデ */
 .action-button.confirm {
-    background: linear-gradient(135deg, rgba(0, 180, 150, 0.8), rgba(0, 100, 80, 0.8));
-    border-color: rgba(127, 255, 223, 0.6);
+    background: linear-gradient(135deg, rgba(50, 90, 90, 0.8), rgba(30, 60, 60, 0.8));
 }
 
 .action-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 255, 200, 0.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border-color: rgba(127, 255, 223, 0.6);
 }

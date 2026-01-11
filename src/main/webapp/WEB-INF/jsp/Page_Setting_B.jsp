@@ -62,7 +62,7 @@ Member member = (Member) session.getAttribute("loginMember");
                 </div>
                 
                 <div class="button-group">
-                    <button type="submit" id="backButton" name="action" value="back_top">戻る</button>
+                    <button type="submit" id="backButton" name="action" value="back_A">戻る</button>
                     <button type="submit" id="updateButton" name="action" value="setting_E_password">更新</button>
                 </div>
             </form>

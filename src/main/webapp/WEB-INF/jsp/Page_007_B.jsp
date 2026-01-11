@@ -66,7 +66,7 @@ if (pa != null) {
       <div class="button-area">
         <%-- 前のページ(Page_007_A)へ戻るボタン。action値を送ってServletで制御する場合はこちら --%>
         <button type="submit" class="back-button" name="action" value="back_A">戻る</button>
-        <button type="submit" class="submit-button" name="action" value="official_leave_request_register">次へ</button>
+        <button type="submit" class="submit-button" name="action" value="official_leave_request_register">確認</button>
       </div>
     </form>
   </div>

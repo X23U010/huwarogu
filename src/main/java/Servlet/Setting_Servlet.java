@@ -1,6 +1,7 @@
 package Servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -24,7 +25,6 @@ public class Setting_Servlet extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 		String forward = "";
-		String message = ""; // 処理結果メッセージ
 		
 		HttpSession session = request.getSession();
 		Member mem = (Member) session.getAttribute("loginMember");
@@ -33,17 +33,21 @@ public class Setting_Servlet extends HttpServlet {
 
 		if ("setting_B".equals(action)) {
 
+			
+			
 			forward = "Setting_B";
 		} else if ("setting_C".equals(action)) {
+			
+			Setting_Dao Setting_dao = new Setting_Dao();
+			ArrayList<Member> teacher_list = Setting_dao.Teacher_findAll();
 
+			// リクエストスコープに保存
+			request.setAttribute("teacher_list", teacher_list);
+			
 			forward = "Setting_C";
-		} else if ("setting_D".equals(action)) {
-
-			forward = "Setting_D";
 		} else if ("setting_E_password".equals(action)) {
 			
 			String password = mem.getMember_password();
-			
 			
 			mem.setMember_password(request.getParameter("password"));
 			
@@ -63,21 +67,16 @@ public class Setting_Servlet extends HttpServlet {
 			Divination_Logic dlogic = new Divination_Logic();
             Divination d = dlogic.divination_execute();
             request.setAttribute("divinationResult", d);
-            request.setAttribute("message", message);
             
 			forward = "Setting_E";
 			
-		} else if ("setting_E_teacher_id".equals(action)) {
+		} else if ("setting_E_teacher".equals(action)) {
+			
+			
+			
+			Setting_Dao setting_dao = new Setting_Dao();
 			
 
-			
-
-			
-
-			forward = "Setting_E";
-			
-		} else if ("setting_E_sub_teacher_id".equals(action)) {
-			
 			
 
 			forward = "Setting_E";
@@ -85,6 +84,9 @@ public class Setting_Servlet extends HttpServlet {
 		} else if ("back_top".equals(action)) {
 
 			forward = "005";
+		} else if ("back_A".equals(action)) {
+
+			forward = "Setting_A";
 		}
 
 		session.setAttribute("loginMember", mem);
