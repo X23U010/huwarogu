@@ -41,13 +41,10 @@ if (pa != null) {
                     <label for="absence-reason">理由</label>
                     <textarea id="absence-reason" name="absence-reason" rows="5" value=""><%=txt %></textarea>
                 </div>
-
-                <div id="error-message-area" class="message-area error-area">
-                </div>
             
                 <div class="button-area">
     <button type="submit" class="confirm-button" name="action" value="back_top">破棄</button>
-    <button type="submit" class="confirm-button" name="action" value="adsence_register">確認</button>
+    <button type="submit" class="confirm-button" name="action" value="absence_register">確認</button>
 </div>
             </form>
         </div>

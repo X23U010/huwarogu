@@ -25,6 +25,7 @@ public class Public_Absence_Servlet extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String forward = "";
+		String error_msg = "";
 
 		HttpSession session = request.getSession();
 		Member mem = (Member) session.getAttribute("loginMember");
@@ -72,28 +73,34 @@ public class Public_Absence_Servlet extends HttpServlet {
 
 			}
 
-		} else if ("official_leave_request_register_comit".equals(action)|| "back_B".equals(action)) {
+		} else if ("official_leave_request_register_comit".equals(action) || "back_B".equals(action)) {
 			//セッションの取得↓
 			Public_Absence public_absence = (Public_Absence) session.getAttribute("public_Absence_info");
 
-			if("official_leave_request_register_comit".equals(action)) {
-				
+			if ("official_leave_request_register_comit".equals(action)) {
+
 				boolean hasError = (public_absence == null) || isEmpty(
-				        public_absence.getActivity_date(),      // 開始日
-				        public_absence.getActivity_end_date(),  // 終了日
-				        public_absence.getStart_time(),         // 開始時間
-				        public_absence.getEnd_time(),           // 終了時間
-				        public_absence.getCompany_name(),       // 企業名
-				        public_absence.getLocation(),           // 活動場所
-				        public_absence.getReason(),             // 理由
-				        public_absence.getSelection_details()   // 選考詳細
-				    );
-				
-				if(hasError) {
-					request.setAttribute("errorMsg", "未入力の項目があります。すべての情報を入力してください。");
-			        forward = "008"; // 最初の入力画面へ戻す
-				}else {
-					
+						public_absence.getActivity_date(), // 開始日
+						public_absence.getActivity_end_date(), // 終了日
+						public_absence.getStart_time(), // 開始時間
+						public_absence.getEnd_time(), // 終了時間
+						public_absence.getCompany_name(), // 企業名
+						public_absence.getLocation(), // 活動場所
+						public_absence.getReason(), // 理由
+						public_absence.getSelection_details() // 選考詳細
+				);
+
+				if (hasError) {
+
+					if (hasError) {
+						error_msg = "未入力 ";
+					}
+
+					request.setAttribute("errorMsg", error_msg + "が原因です");
+					forward = "008";
+
+				} else {
+
 					//DBに追加
 					Public_Absence_Dao public_absence_dao = new Public_Absence_Dao();
 
@@ -113,21 +120,20 @@ public class Public_Absence_Servlet extends HttpServlet {
 						forward = "009";
 
 					} else {
-						
+
 						System.out.println("失敗");
+						request.setAttribute("errorMsg", "DB障害 が原因です");
 						forward = "008";
-						
+
 					}
 
 				}
-			}else if("back_B".equals(action)) {
-				
+			} else if ("back_B".equals(action)) {
+
 				session.setAttribute("public_Absence_info", public_absence);
 				forward = "007_B";
-				
+
 			}
-			
-			
 
 		} else if ("back_top".equals(action)) {
 

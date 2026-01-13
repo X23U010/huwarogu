@@ -1,7 +1,10 @@
 package Dao;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 import Model.Member;
 
@@ -47,4 +50,56 @@ public class Add_Member_Dao extends Base_Dao {
 		return isUpdate;
 
 	}
+	
+	public ArrayList<Member> MemberfindAll() {
+
+		ArrayList<Member> member_list = new ArrayList<Member>();
+		Statement stmt = null;
+
+		try {
+
+			this.connect();
+
+			String sql = "SELECT * FROM member_table";
+
+			stmt = con.createStatement();
+
+			ResultSet rs = stmt.executeQuery(sql);
+
+			while (rs.next()) {
+				Member member = new Member();
+				member.setMember_id(rs.getString(""));
+				member.setMember_name(rs.getString(""));
+				member.setMember_month(rs.getString(""));
+				member.setMember_password(rs.getString(""));
+				member.setMember_teacher_id(rs.getString(""));
+				member.setMember_teacher_id(rs.getString(""));
+				member_list.add(member);
+			}
+
+			return member_list;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			if (stmt != null) {
+				try {
+					stmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return divination_list;
+	}
+	
 }

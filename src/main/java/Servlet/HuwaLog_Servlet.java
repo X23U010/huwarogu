@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import Dao.Application_Dao;
+import Dao.Setting_Dao;
 import Model.Absence;
 import Model.Member;
 import Model.Public_Absence;
@@ -63,6 +64,10 @@ public class HuwaLog_Servlet extends HttpServlet {
 
 		} else if ("setting_A".equals(action)){
 			//設定
+			Setting_Dao Setting_dao = new Setting_Dao();
+			ArrayList<Member> teacher_list = Setting_dao.Teacher_findAll();
+			request.setAttribute("teacher_list", teacher_list);
+			
 			forward = "Setting_A";
 		}
 

@@ -10,173 +10,98 @@ import Model.Member;
 
 public class Setting_Dao extends Base_Dao {
 
-	public boolean Member_Update(Member member) {
+    // パスワード更新用
+    public boolean Member_Update(Member member) {
+        boolean isUpdate = false;
+        try {
+            this.connect();
+            String sql = "UPDATE member_table SET member_password = ? WHERE member_id = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, member.getMember_password());
+            ps.setString(2, member.getMember_id());
+            int record = ps.executeUpdate();
+            if (record > 0) isUpdate = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try { this.disConnect(); } catch (SQLException e) { e.printStackTrace(); }
+        }
+        return isUpdate;
+    }
 
-		boolean isUpdate = false;
+    // 教師リスト取得用
+    public ArrayList<Member> Teacher_findAll() {
+        ArrayList<Member> teacher_list = new ArrayList<Member>();
+        Statement stmt = null;
+        try {
+            this.connect();
+            String sql = "SELECT * FROM member_table"; 
+            stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                String str = rs.getString("member_id");
+                if(str != null && str.startsWith("t")) { // 先生ID(tから始まる)のみ抽出
+                    Member member = new Member();
+                    member.setMember_id(rs.getString("member_id"));
+                    member.setMember_name(rs.getString("member_name"));
+                    member.setMember_month(rs.getString("member_month"));
+                    member.setMember_password(rs.getString("member_password"));
+                    teacher_list.add(member);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try { if (stmt != null) stmt.close(); this.disConnect(); } catch (SQLException e) {}
+        }
+        return teacher_list;
+    }
 
-		try {
+    // 担任更新用（空文字ならNULLを保存）
+    public boolean Teacher_Update(Member member) {
+        boolean isUpdate = false;
+        try {
+            this.connect();
+            String sql = "UPDATE member_table SET member_teacherId = ? WHERE member_id = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            String mainId = member.getMember_teacher_id();
+            if (mainId == null || mainId.isEmpty()) {
+                ps.setNull(1, java.sql.Types.VARCHAR); // 外部キー制約エラー回避
+            } else {
+                ps.setString(1, mainId);
+            }
+            ps.setString(2, member.getMember_id());
+            int record = ps.executeUpdate();
+            if (record > 0) isUpdate = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try { this.disConnect(); } catch (SQLException e) { e.printStackTrace(); }
+        }
+        return isUpdate;
+    }
 
-			this.connect();
-
-			String sql = "UPDATE member_table SET member_password = ? WHERE member_id = ?";
-
-			PreparedStatement ps = con.prepareStatement(sql);
-
-			ps.setString(1, member.getMember_password());
-			ps.setString(2, member.getMember_id());
-
-			int record = ps.executeUpdate();
-
-			if (record > 0) {
-				isUpdate = true;
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				this.disConnect();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-
-		}
-		return isUpdate;
-
-	}
-	
-	public ArrayList<Member> Teacher_findAll() {
-
-		ArrayList<Member> teacher_list = new ArrayList<Member>();
-		Statement stmt = null;
-
-		try {
-
-			this.connect();
-
-			String sql = "SELECT * FROM member_table"; 
-
-			stmt = con.createStatement();
-
-			ResultSet rs = stmt.executeQuery(sql);
-
-			while (rs.next()) {
-				
-				String str = rs.getString("member_id");
-				if(str !=null && str.length() > 0) {
-					String firstChar = str.substring(0, 1);
-					
-					if (firstChar.equals("t")) {
-						Member member = new Member();
-						member.setMember_id(rs.getString("member_id"));
-						member.setMember_name(rs.getString("member_name"));
-						member.setMember_month(rs.getString("member_month"));
-						member.setMember_password(rs.getString("member_password"));
-						teacher_list.add(member);
-			        }
-				}
-			}
-
-			return teacher_list;
-
-		} catch (SQLException e) {
-
-			e.printStackTrace();
-
-		} catch (ClassNotFoundException e) {
-
-			e.printStackTrace();
-
-		} finally {
-
-			if (stmt != null) {
-
-				try {
-
-					stmt.close();
-
-				} catch (SQLException e) {
-
-					e.printStackTrace();
-
-				}
-			}
-			if (con != null) {
-				try {
-					con.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-		return teacher_list;
-	}
-
-	public boolean Teacher_Update(Member member) {
-
-		boolean isUpdate = false;
-
-		try {
-
-			this.connect();
-
-			String sql = "UPDATE member_table SET member_teacherId = ? WHERE member_id = ?";
-
-			PreparedStatement ps = con.prepareStatement(sql);
-
-			ps.setString(1, member.getMember_teacher_id());
-			ps.setString(2, member.getMember_id());
-
-			int record = ps.executeUpdate();
-
-			if (record > 0) {
-				isUpdate = true;
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				this.disConnect();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-
-		}
-		return isUpdate;
-	}
-
-	public boolean SubTeacher_Update(Member member) {
-
-		boolean isUpdate = false;
-
-		try {
-
-			this.connect();
-
-			String sql = "UPDATE member_table SET member_subTeacherId = ? WHERE member_id = ?";
-
-			PreparedStatement ps = con.prepareStatement(sql);
-	
-			ps.setString(1, member.getMember_subteacher_id());
-			ps.setString(2, member.getMember_id());
-
-			int record = ps.executeUpdate();
-
-			if (record > 0) {
-				isUpdate = true;
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				this.disConnect();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-
-		}
-		return isUpdate;
-	}
+    // 副担任更新用（空文字ならNULLを保存）
+    public boolean SubTeacher_Update(Member member) {
+        boolean isUpdate = false;
+        try {
+            this.connect();
+            String sql = "UPDATE member_table SET member_subTeacherId = ? WHERE member_id = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            String subId = member.getMember_subteacher_id();
+            if (subId == null || subId.isEmpty()) {
+                ps.setNull(1, java.sql.Types.VARCHAR); // 外部キー制約エラー回避
+            } else {
+                ps.setString(1, subId);
+            }
+            ps.setString(2, member.getMember_id());
+            int record = ps.executeUpdate();
+            if (record > 0) isUpdate = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try { this.disConnect(); } catch (SQLException e) { e.printStackTrace(); }
+        }
+        return isUpdate;
+    }
 }

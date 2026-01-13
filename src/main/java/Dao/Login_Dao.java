@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import Model.Member;
 
 public class Login_Dao extends Base_Dao {
-	public boolean findByIdAndPassword(Member menber) {
+	public boolean findByIdAndPassword(Member member) {
 		//検索結果あり（true）or なし（false）
 		boolean isLogin = false;
 
@@ -23,8 +23,8 @@ public class Login_Dao extends Base_Dao {
 			PreparedStatement ps = con.prepareStatement(sql);
 
 			//バインド変数に検索条件を取得する
-			ps.setString(1, menber.getMember_id());
-			ps.setString(2, menber.getMember_password());
+			ps.setString(1, member.getMember_id());
+			ps.setString(2, member.getMember_password());
 
 			//検索処理を実行し検索結果を取得する
 			ResultSet rs = ps.executeQuery();
@@ -33,8 +33,10 @@ public class Login_Dao extends Base_Dao {
 				//検索結果あり
 				isLogin = true;
 				
-				menber.setMember_name(rs.getString("member_name"));
-				menber.setMember_month(rs.getString("member_month"));
+				member.setMember_name(rs.getString("member_name"));
+				member.setMember_month(rs.getString("member_month"));
+				member.setMember_teacher_id(rs.getString("member_teacherId"));
+				member.setMember_subteacher_id(rs.getString("member_subTeacherId"));
 				
 			}
 		} catch (Exception e) {

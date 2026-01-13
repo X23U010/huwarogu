@@ -20,7 +20,7 @@ public class New_Registration_Servlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String forward = "";
-		String msg = "入力してください。";
+		String error_msg = "入力してください。";
 		 
 		request.setCharacterEncoding("UTF-8");
 
@@ -45,14 +45,16 @@ public class New_Registration_Servlet extends HttpServlet {
 			
 	        HttpSession session = request.getSession(false);
 	        Member member = (Member) session.getAttribute("member_info");
+	        
+	        
 	        		Add_Member_Dao AMD = new Add_Member_Dao();
 	       
 	        if(AMD.AddMember(member)) {
 	        	forward = "004";
 	        	session.invalidate();
 	        }else {
-	        	msg = "学籍番号が重複しています。";
-				session.setAttribute("message",msg); 
+	        	error_msg = "学籍番号が重複しています。";
+				session.setAttribute("message",error_msg); 
 	        	forward = "003";
 	        	
 	        }
@@ -65,4 +67,5 @@ public class New_Registration_Servlet extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 
+	
 }
