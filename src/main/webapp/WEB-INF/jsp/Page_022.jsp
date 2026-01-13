@@ -26,7 +26,11 @@ ArrayList<Report> reportList = (ArrayList<Report>) session.getAttribute("reportL
 
 <form action="AbApplicationServlet" method="post">
 
-<table>
+
+<%
+if (abList.size() != 0) {
+%>
+<table border="1">
     <tr>
         <th>選択</th>
         <th>申請ID</th>
@@ -36,25 +40,20 @@ ArrayList<Report> reportList = (ArrayList<Report>) session.getAttribute("reportL
     </tr>
 
 <%
-if (abList != null) {
     for (Absence a : abList) {
 %>
     <tr>
         <td>
             <input type="checkbox"
                    name="absenceIds"
-                   value="<%= a.getAbsenceId() %>">
+                   value="<%= a.getAbsence_id() %>">
         </td>
-        <td><%= a.getAbsenceId() %></td>
-        <td><%= a.getMemberId() %></td>
-        <td><%= a.getAbsenceDay() %></td>
-        <td><%= a.getAbsenceTxt() %></td>
+        <td><%= a.getAbsence_id() %></td>
+        <td><%= a.getAbsence_member_id() %></td>
+        <td><%= a.getAbsence_date() %></td>
+        <td><%= a.getAbsence_txt() %></td>
     </tr>
-<%
-    }
-}
-%>
-</table>
+    </table>
 
 <br>
 
@@ -62,6 +61,17 @@ if (abList != null) {
 <input type="submit" name="action" value="却下">
 
 </form>
+    
+<%
+    }
+}else {
+%>
+    <tr>
+        <td colspan="9">レポート申請はありません</td>
+    </tr>
+<%
+}
+%>
 
 
 <!-- ================= 公欠申請 ================= -->
@@ -69,7 +79,11 @@ if (abList != null) {
 
 <form action="PubAbApplicationServlet" method="post">
 
-<table>
+
+<%
+if (PuAbList.size() != 0) {
+%>
+<table border="1">
     <tr>
         <th>選択</th>
         <th>申請ID</th>
@@ -81,27 +95,22 @@ if (abList != null) {
     </tr>
 
 <%
-if (PuAbList != null) {
     for (Public_Absence p : PuAbList) {
 %>
     <tr>
         <td>
             <input type="checkbox"
                    name="publicAbsenceIds"
-                   value="<%= p.getOfficilAbsenceId() %>">
+                   value="<%= p.getPublic_absence_id() %>">
         </td>
-        <td><%= p.getOfficilAbsenceId() %></td>
-        <td><%= p.getMemberId() %></td>
-        <td><%= p.getImplement() %></td>
-        <td><%= p.getStartTime() %></td>
-        <td><%= p.getFinishTime() %></td>
-        <td><%= p.getTxt() %></td>
+        <td><%= p.getPublic_absence_id() %></td>
+        <td><%= p.getStudent_id() %></td>
+        <td><%= p.getActivity_date() %></td>
+        <td><%= p.getStart_time() %></td>
+        <td><%= p.getEnd_time() %></td>
+        <td><%= p.getReason() %></td>
     </tr>
-<%
-    }
-}
-%>
-</table>
+    </table>
 
 <br>
 
@@ -109,44 +118,65 @@ if (PuAbList != null) {
 <input type="submit" name="action" value="却下">
 
 </form>
+    
+<%
+    }
+}else {
+%>
+    <tr>
+        <td colspan="9">レポート申請はありません</td>
+    </tr>
+<%
+}
+%>
 
 <!-- ================= レポート申請 ================= -->
 <h2>レポート申請一覧</h2>
 
 <form action="ReportApplicationServlet" method="post">
 
+
+
+<%
+if (reportList.size() != 0) {
+%>
 <table border="1">
     <tr>
         <th>選択</th>
         <th>レポートID</th>
         <th>申請者</th>
-        <th>提出期日</th>
+        <th>提出日</th>
         <th>実施日</th>
         <th>開始</th>
         <th>終了</th>
         <th>場所</th>
         <th>内容</th>
     </tr>
-
 <%
-if (reportList != null) {
     for (Report r : reportList) {
 %>
+
     <tr>
         <td>
             <input type="checkbox"
                    name="reportIds"
-                   value="<%= r.getReportId() %>">
+                   value="<%= r.getReport_id() %>">
         </td>
-        <td><%= r.getReportId() %></td>
-        <td><%= r.getReportMemberId() %></td>
-        <td><%= r.getReportDeadline() %></td>
-        <td><%= r.getReportImplement() %></td>
-        <td><%= r.getReportStartTime() %></td>
-        <td><%= r.getReportFinishTime() %></td>
-        <td><%= r.getReportLocation() %></td>
-        <td><%= r.getReportTxt() %></td>
+        <td><%= r.getReport_id() %></td>
+        <td><%= r.getStudent_id() %></td>
+        <td><%= r.getApplication_date() %></td>
+        <td><%= r.getActivity_date() %></td>
+        <td><%= r.getStart_time() %></td>
+        <td><%= r.getEnd_time() %></td>
+        <td><%= r.getLocation() %></td>
+        <td><%= r.getReport_details() %></td>
     </tr>
+    <br>
+
+<input type="submit" name="action" value="承認">
+<input type="submit" name="action" value="却下">
+
+</form>
 <%
     }
 } else {
@@ -160,12 +190,7 @@ if (reportList != null) {
 
 </table>
 
-<br>
 
-<input type="submit" name="action" value="承認">
-<input type="submit" name="action" value="却下">
-
-</form>
 
 </body>
 </html>
