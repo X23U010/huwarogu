@@ -24,13 +24,13 @@ public class Application_Dao extends Base_Dao {
 	        ResultSet rs = stmt.executeQuery(sql);
 
 	        while (rs.next()) {
-	            Absence absence= null;
-	                rs.getString("Absence_id");
-	                rs.getString("Absence_member_id");
-	                rs.getDate("Absence_day");
-	                rs.getDate("Absence_implement");
-	                rs.getString("Absence_txt");
-	                rs.getBoolean("Absence_flag");
+	            Absence absence= new Absence();
+	                absence.setAbsence_id(rs.getString("Absence_id"));
+	                absence.setAbsence_member_id(rs.getString("Absence_member_id"));
+	                absence.setAbsence_date(rs.getString("Absence_day"));
+	                absence.setAbsence_application_date(rs.getString("Absence_implement"));
+	                absence.setAbsence_txt(rs.getString("Absence_txt"));
+	                absence.setAbsence_flag(rs.getString("Absence_flag")); 
 
 	            abList.add(absence);
 	        }
@@ -45,7 +45,7 @@ public class Application_Dao extends Base_Dao {
 
 	    return abList;
 	}
-	
+
 	//欠席許可
 		public void PermissionAbsence(String[] absenceIds) {
 
@@ -102,21 +102,28 @@ public class Application_Dao extends Base_Dao {
 	        ResultSet rs = stmt.executeQuery(sql);
 
 	        while (rs.next()) {
-	            Public_Absence pa = null;
-	                rs.getString("OfficilAbsence_id");
-	                rs.getString("OfficilAbsence_member_id");
-	                rs.getDate("OfficilAbsence_implement");
-	                rs.getDate("OfficilAbsence_day");
-	                rs.getTime("OfficilAbsence_startTime");
-	                rs.getTime("OfficilAbsence_finishTime");
-	                rs.getString("OfficilAbsence_coName");
-	                rs.getString("OfficilAbsence_place");
-	                rs.getString("OfficilAbsence_txt");
-	                rs.getString("OfficilAbsence_content");
-	                rs.getBoolean("OfficilAbsence_flag");
-	                rs.getString("OfficilAbsence_stateId");
+	        	Public_Absence pa = new Public_Absence();
 
-	            PuAbList.add(pa);
+	        	pa.setPublic_absence_id(rs.getString("OfficilAbsence_id"));
+	        	pa.setStudent_id(rs.getString("OfficilAbsence_member_id"));
+	        	pa.setApplication_date(rs.getString("OfficilAbsence_application_date"));
+
+	        	pa.setActivity_date(rs.getString("OfficilAbsence_day"));
+	        	pa.setActivity_end_date(rs.getString("OfficilAbsence_end_day"));
+
+	        	pa.setStart_time(rs.getString("OfficilAbsence_startTime"));
+	        	pa.setEnd_time(rs.getString("OfficilAbsence_finishTime"));
+
+	        	pa.setCompany_name(rs.getString("OfficilAbsence_coName"));
+	        	pa.setLocation(rs.getString("OfficilAbsence_place"));
+	        	pa.setReason(rs.getString("OfficilAbsence_txt"));
+	        	pa.setSelection_details(rs.getString("OfficilAbsence_content"));
+
+	        	pa.setReview_status(rs.getBoolean("OfficilAbsence_flag"));
+	        	pa.setSubmission_status(rs.getString("OfficilAbsence_stateId"));
+
+	        	PuAbList.add(pa);
+
 	        }
 
 	        rs.close();
@@ -186,20 +193,27 @@ public class Application_Dao extends Base_Dao {
 	            ResultSet rs = stmt.executeQuery(sql);
 
 	            while (rs.next()) {
-	                Report report = null;
-	                    rs.getString("report_id");
-	                    rs.getString("report_subject_type_id");
-	                    rs.getString("report_member_id");
-	                    rs.getDate("report_deadline");
-	                    rs.getDate("report_implement");
-	                    rs.getString("report_location");
-	                    rs.getTime("report_starttime");
-	                    rs.getTime("report_finishtime");
-	                    rs.getString("report_txt");
-	                    rs.getBoolean("report_flag");
-	                    rs.getString("report_stateId");
+	            	Report report = new Report();
 
-	                reportList.add(report);
+	            	report.setReport_id(rs.getString("report_id"));
+	            	report.setStudent_id(rs.getString("report_member_id"));
+	            	report.setApplication_date(rs.getString("report_deadline"));
+
+	            	report.setCompany_name(rs.getString("report_company_name"));
+	            	report.setLocation(rs.getString("report_location"));
+
+	            	report.setActivity_date(rs.getString("report_implement"));
+	            	report.setStart_time(rs.getString("report_starttime"));
+	            	report.setEnd_time(rs.getString("report_finishtime"));
+
+	            	report.setReason(rs.getString("report_subject_type_id"));
+	            	report.setReport_details(rs.getString("report_txt"));
+
+	            	report.setReview_status(rs.getBoolean("report_flag"));
+	            	report.setSubmission_status(rs.getString("report_stateId"));
+
+	            	reportList.add(report);
+
 	            }
 
 	            rs.close();
