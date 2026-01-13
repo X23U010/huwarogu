@@ -106,7 +106,7 @@ public class Application_Dao extends Base_Dao {
 
 	        	pa.setPublic_absence_id(rs.getString("OfficilAbsence_id"));
 	        	pa.setStudent_id(rs.getString("OfficilAbsence_member_id"));
-	        	pa.setApplication_date(rs.getString("OfficilAbsence_application_date"));
+	        	pa.setApplication_date(rs.getString("OfficilAbsence_implement"));
 
 	        	pa.setActivity_date(rs.getString("OfficilAbsence_day"));
 	        	pa.setActivity_end_date(rs.getString("OfficilAbsence_end_day"));
@@ -116,7 +116,7 @@ public class Application_Dao extends Base_Dao {
 
 	        	pa.setCompany_name(rs.getString("OfficilAbsence_coName"));
 	        	pa.setLocation(rs.getString("OfficilAbsence_place"));
-	        	pa.setReason(rs.getString("OfficilAbsence_txt"));
+	        	pa.setReason(rs.getString("OfficilAbsence_select_reason"));
 	        	pa.setSelection_details(rs.getString("OfficilAbsence_content"));
 
 	        	pa.setReview_status(rs.getBoolean("OfficilAbsence_flag"));
@@ -143,7 +143,7 @@ public class Application_Dao extends Base_Dao {
 
 		    try {
 		        this.connect();
-		        String sql = "UPDATE officilabsence_table SET OfficilAbsence_flag = 1 WHERE OfficilAbsence_flag = ?";
+		        String sql = "UPDATE officilabsence_table SET OfficilAbsence_flag = 1 WHERE OfficilAbsence_id = ?";
 				PreparedStatement ps = con.prepareStatement(sql);
 
 				for (String id : publicAbsenceIds) {
@@ -162,7 +162,7 @@ public class Application_Dao extends Base_Dao {
 
 		    try {
 		        this.connect();
-		        String sql = "DELETE FROM officilabsence_table WHERE OfficilAbsence_flag = ?";
+		        String sql = "DELETE FROM officilabsence_table WHERE OfficilAbsence_id = ?";
 		        PreparedStatement ps = con.prepareStatement(sql);
 
 		        for (String id : publicAbsenceIds) {
@@ -232,7 +232,7 @@ public class Application_Dao extends Base_Dao {
 
 		    try {
 		        this.connect();
-		        String sql = "UPDATE report_table SET report_flag = 1 WHERE report_flag = ?";
+		        String sql = "UPDATE report_table SET report_flag = 1 WHERE report_id = ?";
 				PreparedStatement ps = con.prepareStatement(sql);
 
 				for (String id : reportIds) {
@@ -251,7 +251,7 @@ public class Application_Dao extends Base_Dao {
 
 		    try {
 		        this.connect();
-		        String sql = "DELETE FROM report_table WHERE report_flag = ?";
+		        String sql = "DELETE FROM report_table WHERE report_id = ?";
 		        PreparedStatement ps = con.prepareStatement(sql);
 
 		        for (String id : reportIds) {
