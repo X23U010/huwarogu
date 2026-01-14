@@ -99,7 +99,7 @@ public class Add_Member_Dao extends Base_Dao {
 				}
 			}
 		}
-		return divination_list;
+		return member_list;
 	}
 	
 }
