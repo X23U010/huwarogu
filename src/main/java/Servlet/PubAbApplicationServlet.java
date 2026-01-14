@@ -28,7 +28,7 @@ public class PubAbApplicationServlet extends HttpServlet {
 		        	System.out.println("承認");
 		        } else if ("公欠却下".equals(action)) {
 		            // 却下処理
-		        	app.DenyPublicReport(ids);
+		        	app.DenyPublicAbsence(ids);
 		        	System.out.println("却下");
 		        }
 		}

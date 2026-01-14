@@ -31,7 +31,7 @@ public class AbApplicationServlet extends HttpServlet {
 
 		        } else if ("欠席却下".equals(action)) {
 		            // 却下処理
-		        	app.DenyPublicAbsence(ids);
+		        	app.DenyAbsence(ids);
 		    		System.out.println("却下");
 
 		        }
