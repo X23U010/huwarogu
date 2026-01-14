@@ -55,7 +55,6 @@ public class HuwaLog_Servlet extends HttpServlet {
 			session.setAttribute("abList",abList);
 			session.setAttribute("PuAbList",PuAbList);
 			session.setAttribute("reportList",reportList);
-			System.out.println(PuAbList);
 			
 			forward = "022";
 

@@ -16,7 +16,7 @@ public class Application_Dao extends Base_Dao {
 
 	    ArrayList<Absence> abList = new ArrayList<>();
 
-	    String sql = "SELECT * FROM Absence_table WHERE Absence_flag = 0";
+	    String sql = "SELECT * FROM Absence_table WHERE Absence_flag = 0;";
 
 	    try {
 	        this.connect();
@@ -51,7 +51,7 @@ public class Application_Dao extends Base_Dao {
 
 		    try {
 		        this.connect();
-		        String sql = "UPDATE Absence_table SET Absence_flag = 1 WHERE Absence_id = ?";
+		        String sql = "UPDATE Absence_table SET Absence_flag = 1 WHERE Absence_id = ?;";
 				PreparedStatement ps = con.prepareStatement(sql);
 
 				for (String id : absenceIds) {
@@ -70,7 +70,7 @@ public class Application_Dao extends Base_Dao {
 
 		    try {
 		        this.connect();
-		        String sql = "DELETE FROM Absence_table WHERE Absence_id = ?";
+		        String sql = "DELETE FROM Absence_table WHERE Absence_id = ?;";
 		        PreparedStatement ps = con.prepareStatement(sql);
 
 		        for (String id : absenceIds) {
@@ -94,7 +94,7 @@ public class Application_Dao extends Base_Dao {
 
 	    ArrayList<Public_Absence> PuAbList = new ArrayList<>();
 
-	    String sql = "SELECT * FROM OfficilAbsence_table WHERE OfficilAbsence_flag = 0";
+	    String sql = "SELECT * FROM OfficilAbsence_table WHERE OfficilAbsence_flag = 0;";
 
 	    try {
 	        this.connect();
@@ -143,7 +143,7 @@ public class Application_Dao extends Base_Dao {
 
 		    try {
 		        this.connect();
-		        String sql = "UPDATE officilabsence_table SET OfficilAbsence_flag = 1 WHERE OfficilAbsence_id = ?";
+		        String sql = "UPDATE officilabsence_table SET OfficilAbsence_flag = 1 WHERE OfficilAbsence_id = ?;";
 				PreparedStatement ps = con.prepareStatement(sql);
 
 				for (String id : publicAbsenceIds) {
@@ -162,7 +162,7 @@ public class Application_Dao extends Base_Dao {
 
 		    try {
 		        this.connect();
-		        String sql = "DELETE FROM officilabsence_table WHERE OfficilAbsence_id = ?";
+		        String sql = "DELETE FROM officilabsence_table WHERE OfficilAbsence_id = ?;";
 		        PreparedStatement ps = con.prepareStatement(sql);
 
 		        for (String id : publicAbsenceIds) {
@@ -185,7 +185,7 @@ public class Application_Dao extends Base_Dao {
 
 	        ArrayList<Report> reportList = new ArrayList<>();
 
-	        String sql = "SELECT * FROM report_table WHERE report_flag = 0";
+	        String sql = "SELECT * FROM report_table WHERE report_flag = 0;";
 
 	        try {
 	            this.connect();
@@ -232,7 +232,7 @@ public class Application_Dao extends Base_Dao {
 
 		    try {
 		        this.connect();
-		        String sql = "UPDATE report_table SET report_flag = 1 WHERE report_id = ?";
+		        String sql = "UPDATE report_table SET report_flag = 1 WHERE report_id = ?;";
 				PreparedStatement ps = con.prepareStatement(sql);
 
 				for (String id : reportIds) {
@@ -251,7 +251,7 @@ public class Application_Dao extends Base_Dao {
 
 		    try {
 		        this.connect();
-		        String sql = "DELETE FROM report_table WHERE report_id = ?";
+		        String sql = "DELETE FROM report_table WHERE report_id = ?;";
 		        PreparedStatement ps = con.prepareStatement(sql);
 
 		        for (String id : reportIds) {

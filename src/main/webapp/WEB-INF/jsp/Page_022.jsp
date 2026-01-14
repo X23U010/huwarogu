@@ -53,6 +53,11 @@ if (abList.size() != 0) {
         <td><%= a.getAbsence_date() %></td>
         <td><%= a.getAbsence_txt() %></td>
     </tr>
+
+    
+<%
+    }
+%>
     </table>
 
 <br>
@@ -61,9 +66,8 @@ if (abList.size() != 0) {
 <input type="submit" name="action" value="却下">
 
 </form>
-    
+
 <%
-    }
 }else {
 %>
     <tr>
@@ -110,6 +114,10 @@ if (PuAbList.size() != 0) {
         <td><%= p.getEnd_time() %></td>
         <td><%= p.getReason() %></td>
     </tr>
+    
+<%
+    }
+%>
     </table>
 
 <br>
@@ -118,9 +126,8 @@ if (PuAbList.size() != 0) {
 <input type="submit" name="action" value="却下">
 
 </form>
-    
+
 <%
-    }
 }else {
 %>
     <tr>
@@ -171,6 +178,9 @@ if (reportList.size() != 0) {
         <td><%= r.getLocation() %></td>
         <td><%= r.getReport_details() %></td>
     </tr>
+<%
+    }
+%>
     </table>
     
     <br>
@@ -179,8 +189,8 @@ if (reportList.size() != 0) {
 <input type="submit" name="action" value="却下">
 
 </form>
+
 <%
-    }
 } else {
 %>
     <tr>
