@@ -20,13 +20,20 @@ public class AbApplicationServlet extends HttpServlet {
 		String[] ids = request.getParameterValues("absenceIds");
 		Application_Dao app = new Application_Dao();
 		
+		System.out.println("欠席届処理");
+
+		
 		if (ids != null) {
-		        if ("承認".equals(action)) {
+		        if ("欠席承認".equals(action)) {
 		            // 承認処理
 		        	app.PermissionAbsence(ids);
-		        } else if ("却下".equals(action)) {
+		    		System.out.println("承認");
+
+		        } else if ("欠席却下".equals(action)) {
 		            // 却下処理
 		        	app.DenyPublicAbsence(ids);
+		    		System.out.println("却下");
+
 		        }
 		}
 		

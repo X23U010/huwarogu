@@ -39,10 +39,13 @@ Member member = (Member) session.getAttribute("member_info");
       <!-- ✅ 下部に配置 -->
       <div id="confirm_section">
         <p>以下の内容で間違いありませんか？</p>
+        
+        <p style="color:red;">${errorMsg}</p>
+        
         <div class="confirm_buttons">
-        <button id="cancel_btn" class="action-button cancel" onclick="history.back()">キャンセル</button> 
         <form class="new-registration-form" action="New_Registration_Servlet" method="post" autocomplete="off">
-          <button type="submit" id="ok_btn" name="action" value="new_registretion_register_comit">OK</button>
+        <button id="cancel_btn" class="action-button cancel" name="action" value="back_002">キャンセル</button> 
+          <button type="submit" id="ok_btn" name="action" value="new_registretion_register_comit">完了</button>
         </form>
          
         </div>

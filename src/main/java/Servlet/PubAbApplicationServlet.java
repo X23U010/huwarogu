@@ -18,13 +18,18 @@ public class PubAbApplicationServlet extends HttpServlet {
 		String[] ids = request.getParameterValues("publicAbsenceIds");
 		Application_Dao app = new Application_Dao();
 		
+		System.out.println("公欠申請処理");
+		
 		if (ids != null) {
-		        if ("承認".equals(action)) {
+		        if ("公欠承認".equals(action)) {
 		            // 承認処理
 		        	app.PermissionPublicAbsence(ids);
-		        } else if ("却下".equals(action)) {
+		        	
+		        	System.out.println("承認");
+		        } else if ("公欠却下".equals(action)) {
 		            // 却下処理
 		        	app.DenyPublicReport(ids);
+		        	System.out.println("却下");
 		        }
 		}
 		

@@ -42,8 +42,8 @@ public class New_Registration_Servlet extends HttpServlet {
 
 		} else if ("new_registretion_register_comit".equals(action)) {
 
-			Member mem = (Member) session.getAttribute("loginMember");
-
+			Member mem = (Member) session.getAttribute("member_info");
+			
 			boolean hasError_id = (mem == null) || isEmpty(mem.getMember_id()) || isId_1(mem.getMember_id())
 					|| isId_2(mem.getMember_id()) || isId_3(mem.getMember_id());
 			boolean hasError_password = (mem == null) || isEmpty(mem.getMember_id())

@@ -94,7 +94,7 @@ public class Application_Dao extends Base_Dao {
 
 	    ArrayList<Public_Absence> PuAbList = new ArrayList<>();
 
-	    String sql = "SELECT * FROM OfficilAbsence_table WHERE OfficilAbsence_flag = 0;";
+	    String sql = "SELECT * FROM officilabsence_table WHERE OfficilAbsence_flag = 0;";
 
 	    try {
 	        this.connect();
