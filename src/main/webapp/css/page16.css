@@ -87,7 +87,7 @@ button[value="back_top"] {
 }
 
 /* 次へ/確認ボタン：画像の右側ボタンのようなグラデーション */
-button[value="absence_register"] {
+button[value="adsence_register"] {
     background: linear-gradient(135deg, rgba(50, 90, 90, 0.8), rgba(30, 60, 60, 0.8));
 }
 

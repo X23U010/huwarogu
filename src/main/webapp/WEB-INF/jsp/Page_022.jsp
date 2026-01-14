@@ -67,7 +67,7 @@ if (abList.size() != 0) {
 }else {
 %>
     <tr>
-        <td colspan="9">レポート申請はありません</td>
+        <td colspan="9">申請はありません</td>
     </tr>
 <%
 }
@@ -124,7 +124,7 @@ if (PuAbList.size() != 0) {
 }else {
 %>
     <tr>
-        <td colspan="9">レポート申請はありません</td>
+        <td colspan="9">申請はありません</td>
     </tr>
 <%
 }
@@ -171,6 +171,8 @@ if (reportList.size() != 0) {
         <td><%= r.getLocation() %></td>
         <td><%= r.getReport_details() %></td>
     </tr>
+    </table>
+    
     <br>
 
 <input type="submit" name="action" value="承認">
@@ -182,7 +184,7 @@ if (reportList.size() != 0) {
 } else {
 %>
     <tr>
-        <td colspan="9">レポート申請はありません</td>
+        <td colspan="9">申請はありません</td>
     </tr>
 <%
 }

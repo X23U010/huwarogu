@@ -7,7 +7,8 @@ public class Absence {
 	private String absence_application_date;
 	private String absence_txt;
 	private String absence_flag;
-
+	
+	
 	public String getAbsence_id() {
 		return absence_id;
 	}

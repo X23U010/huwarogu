@@ -15,6 +15,9 @@ public class Public_Absence {
 	public String selection_details;
 	public boolean review_status;
 	public String submission_status;
+	
+	
+
 
 	public String getPublic_absence_id() {
 		return public_absence_id;

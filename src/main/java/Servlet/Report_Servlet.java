@@ -25,7 +25,6 @@ public class Report_Servlet extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 		String forward = "";
-		String error_msg = "";
 
 		HttpSession session = request.getSession();
 		Member mem = (Member) session.getAttribute("loginMember");
@@ -92,7 +91,7 @@ public class Report_Servlet extends HttpServlet {
 			}
 
 		} else if ("report_register_comit".equals(action) || "back_C".equals(action)) {
-
+			
 			Report report = (Report) session.getAttribute("report_info");
 
 			if ("report_register_comit".equals(action)) {
@@ -106,13 +105,11 @@ public class Report_Servlet extends HttpServlet {
 						report.getEnd_time(),
 						report.getReason(),
 						report.getReport_details());
-
+				
 				if (hasError) {
-					if (hasError) {
-						error_msg = "未入力 ";
-					}
+
 					// エラーがあった場合：メッセージをセットして入力画面(010_A)へ戻す
-					request.setAttribute("errorMsg", error_msg + "が原因です");
+					request.setAttribute("errorMsg", "未入力の項目があります。すべての項目を正しく入力してください。");
 					forward = "011";
 
 				} else {
@@ -130,21 +127,20 @@ public class Report_Servlet extends HttpServlet {
 					boolean isSubmit = report_logic.execute(report);
 
 					if (isSubmit) {
-						System.out.println("成功");
+						System.out.println("OK");
 						forward = "012";
 					} else {
-						System.out.println("失敗");
-						request.setAttribute("errorMsg", "DB障害 が原因です");
+						System.out.println("NG");
 						forward = "011";
 					}
-
+					
 				}
 
 			} else if ("back_C".equals(action)) {
-
+				
 				session.setAttribute("report_info", report);
 				forward = "010_C";
-
+				
 			}
 
 		} else if ("back_top".equals(action)) {

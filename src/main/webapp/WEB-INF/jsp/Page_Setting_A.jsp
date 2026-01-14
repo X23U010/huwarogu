@@ -1,41 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.util.ArrayList" %>
 <%@ page import="Model.Member"%>
 <%
-//セッションからMemberオブジェクトを取得
+// セッションからMemberオブジェクトを取得
 Member member = (Member) session.getAttribute("loginMember");
-
-//Servletから渡された先生リストを取得
-ArrayList<Member> teacherList = (ArrayList<Member>) request.getAttribute("teacher_list");
-if(teacherList == null) teacherList = new ArrayList<Member>();
-
-//表示用の変数
-String teacher_name = "未設定";
-String subteacher_name = "なし";
-
-//--- 修正ポイント：比較時にtrim()を使用して空白を除去する ---
-if (member != null && teacherList != null) {
- // ログイン中のユーザーが持っている担任・副担任ID（空白除去）
- String myTeacherId = (member.getMember_teacher_id() != null) ? member.getMember_teacher_id().trim() : "";
- String mySubTeacherId = (member.getMember_subteacher_id() != null) ? member.getMember_subteacher_id().trim() : "";
-
- for(Member t : teacherList){
-     // リストの中の先生自身のID（空白除去）
-     String tId = (t.getMember_id() != null) ? t.getMember_id().trim() : "";
-     
-     // 担任の名前を特定
-     if(tId.equals(myTeacherId)){
-         teacher_name = t.getMember_name();
-     }
-     
-     // 副担任の名前を特定
-     if(tId.equals(mySubTeacherId)){
-         subteacher_name = t.getMember_name();
-     }
- }
-}
-
 %>
 <!DOCTYPE html>
 <html lang="ja">
@@ -72,18 +40,6 @@ if (member != null && teacherList != null) {
                     <label for="name">名前</label>
                     <input type="text" id="name" name="name" 
                            value="<%=member.getMember_name()%>" readonly>
-                </div>
-                
-                <div class="field" id="teacher_field">
-                    <label for="teacher_name">担任</label>
-                    <input type="text" id="teacher_name" name="teacher_name" 
-                           value="<%=teacher_name%>" readonly>
-                </div>
-                
-                <div class="field" id="subteacher_field">
-                    <label for="subteacher_name">副担任</label>
-                    <input type="text" id="subteacher_name" name="subteacher_name" 
-                           value="<%=subteacher_name%>" readonly>
                 </div>
                 
                 

@@ -25,7 +25,6 @@ public class Absence_Servlet extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String forward = "";
-		String error_msg = "";
 
 		HttpSession session = request.getSession();
 		Member mem = (Member) session.getAttribute("loginMember");
@@ -33,7 +32,7 @@ public class Absence_Servlet extends HttpServlet {
 
 		String action = request.getParameter("action");
 
-		if ("absence_register".equals(action)) {
+		if ("adsence_register".equals(action)) {
 
 			Absence absence = (Absence) session.getAttribute("absence_info");
 
@@ -54,26 +53,23 @@ public class Absence_Servlet extends HttpServlet {
 
 			forward = "017";
 
-		} else if ("absence_register_comit".equals(action) || "back_016".equals(action)) {
+		} else if ("adsence_register_comit".equals(action)||"back_016".equals(action)) {
 
 			Absence absence = (Absence) session.getAttribute("absence_info");
 
-			if ("absence_register_comit".equals(action)) {
-
-				boolean hasError = (absence == null || isEmpty(absence.getAbsence_date(), absence.getAbsence_txt()));
-
-				if (hasError) {
-					error_msg = "未入力 ";
-					request.setAttribute("errorMsg", error_msg + "が原因です");
-					forward = "017";
-				} else {
-
-					Absence_Dao absence_dao = new Absence_Dao();
+			if("adsence_register_comit".equals(action)){
+				
+				if (absence == null || isEmpty(absence.getAbsence_date(), absence.getAbsence_txt())) {
+			        request.setAttribute("errorMsg", "入力情報が不足しています。最初から入力し直してください。");
+			        forward = "017";
+			    }else {
+			    	
+			    	Absence_Dao absence_dao = new Absence_Dao();
 
 					LocalDate today = LocalDate.now();
 					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 					String applicationDateString = today.format(formatter);
-
+					
 					absence.setAbsence_application_date(applicationDateString);
 					absence.setAbsence_member_id(mem.getMember_id());
 					absence.setAbsence_flag("0");
@@ -85,18 +81,16 @@ public class Absence_Servlet extends HttpServlet {
 
 					} else {
 						System.out.println("失敗");
-						request.setAttribute("errorMsg", "DB障害 が原因です");
 						forward = "017";
-
 					}
-				}
-
-			} else if ("back_016".equals(action)) {
-
+			    }
+			}else if("back_016".equals(action)) {
+				
+				session.setAttribute("absence_info", absence);
 				forward = "016";
-
+				
 			}
-
+			
 		} else if ("back_top".equals(action)) {
 
 			//report_infoのセッションを削除↓

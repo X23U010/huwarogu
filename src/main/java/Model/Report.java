@@ -13,6 +13,8 @@ public class Report {
 	private String report_details;
 	private boolean review_status;
 	private String submission_status;
+	
+
 
 	public String getReport_id() {
 		return report_id;
