@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import Dao.Application_Dao;
+import Dao.List_Dao;
 import Dao.Setting_Dao;
 import Model.Absence;
 import Model.Member;
@@ -60,6 +61,12 @@ public class HuwaLog_Servlet extends HttpServlet {
 
 		} else if ("025".equals(action)) {
 			//公欠・欠席一覧
+			List_Dao list_dao = new List_Dao();
+			ArrayList<Absence> abList = list_dao.getAbList();
+			ArrayList<Public_Absence> PuAbList = list_dao.getPuAbList();
+			session.setAttribute("abList",abList);
+			session.setAttribute("PuAbList",PuAbList);
+						
 			forward = "025";
 
 		} else if ("setting_A".equals(action)){
