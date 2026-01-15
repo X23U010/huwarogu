@@ -19,6 +19,7 @@ ArrayList<Public_Absence> PuAbList =(ArrayList<Public_Absence>)session.getAttrib
 
 <section>
     <h2>欠席申請一覧</h2>
+    <p>今後の欠席者を表示しています。</p>
     <% if (abList != null && !abList.isEmpty()) { %>
             <table border="1">
                 <tr>
@@ -44,7 +45,8 @@ ArrayList<Public_Absence> PuAbList =(ArrayList<Public_Absence>)session.getAttrib
 <hr>
 
 <section>
-    <h2>公欠申請一覧</h2>
+    <h2>公欠一覧</h2>
+    <p>今後の公欠者を表示しています。</p>
     <% if (PuAbList != null && !PuAbList.isEmpty()) { %>
             <table border="1">
                 <tr>
