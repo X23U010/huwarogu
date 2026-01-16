@@ -15,7 +15,7 @@ public class List_Dao extends Base_Dao {
 		ArrayList<Absence> abList = new ArrayList<>();
 		
 		String sql = "SELECT * FROM Absence_table WHERE Absence_flag = 1 "
-				+ "AND Absence_implement >= CURRENT_DATE ORDER BY Absence_implement ASC;";
+				+ "AND Absence_day >= CURRENT_DATE ORDER BY Absence_day ASC;";
 
 	    try {
 	        this.connect();
@@ -52,7 +52,7 @@ public class List_Dao extends Base_Dao {
 			ArrayList<Absence> abList = new ArrayList<>();
 			
 			String sql = "SELECT * FROM Absence_table WHERE Absence_flag = 1 "
-					+ "ORDER BY Absence_implement ASC;";
+					+ "ORDER BY Absence_day ASC;";
 
 		    try {
 		        this.connect();
