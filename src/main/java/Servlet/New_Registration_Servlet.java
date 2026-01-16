@@ -59,15 +59,15 @@ public class New_Registration_Servlet extends HttpServlet {
 					}
 
 					if (isId_1(mem.getMember_id())) {
-						error_msg = error_msg + "文字不足";
+						error_msg = error_msg + "ID文字不足 ";
 					}
 
 					if (isId_2(mem.getMember_id())) {
-						error_msg = error_msg + "不正値";
+						error_msg = error_msg + "ID不正値 ";
 					}
 
 					if (isId_3(mem.getMember_id())) {
-						error_msg = error_msg + "ID重複";
+						error_msg = error_msg + "ID重複 ";
 					}
 
 				}
@@ -78,7 +78,7 @@ public class New_Registration_Servlet extends HttpServlet {
 					}
 
 					if (isLength(mem.getMember_password().length())) {
-						error_msg = error_msg + "文字不足";
+						error_msg = error_msg + "Puss文字不足 ";
 					}
 
 				}
@@ -88,7 +88,7 @@ public class New_Registration_Servlet extends HttpServlet {
 						error_msg = error_msg + "Month入力 ";
 					}
 					if (isMonth(mem.getMember_month())) {
-						error_msg = error_msg + "不正値";
+						error_msg = error_msg + "Month不正値 ";
 					}
 				}
 

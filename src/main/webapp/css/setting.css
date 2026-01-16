@@ -1,5 +1,5 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
-
+ 
 /* ---------------------------------- */
 /* 1. 全体共通レイアウト */
 /* ---------------------------------- */
@@ -15,19 +15,19 @@ body {
     color: #fff;
     padding: 20px;
 }
-
-.setting-container { 
+ 
+.setting-container {
     background: rgba(0, 0, 0, 0.65);
     border-radius: 20px;
     padding: 30px 40px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(8px);
-    width: 100%; 
+    width: 100%;
     max-width: 420px;
     text-align: left;
     border: 1px solid rgba(127, 255, 223, 0.4);
 }
-
+ 
 .header-info { text-align: center; margin-bottom: 30px; }
 .header-info h1 {
     text-shadow: 0 0 12px #7fffdf, 0 0 5px #7fffdf;
@@ -36,17 +36,19 @@ body {
     margin: 0;
 }
 .header-info p { font-size: 0.85em; color: #e0fafa; line-height: 1.5; margin-top: 10px; }
-
+ 
 /* ---------------------------------- */
 /* 2. 入力要素 (全ページ共通デザイン) */
 /* ---------------------------------- */
 .field { margin-bottom: 20px; }
 label { display: block; margin-bottom: 8px; font-size: 0.95em; font-weight: bold; color: #e0fafa; }
-
+ 
 /* テキスト、数字、パスワード、セレクトボックスをすべて一括でネオン風に */
 input[type="text"],
 input[type="number"],
 input[type="password"],
+input[type="teacher"],
+input[type="subteacher"],
 select {
     width: 100%;
     padding: 12px;
@@ -58,14 +60,14 @@ select {
     box-sizing: border-box;
     transition: all 0.3s ease;
 }
-
+ 
 /* 読み取り専用 (readonly) */
 input[readonly] {
     background: rgba(255, 255, 255, 0.05);
     color: #aaa;
     border-color: rgba(255, 255, 255, 0.2);
 }
-
+ 
 /* セレクトボックス共通の矢印設定 */
 select {
     -webkit-appearance: none;
@@ -77,10 +79,10 @@ select {
     background-size: 20px;
     cursor: pointer;
 }
-
+ 
 /* プルダウンの選択肢背景 */
 select option { background-color: #1a1a1a; color: #fff; }
-
+ 
 /* フォーカス時のネオン発光効果 */
 input:focus, select:focus {
     outline: none;
@@ -88,7 +90,7 @@ input:focus, select:focus {
     box-shadow: 0 0 10px #00ffc8;
     background: rgba(0, 0, 0, 0.3);
 }
-
+ 
 /* ---------------------------------- */
 /* 3. 特殊な部品 (パスワード強度・ランダム生成) */
 /* ---------------------------------- */
@@ -100,7 +102,7 @@ input:focus, select:focus {
 .password-control-wrapper input { border-radius: 0 8px 8px 0 !important; }
 .password-control-wrapper.no-button input { border-radius: 8px !important; }
 .toggle-password { position: absolute; right: 12px; cursor: pointer; color: #e0fafa; }
-
+ 
 /* 強度メーター */
 .strength-meter-container { display: flex; align-items: center; margin: -10px 0 20px; }
 .strength-meter-bar { flex-grow: 1; background: rgba(255, 255, 255, 0.1); border-radius: 5px; height: 8px; margin: 0 10px; overflow: hidden; }
@@ -108,19 +110,19 @@ input:focus, select:focus {
 .strength-bar.low { background: #ff5252; }
 .strength-bar.medium { background: #ffeb3b; }
 .strength-bar.high { background: #4caf50; }
-
+ 
 /* ---------------------------------- */
 /* 4. ボタンエリア */
 /* ---------------------------------- */
 .button-group { display: flex; justify-content: space-between; gap: 15px; margin-top: 30px; }
-.button-group button { 
-    flex-grow: 1; border-radius: 12px; padding: 12px; 
+.button-group button {
+    flex-grow: 1; border-radius: 12px; padding: 12px;
     color: #fff; font-size: 1.0em; font-weight: bold; cursor: pointer; transition: 0.3s;
 }
-
+ 
 #backButton { border: 1px solid rgba(255, 255, 255, 0.7); background: rgba(255, 255, 255, 0.15); }
 #updateButton { border: 1px solid rgba(127, 255, 223, 0.7); background: rgba(0, 255, 200, 0.3); }
-
+ 
 button:hover { transform: translateY(-3px); }
 #backButton:hover { background: rgba(255, 255, 255, 0.3); box-shadow: 0 0 10px #fff; }
 #updateButton:hover { background: rgba(0, 255, 200, 0.5); box-shadow: 0 0 15px #00ffc8; }

@@ -60,7 +60,7 @@ public class Absence_Servlet extends HttpServlet {
 			if("adsence_register_comit".equals(action)){
 				
 				if (absence == null || isEmpty(absence.getAbsence_date(), absence.getAbsence_txt())) {
-			        request.setAttribute("errorMsg", "入力情報が不足しています。最初から入力し直してください。");
+			        request.setAttribute("errorMsg", "未入力項目あり ");
 			        forward = "017";
 			    }else {
 			    	

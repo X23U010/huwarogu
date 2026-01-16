@@ -29,11 +29,8 @@ public class Login_Servlet extends HttpServlet {
 		//パスワードをSHA256でハッシュ化する
 		//String hash = DigestUtils.sha256Hex(pass);
 
-		System.out.println(id);
-		System.out.println(pass);
-
 		//JavaBeansを生成する
-		Member mem = new Member(id,pass);
+		Member mem = new Member(id, pass);
 
 		Login_Logic login_logic = new Login_Logic();
 
@@ -42,13 +39,15 @@ public class Login_Servlet extends HttpServlet {
 
 		//フォワード先
 		String forward = "";
-		System.out.println(isLogin);
 
 		System.out.println(mem.getMember_id());
 		System.out.println(mem.getMember_name());
 		System.out.println(mem.getMember_password());
 		System.out.println(mem.getMember_month());
-
+		System.out.println(mem.getMember_teacher_id());
+		System.out.println(mem.getMember_subteacher_id());
+		
+		
 		if (isLogin) {
 			//認証OKの場合
 
@@ -60,21 +59,28 @@ public class Login_Servlet extends HttpServlet {
 			} else {
 				role = "unknown";
 			}
-			System.out.println(role);
+			
+			//System.out.println(role);
 			//セッションを開始する
 			HttpSession session = request.getSession();
 			//セッションスコープにユーザ情報を保存する
 			session.setAttribute("loginMember", mem);
-			
-			session.setAttribute("userRole", role); 
 
-			forward = "005";
+			session.setAttribute("userRole", role);
+
+			if(mem.getMember_teacher_id()== null) {
+				
+				forward = "setting_C";
+				
+			}else {
+				forward = "005";
+			}
+			
 
 		} else {
 
 			forward = "004";
 		}
-		
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Page_" + forward + ".jsp");
 		dispatcher.forward(request, response);
