@@ -10,7 +10,7 @@
 <meta charset="UTF-8">
 <title>No.025_休み一覧画面</title>
 </head>
-<%ArrayList<Absence> abList = (ArrayList<Absence>) session.getAttribute("ablist");
+<%ArrayList<Absence> abList = (ArrayList<Absence>) session.getAttribute("abList");
 ArrayList<Public_Absence> PuAbList =(ArrayList<Public_Absence>)session.getAttribute("PuAbList"); 
 %>
 <body>
@@ -19,8 +19,8 @@ ArrayList<Public_Absence> PuAbList =(ArrayList<Public_Absence>)session.getAttrib
 
 <section>
     <h2>欠席申請一覧</h2>
-    <p>今後の欠席者を表示しています。</p>
     <% if (abList != null && !abList.isEmpty()) { %>
+        <p>今後の欠席者を表示しています。</p>
             <table border="1">
                 <tr>
                     <th>申請ID</th>
@@ -46,8 +46,8 @@ ArrayList<Public_Absence> PuAbList =(ArrayList<Public_Absence>)session.getAttrib
 
 <section>
     <h2>公欠一覧</h2>
-    <p>今後の公欠者を表示しています。</p>
     <% if (PuAbList != null && !PuAbList.isEmpty()) { %>
+    <p>今後の公欠者を表示しています。</p>
             <table border="1">
                 <tr>
                     <th>申請ID</th>
