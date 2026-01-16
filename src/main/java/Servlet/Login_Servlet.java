@@ -46,8 +46,7 @@ public class Login_Servlet extends HttpServlet {
 		System.out.println(mem.getMember_month());
 		System.out.println(mem.getMember_teacher_id());
 		System.out.println(mem.getMember_subteacher_id());
-		
-		
+
 		if (isLogin) {
 			//認証OKの場合
 
@@ -59,7 +58,7 @@ public class Login_Servlet extends HttpServlet {
 			} else {
 				role = "unknown";
 			}
-			
+
 			//System.out.println(role);
 			//セッションを開始する
 			HttpSession session = request.getSession();
@@ -68,14 +67,13 @@ public class Login_Servlet extends HttpServlet {
 
 			session.setAttribute("userRole", role);
 
-			if(mem.getMember_teacher_id()== null) {
-				
+			if (role.equals("student") && mem.getMember_teacher_id() == null) {
+
 				forward = "setting_C";
-				
-			}else {
+
+			} else {
 				forward = "005";
 			}
-			
 
 		} else {
 
