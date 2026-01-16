@@ -91,11 +91,13 @@ public class Report_Servlet extends HttpServlet {
 			}
 
 		} else if ("report_register_comit".equals(action) || "back_C".equals(action)) {
-			
+
 			Report report = (Report) session.getAttribute("report_info");
 
 			if ("report_register_comit".equals(action)) {
 				// 変換した日付文字列をセット
+
+				String error_msg = "";
 
 				boolean hasError = (report == null) || isEmpty(
 						report.getCompany_name(),
@@ -105,11 +107,24 @@ public class Report_Servlet extends HttpServlet {
 						report.getEnd_time(),
 						report.getReason(),
 						report.getReport_details());
-				
-				if (hasError) {
 
-					// エラーがあった場合：メッセージをセットして入力画面(010_A)へ戻す
-					request.setAttribute("errorMsg", "未入力の項目があります。すべての項目を正しく入力してください。");
+				boolean time_error = (report == null) || isTime(report.getStart_time())
+						|| isTime(report.getEnd_time());
+
+				if (hasError || time_error) {
+
+					if (hasError) {
+						error_msg = error_msg + "未入力項目あり ";
+					}
+
+					if (time_error) {
+						error_msg = error_msg + "時間入力不正 ";
+
+					}
+
+					System.out.println(error_msg);
+					
+					request.setAttribute("errorMsg", error_msg);
 					forward = "011";
 
 				} else {
@@ -133,14 +148,14 @@ public class Report_Servlet extends HttpServlet {
 						System.out.println("NG");
 						forward = "011";
 					}
-					
+
 				}
 
 			} else if ("back_C".equals(action)) {
-				
+
 				session.setAttribute("report_info", report);
 				forward = "010_C";
-				
+
 			}
 
 		} else if ("back_top".equals(action)) {
@@ -164,6 +179,16 @@ public class Report_Servlet extends HttpServlet {
 				return true;
 			}
 		}
+		return false;
+	}
+
+	private boolean isTime(String values) {
+		String timePattern = "^([01][0-9]|2[0-3]):[0-5][0-9]$";
+
+		if (!values.matches(timePattern)) {
+			return true;
+		}
+
 		return false;
 	}
 
