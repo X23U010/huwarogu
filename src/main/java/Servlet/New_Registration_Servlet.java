@@ -124,14 +124,6 @@ public class New_Registration_Servlet extends HttpServlet {
 			}
 		} else if("back_002".equals(action)) {
 			
-			Member member = new Member();
-			member.setMember_id(request.getParameter("student_id"));
-			member.setMember_name(request.getParameter("name"));
-			member.setMember_month(request.getParameter("birth_month"));
-			member.setMember_password(request.getParameter("password"));
-
-			session.setAttribute("member", member);
-			
 			forward = "002";
 		}
 

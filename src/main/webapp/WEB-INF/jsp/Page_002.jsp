@@ -3,7 +3,7 @@
 <%@ page import="Model.Member"%>
 <%
 // セッションから公欠情報を取得
-Member member = (Member) session.getAttribute("member");
+Member member = (Member) session.getAttribute("member_info");
 
 // 各項目の初期値を空文字で設定
 String member_id = "";
