@@ -9,6 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>No.025_休み一覧画面</title>
+<link rel="stylesheet" href="css/page25.css">
 </head>
 <%ArrayList<Absence> abList = (ArrayList<Absence>) session.getAttribute("abList");
 ArrayList<Public_Absence> PuAbList =(ArrayList<Public_Absence>)session.getAttribute("PuAbList"); 

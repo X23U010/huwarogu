@@ -1,0 +1,135 @@
+@charset "UTF-8";
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&display=swap');
+
+/* ---------------------------------- */
+/* 1. 背景と全体の枠組み */
+/* ---------------------------------- */
+
+/* htmlタグに背景画像を設定 */
+html {
+    background: url('cssimages/背景（猫）.png') no-repeat center center fixed; /* パスは環境に合わせて調整してください */
+    background-size: cover;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* bodyタグを「メインの半透明ボックス」として扱う */
+body {
+    font-family: 'Zen Maru Gothic', sans-serif;
+    color: #fff;
+    margin: 0 auto; /* 中央寄せ */
+    
+    /* コンテナのデザイン設定 */
+    background: rgba(15, 20, 35, 0.9); /* 濃い紺色の半透明背景 */
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(12px); /* すりガラス効果 */
+    border: 1px solid rgba(127, 255, 223, 0.3); /* エメラルドの枠線 */
+    
+    max-width: 1100px; /* 幅の制限 */
+    width: 95%;
+}
+
+/* ---------------------------------- */
+/* 2. 見出し（タイトル） */
+/* ---------------------------------- */
+
+/* <h1>タグ：ページタイトル */
+h1 {
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: 0;
+    font-size: 2.2em;
+    font-weight: 700;
+    color: #fff;
+    /* エメラルドグリーンの発光エフェクト */
+    text-shadow: 0 0 12px #7fffdf, 0 0 5px #7fffdf;
+}
+
+/* <h2>タグ：セクション見出し */
+h2 {
+    font-size: 1.4em;
+    color: #7fffdf;
+    border-left: 5px solid #00ffc8; /* 左側のアクセントバー */
+    padding-left: 15px;
+    margin: 30px 0 20px;
+    text-shadow: 0 0 8px rgba(0, 255, 200, 0.5);
+}
+
+/* 説明文（<p>タグ） */
+p {
+    font-size: 0.95em;
+    color: #e0fafa;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+/* データなしのメッセージ（唯一のクラス .no-data） */
+.no-data {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.4);
+    font-style: italic;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+/* ---------------------------------- */
+/* 3. テーブル（表） */
+/* ---------------------------------- */
+
+/* sectionタグ：スマホで表がはみ出ないようにスクロールさせる */
+section {
+    overflow-x: auto;
+    margin-bottom: 30px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse; /* 枠線を1本にする */
+    background: rgba(255, 255, 255, 0.03);
+    margin-bottom: 10px;
+    white-space: nowrap; /* 文字の折り返しを防ぐ（スマホで見やすくするため） */
+}
+
+/* HTMLの border="1" の見た目を打ち消してCSSで上書き */
+table, th, td {
+    border: none;
+}
+
+/* ヘッダー行 */
+th {
+    background: rgba(127, 255, 223, 0.15); /* 薄いエメラルド背景 */
+    color: #7fffdf; /* 文字色 */
+    padding: 15px;
+    font-size: 1.0em;
+    border-bottom: 2px solid rgba(127, 255, 223, 0.3);
+    text-align: center;
+}
+
+/* データ行 */
+td {
+    padding: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* 薄い下線 */
+    text-align: center;
+    color: #fff;
+}
+
+/* 行にマウスを乗せた時の色 */
+tr:hover {
+    background: rgba(127, 255, 223, 0.08);
+}
+
+/* ---------------------------------- */
+/* 4. 区切り線 */
+/* ---------------------------------- */
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(127, 255, 223, 0), rgba(127, 255, 223, 0.5), rgba(127, 255, 223, 0));
+    margin: 40px 0;
+}
