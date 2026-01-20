@@ -69,7 +69,7 @@ public class Login_Servlet extends HttpServlet {
 
 			if (role.equals("student") && mem.getMember_teacher_id() == null) {
 
-				forward = "setting_C";
+				forward = "Setting_C";
 
 			} else {
 				forward = "005";
