@@ -42,10 +42,10 @@ if(!(report.getEnd_time() == null)){
       <input type="date" id="activityDate" name="activity_date" value = "<%=activity_date%>"> 
       
       <label for="activityStartTime">活動開始時間</label>
-      <input type="text" id="activityStartTime" name="start_time" placeholder="例: 13:30" value = "<%=start%>"> 
+      <input type="text" id="activityStartTime" name="start_time" placeholder="例: 13:30（半角）" value = "<%=start%>"> 
       
       <label for="activityFinishTime">活動終了時間</label>
-      <input type="text" id="activityFinishTime" name="finish_time" placeholder="例: 16:00" value = "<%=end%>">
+      <input type="text" id="activityFinishTime" name="finish_time" placeholder="例: 16:00（半角）" value = "<%=end%>">
       
       <div class="button-area"> 
       <button type="submit" class="back-button" name="action" value="back_A">戻る</button> 

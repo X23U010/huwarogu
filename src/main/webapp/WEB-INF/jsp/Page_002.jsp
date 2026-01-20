@@ -35,22 +35,22 @@ if (member != null) {
       <div class="form-grid">
         <div class="field">
           <label for="student_id">学籍番号</label>
-          <input type="text" id="student_id" name="student_id" value="<%=member_id %>" autocomplete="new-password">
+          <input type="text" id="student_id" name="student_id" placeholder="自身の学籍番号を入力" value="<%=member_id %>" autocomplete="new-password">
         </div>
 
         <div class="field">
           <label for="birth_month">誕生月</label>
-          <input type="number" id="birth_month" name="birth_month" value="<%=member_month %>" autocomplete="new-password">
+          <input type="number" id="birth_month" name="birth_month" placeholder="自身の誕生月を入力" value="<%=member_month %>" autocomplete="new-password">
         </div>
 
         <div class="field">
           <label for="name">名前</label>
-          <input type="text" id="name" name="name" value="<%=member_name %>" autocomplete="new-password">
+          <input type="text" id="name" name="name" placeholder="自身の名前を入力" value="<%=member_name %>" autocomplete="new-password">
         </div>
 
         <div class="field">
           <label for="password">パスワード</label>
-          <input type="password" id="password" name="password" value="" autocomplete="new-password">
+          <input type="password" id="password" name="password" placeholder="８文字以上" value="" autocomplete="new-password">
         </div>
       </div>
       <button type="submit" id="submit_btn" name="action" value="new_registretion_register">登録</button>

@@ -30,7 +30,7 @@ Member member = (Member) session.getAttribute("loginMember");
                             ランダム生成
                         </button>
                         <input type="password" id="password" name="password" 
-                               placeholder="入力または生成" 
+                               placeholder="入力または生成（８文字以上）" 
                                autocomplete="new-password" 
                                > <span class="toggle-password" data-target="password">
                             <i class="fas fa-eye-slash"></i>
@@ -50,7 +50,7 @@ Member member = (Member) session.getAttribute("loginMember");
                     <label for="confirm-password">パスワード再入力</label>
                     <div class="password-control-wrapper no-button">
                         <input type="password" id="confirm-password" 
-                               placeholder="確認のため再入力" 
+                               placeholder="手動入力の場合は手動で入力" 
                                autocomplete="new-password"> 
                         <span class="toggle-password" data-target="confirm-password">
                             <i class="fas fa-eye-slash"></i>

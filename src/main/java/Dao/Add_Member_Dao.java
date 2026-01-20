@@ -68,12 +68,12 @@ public class Add_Member_Dao extends Base_Dao {
 
 			while (rs.next()) {
 				Member member = new Member();
-				member.setMember_id(rs.getString(""));
-				member.setMember_name(rs.getString(""));
-				member.setMember_month(rs.getString(""));
-				member.setMember_password(rs.getString(""));
-				member.setMember_teacher_id(rs.getString(""));
-				member.setMember_teacher_id(rs.getString(""));
+				member.setMember_id(rs.getString("member_id"));
+				member.setMember_name(rs.getString("member_name"));
+				member.setMember_month(rs.getString("member_month"));
+				member.setMember_password(rs.getString("member_password"));
+				member.setMember_teacher_id(rs.getString("member_teacherId"));
+				member.setMember_teacher_id(rs.getString("member_subTeacherId"));
 				member_list.add(member);
 			}
 

@@ -142,8 +142,7 @@ public class New_Registration_Servlet extends HttpServlet {
 	}
 
 	private boolean isId_2(String values) {
-		if (!(values.startsWith("x")) || !(values.startsWith("t"))) {
-
+		if (!(values.startsWith("x")) && !(values.startsWith("t"))) {
 			return true;
 		}
 

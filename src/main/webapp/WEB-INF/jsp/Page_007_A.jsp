@@ -39,10 +39,10 @@ if (pa != null) {
       <input type="date" id="activityEndDate" name="end_date" value="<%=enddate %>">
       
       <label for="startTime">開始時間</label>
-      <input type="text" id="startTime" name="start_time" value="<%=starttime %>">
+      <input type="text" id="startTime" name="start_time"  placeholder="例: 13:00（半角）" value="<%=starttime %>">
       
       <label for="endTime">終了時間</label>
-      <input type="text" id="endTime" name="end_time" value="<%=endtime %>">
+      <input type="text" id="endTime" name="end_time"  placeholder="例: 16:00（半角）" value="<%=endtime %>">
 
       <div class="button-area">
         <button type="submit" class="back-button" name="action" value="back_top">破棄</button>

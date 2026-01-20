@@ -2,12 +2,16 @@
 <%@ page import="Model.Absence"%>
 <%@ page import="Model.Public_Absence"%>
 <%@ page import="Model.Report"%>
+<%@ page import="Dao.Application_Logic"%>
 <%@ page import="java.util.ArrayList"%>
 
 <%
 ArrayList<Absence> abList = (ArrayList<Absence>) session.getAttribute("abList");
 ArrayList<Public_Absence> PuAbList = (ArrayList<Public_Absence>) session.getAttribute("PuAbList");
 ArrayList<Report> reportList = (ArrayList<Report>) session.getAttribute("reportList");
+
+Application_Logic al = new Application_Logic();
+
 %>
 
 <!DOCTYPE html>
@@ -50,7 +54,7 @@ ArrayList<Report> reportList = (ArrayList<Report>) session.getAttribute("reportL
                             <tr>
                                 <td><input type="checkbox" name="absenceIds" value="<%=a.getAbsence_id()%>"></td>
                                 <td><%=a.getAbsence_id()%></td>
-                                <td><%=a.getAbsence_member_id()%></td>
+                                <td><%=al.Name_Search(a.getAbsence_member_id())%></td>
                                 <td><%=a.getAbsence_date()%></td>
                                 <td class="text-left"><%=a.getAbsence_txt()%></td>
                             </tr>
@@ -92,7 +96,7 @@ ArrayList<Report> reportList = (ArrayList<Report>) session.getAttribute("reportL
                             <tr>
                                 <td><input type="checkbox" name="publicAbsenceIds" value="<%=p.getPublic_absence_id()%>"></td>
                                 <td><%=p.getPublic_absence_id()%></td>
-                                <td><%=p.getStudent_id()%></td>
+                                <td><%=al.Name_Search(p.getStudent_id())%></td>
                                 <td><%=p.getActivity_date()%></td>
                                 <td><%=p.getStart_time()%></td>
                                 <td><%=p.getEnd_time()%></td>
@@ -138,7 +142,7 @@ ArrayList<Report> reportList = (ArrayList<Report>) session.getAttribute("reportL
                             <tr>
                                 <td><input type="checkbox" name="reportIds" value="<%=r.getReport_id()%>"></td>
                                 <td><%=r.getReport_id()%></td>
-                                <td><%=r.getStudent_id()%></td>
+                                <td><%=al.Name_Search(r.getStudent_id())%></td>
                                 <td><%=r.getApplication_date()%></td>
                                 <td><%=r.getActivity_date()%></td>
                                 <td><%=r.getStart_time()%></td>
