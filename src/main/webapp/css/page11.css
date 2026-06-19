@@ -28,8 +28,8 @@ body {
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(10px);
     
-    width: 500px; /* Page_016と同じ幅 */
-    max-width: 90%; /* 画面が狭い時のマージン */
+    width: 100%; /* Page_016と同じ幅 */
+    max-width: 600px; /* 画面が狭い時のマージン */
     padding: 30px 40px; 
     margin: 20px auto;
     
@@ -104,6 +104,7 @@ label {
     box-sizing: border-box;
     white-space: pre-wrap;
     min-height: 120px;
+	text-align: left;
 }
 
 /* ---------------------------------- */

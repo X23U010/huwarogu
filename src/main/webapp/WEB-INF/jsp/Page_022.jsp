@@ -23,16 +23,21 @@ Application_Logic al = new Application_Logic();
 </head>
 
 <body>
+	
     <div class="admin-container">
-    
-    
-        <h1 class="title">申請受理・拒否一覧</h1>
 
-		<div class="footer-button">
-            <button type="button" onclick="history.back()" class="back-button">TOPへ戻る</button>
-        </div>
+		<h1 class="title">申請一覧</h1>
+		
+		<nav id="global_navi">
+			<ul>
+				<li class="current"><a href="HuwaLog_Servlet?action=back_top">HOME</a></li>
+				<li class="current"><a href="#absence_list">欠席一覧</a></li>
+				<li class="current"><a href="#public_absence_list">公欠一覧</a></li>
+				<li class="current"><a href="#report_list">報告書一覧</a></li>
+			</ul>
+		</nav>
         
-        <section class="request-section">
+        <section id="absence_list" class="request-section">
             <h2 class="section-title">
                 <i class="fas fa-user-times"></i> 欠席申請一覧
             </h2>
@@ -44,19 +49,17 @@ Application_Logic al = new Application_Logic();
                             <tr>
                                 <th>選択</th>
                                 <th>ID</th>
+                                <th>申請日</th>
                                 <th>申請者</th>
-                                <th>欠席日</th>
-                                <th>理由</th>
                             </tr>
                         </thead>
                         <tbody>
                             <% for (Absence a : abList) { %>
                             <tr>
                                 <td><input type="checkbox" name="absenceIds" value="<%=a.getAbsence_id()%>"></td>
-                                <td><%=a.getAbsence_id()%></td>
+                                <td><a href="AbApplicationServlet?action=Indetail&id=<%=a.getAbsence_id() %>"><%=a.getAbsence_id() %></a></td>
                                 <td><%=al.Name_Search(a.getAbsence_member_id())%></td>
-                                <td><%=a.getAbsence_date()%></td>
-                                <td class="text-left"><%=a.getAbsence_txt()%></td>
+                                <td><%=a.getAbsence_application_date() %></td>
                             </tr>
                             <% } %>
                         </tbody>
@@ -72,7 +75,7 @@ Application_Logic al = new Application_Logic();
             <% } %>
         </section>
 
-        <section class="request-section">
+        <section id="public_absence_list" class="request-section">
             <h2 class="section-title">
                 <i class="fas fa-briefcase"></i> 公欠申請一覧
             </h2>
@@ -85,22 +88,16 @@ Application_Logic al = new Application_Logic();
                                 <th>選択</th>
                                 <th>ID</th>
                                 <th>申請者</th>
-                                <th>実施日</th>
-                                <th>開始</th>
-                                <th>終了</th>
-                                <th>内容</th>
+                                <th>申請日</th>
                             </tr>
                         </thead>
                         <tbody>
                             <% for (Public_Absence p : PuAbList) { %>
                             <tr>
                                 <td><input type="checkbox" name="publicAbsenceIds" value="<%=p.getPublic_absence_id()%>"></td>
-                                <td><%=p.getPublic_absence_id()%></td>
-                                <td><%=al.Name_Search(p.getStudent_id())%></td>
-                                <td><%=p.getActivity_date()%></td>
-                                <td><%=p.getStart_time()%></td>
-                                <td><%=p.getEnd_time()%></td>
-                                <td class="text-left"><%=p.getReason()%></td>
+                                <td><a href="PubAbApplicationServlet?action=Indetail&id=<%=p.getPublic_absence_id() %>"><%=p.getPublic_absence_id() %></a></td>
+                                <td><%=al.Name_Search(p.getStudent_id())%></td>   
+                                <td><%=p.getApplication_date() %></td>
                             </tr>
                             <% } %>
                         </tbody>
@@ -116,7 +113,7 @@ Application_Logic al = new Application_Logic();
             <% } %>
         </section>
 
-        <section class="request-section">
+        <section id="report_list" class="request-section">
             <h2 class="section-title">
                 <i class="fas fa-file-alt"></i> レポート申請一覧
             </h2>
@@ -127,28 +124,18 @@ Application_Logic al = new Application_Logic();
                         <thead>
                             <tr>
                                 <th>選択</th>
-                                <th>レポートID</th>
+                                <th>ID</th>
                                 <th>申請者</th>
-                                <th>提出日</th>
-                                <th>実施日</th>
-                                <th>開始</th>
-                                <th>終了</th>
-                                <th>場所</th>
-                                <th>内容</th>
+                                <th>申請日</th>
                             </tr>
                         </thead>
                         <tbody>
                             <% for (Report r : reportList) { %>
                             <tr>
                                 <td><input type="checkbox" name="reportIds" value="<%=r.getReport_id()%>"></td>
-                                <td><%=r.getReport_id()%></td>
+                                <td><a href="ReportApplicationServlet?action=Indetail&id=<%=r.getReport_id()%>"><%=r.getReport_id()%></a></td>
                                 <td><%=al.Name_Search(r.getStudent_id())%></td>
-                                <td><%=r.getApplication_date()%></td>
-                                <td><%=r.getActivity_date()%></td>
-                                <td><%=r.getStart_time()%></td>
-                                <td><%=r.getEnd_time()%></td>
-                                <td><%=r.getLocation()%></td>
-                                <td class="text-left"><%=r.getReport_details()%></td>
+                                <td><%=r.getApplication_date() %></td>
                             </tr>
                             <% } %>
                         </tbody>

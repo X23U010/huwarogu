@@ -76,6 +76,9 @@ public class HuwaLog_Servlet extends HttpServlet {
 			request.setAttribute("teacher_list", teacher_list);
 			
 			forward = "Setting_A";
+		} else if("back_top".equals(action)) {
+			
+			forward = "005";
 		}
 
 		session.setAttribute("loginMember", mem);

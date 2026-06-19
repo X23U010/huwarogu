@@ -17,6 +17,73 @@ body {
     padding: 20px;
 }
 
+/* ---------------------------------- */
+/* global_navi デザイン変更 */
+/* ---------------------------------- */
+#global_navi {
+    width: 100%;
+    max-width: 1100px; /* admin-container等と合わせる */
+    margin: 20px auto 30px auto;
+    overflow: hidden;
+}
+
+#global_navi ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* float:leftの代わりにFlexboxを使用 */
+    gap: 10px;    /* メニュー間の隙間 */
+}
+
+#global_navi ul li {
+    flex: 1; /* 均等割付 */
+    text-align: center;
+}
+
+#global_navi ul li a {
+    display: block;
+    padding: 14px;
+    /* 背景を透過紺に */
+    background: rgba(15, 20, 35, 0.7);
+    color: #e0fafa;
+    text-decoration: none;
+    border-radius: 12px; /* 全体の丸みに合わせる */
+    border: 1px solid rgba(127, 255, 223, 0.3);
+    font-weight: bold;
+    font-size: 0.9em;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+/* 現在のページのスタイル（アクティブ） */
+#global_navi ul li.current a {
+    background: rgba(127, 255, 223, 0.2);
+    color: #fff;
+    border-color: #7fffdf;
+    /* ネオンのように光らせる */
+    box-shadow: 0 0 10px rgba(127, 255, 223, 0.4);
+    text-shadow: 0 0 8px rgba(127, 255, 223, 0.8);
+}
+
+/* ホバー時 */
+#global_navi ul li a:hover {
+    background: rgba(127, 255, 223, 0.15);
+    color: #fff;
+    border-color: #7fffdf;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* スマホ対応：メニューが窮屈な場合は2行にする */
+@media (max-width: 600px) {
+    #global_navi ul {
+        flex-wrap: wrap;
+    }
+    #global_navi ul li {
+        flex: 1 1 45%; /* 2カラム */
+    }
+}
+
 /* 通常の設定用コンテナ */
 .setting-container {
     background: rgba(15, 20, 35, 0.85); /* 深い紺色寄りの背景で白飛び防止 */
@@ -25,7 +92,7 @@ body {
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(12px);
     width: 100%;
-    max-width: 420px;
+    max-width: 500px;
     text-align: left;
     border: 1px solid rgba(127, 255, 223, 0.3);
 }
@@ -225,4 +292,32 @@ hr {
     border: none;
     border-top: 1px solid rgba(127, 255, 223, 0.2);
     margin: 30px 0;
+}
+
+/* コンテナ内のリンク共通 */
+/* 1. 初回アクセス時（未訪問）: 白 */
+.setting-container a, 
+.admin-container a,
+.table-wrapper a {
+    color: #ffffff; 
+    text-decoration: none;
+    font-weight: 700;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+/* 2. それ以降（訪問済み）: 黄色 */
+.setting-container a:visited, 
+.admin-container a:visited,
+.table-wrapper a:visited {
+    color: #ffff00; /* 鮮やかな黄色 */
+    border-bottom-color: rgba(255, 255, 0, 0.5);
+}
+
+/* 3. マウスを乗せた時（共通） */
+.setting-container a:hover, 
+.admin-container a:hover,
+.table-wrapper a:hover {
+    filter: brightness(1.2);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
